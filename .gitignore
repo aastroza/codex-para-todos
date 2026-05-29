@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.astro-preview*.log
+.env
+.env.*
+
+# Source media is copied into public/ in optimized/deployable form.
+fotos/
