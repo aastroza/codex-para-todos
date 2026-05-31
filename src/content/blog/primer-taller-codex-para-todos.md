@@ -1,7 +1,7 @@
 ---
 title: "Primer taller de Codex para todos"
-description: "Una breve nota sobre el primer encuentro de Codex para todos, realizado el 28 de mayo de 2026 en Las Condes."
-pubDate: 2026-05-30T12:00:00-04:00
+description: "Una reseña de lo que ocurrió en el primer taller presencial de la comunidad, hospedado en la Facultad de Ingeniería de la Universidad del Desarrollo."
+pubDate: 2026-05-28T12:00:00-04:00
 featured: true
 ---
 

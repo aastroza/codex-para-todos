@@ -4,6 +4,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 
 const whatsappUrl = "https://chat.whatsapp.com/IzEnuC9qRl9I51hCqZC1PZ?s=cl&p=i&ilr=2";
 const lumaUrl = "https://luma.com/g1d4uxoi";
+const photosUrl = "https://photos.app.goo.gl/ziNiMck8oEBo4uxK7";
 
 const title = "Codex para todos";
 const description =
@@ -44,18 +45,41 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
             <h3>Próximos</h3>
             <p>Próximamente</p>
           </div>
-          <div class="meetups-item">
-            <h3>Pasados</h3>
-            <div class="event-row">
-              <div>
+          <article class="event-card" aria-labelledby="past-event-title">
+            <a class="event-card-media" href="/blog/primer-taller-codex-para-todos/" aria-label="Leer la nota del primer taller">
+              <img
+                src="/images/primer-taller-codex-para-todos.avif"
+                alt="Codex para todos: agentes de IA explicados en simple"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </a>
+            <div class="event-card-body">
+              <p class="event-card-kicker">Pasados</p>
+              <h3 id="past-event-title">
                 <a href="/blog/primer-taller-codex-para-todos/">Primer taller: Codex para todos</a>
-                <span>28 de mayo de 2026</span>
+              </h3>
+              <dl class="event-card-meta">
+                <div>
+                  <dt>Fecha</dt>
+                  <dd>28 de mayo de 2026</dd>
+                </div>
+                <div>
+                  <dt>Lugar</dt>
+                  <dd>Universidad del Desarrollo, Santiago</dd>
+                </div>
+              </dl>
+              <p>
+                Codex para transformar la forma de trabajo de quienes no saben programar.
+              </p>
+              <div class="event-card-actions" aria-label="Enlaces del primer taller">
+                <a href="/blog/primer-taller-codex-para-todos/">Leer nota</a>
+                <a href={lumaUrl} target="_blank" rel="noreferrer">Ver evento</a>
+                <a href={photosUrl} target="_blank" rel="noreferrer">Ver fotos</a>
               </div>
-              <a class="event-secondary-link" href={lumaUrl} target="_blank" rel="noreferrer">
-                Ver evento
-              </a>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
