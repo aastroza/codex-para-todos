@@ -11,6 +11,12 @@ npm run dev
 
 El sitio queda disponible en `http://127.0.0.1:4321/`.
 
+## Blog y boletín
+
+Los posts viven en `src/content/blog/` como archivos Markdown. El sitio publica el listado en `/blog/`, cada post en `/blog/{slug}/` y el feed en `/rss.xml`.
+
+El boletín usa Buttondown embebido en el sitio. El formulario en español etiqueta las suscripciones con `español`.
+
 ## Build y despliegue
 
 ```bash

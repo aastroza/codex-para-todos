@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const formatPostDate = new Intl.DateTimeFormat("es-CL", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+});
+
+const formatMonth = new Intl.DateTimeFormat("es-CL", {
+  month: "long",
+});
+
+const groupedPosts = posts.reduce(
+  (groups, post) => {
+    const year = String(post.data.pubDate.getFullYear());
+    const month = formatMonth.format(post.data.pubDate);
+
+    groups[year] ??= { count: 0, months: {} };
+    groups[year].count += 1;
+    groups[year].months[month] ??= [];
+    groups[year].months[month].push(post);
+
+    return groups;
+  },
+  {} as Record<
+    string,
+    {
+      count: number;
+      months: Record<string, typeof posts>;
+    }
+  >,
+);
+
+const getReadingTime = (body: string | undefined) => {
+  const words = (body ?? "").trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
+};
+
+const title = "Blog";
+const description = "Notas, recursos y aprendizajes de la comunidad Codex para todos.";
+const canonical = "https://codexparatodos.com/blog/";
+---
+
+<SiteLayout title={title} description={description} canonical={canonical}>
+  <main class="posts-index">
+    <section class="posts-header container" aria-labelledby="blog-title">
+      <h1 id="blog-title">Todas las notas</h1>
+      <p>Explora publicaciones por año y mes.</p>
+    </section>
+
+    <section class="posts-archive container" aria-label="Publicaciones">
+      {
+        Object.entries(groupedPosts)
+          .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+          .map(([year, yearGroup]) => (
+            <section class="archive-year" aria-labelledby={`year-${year}`}>
+              <h2 id={`year-${year}`}>
+                {year} <sup>{yearGroup.count}</sup>
+              </h2>
+              {
+                Object.entries(yearGroup.months).map(([month, monthPosts]) => (
+                  <section class="archive-month" aria-labelledby={`${year}-${month}`}>
+                    <h3 id={`${year}-${month}`}>
+                      {month} <sup>{monthPosts.length}</sup>
+                    </h3>
+                    <div class="archive-posts">
+                      {
+                        monthPosts.map((post) => (
+                          <article class="archive-post">
+                            <h4>
+                              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                            </h4>
+                            <p class="archive-post-meta">
+                              Publicado: {formatPostDate.format(post.data.pubDate)} ·{" "}
+                              {getReadingTime(post.body)} min de lectura
+                            </p>
+                            <p>{post.data.description}</p>
+                          </article>
+                        ))
+                      }
+                    </div>
+                  </section>
+                ))
+              }
+            </section>
+          ))
+      }
+    </section>
+  </main>
+</SiteLayout>
