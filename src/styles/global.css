@@ -15,6 +15,8 @@
   --codex-sky: #7a9dff;
   --whatsapp-green: #08745d;
   --focus-ring: rgba(57, 65, 255, 0.34);
+  --danger: #a93636;
+  --required: #c83256;
   --container: 1120px;
   color-scheme: light;
   font-family:
@@ -26,15 +28,21 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background:
     linear-gradient(180deg, rgba(122, 157, 255, 0.12), transparent 28rem),
     radial-gradient(circle at 82% 10%, rgba(57, 65, 255, 0.1), transparent 22rem),
@@ -257,37 +265,11 @@ p {
 
 .meetups-list {
   display: grid;
-  gap: 14px;
-}
-
-.meetups-item {
-  display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
-  gap: 20px;
-  align-items: start;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-soft);
-  padding: 24px 26px;
-}
-
-.meetups-item h3 {
-  color: var(--subtle);
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.2;
-}
-
-.meetups-item p {
-  color: var(--muted);
-  font-size: 22px;
-  line-height: 1.3;
 }
 
 .event-card {
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1fr);
   gap: 0;
   overflow: hidden;
   border: 1px solid rgba(57, 65, 255, 0.2);
@@ -320,13 +302,8 @@ p {
   padding: 30px;
 }
 
-.event-card-kicker {
-  width: max-content;
-  border: 1px solid rgba(57, 65, 255, 0.24);
-  border-radius: 999px;
-  background: var(--brand-blue-soft);
-  padding: 7px 12px;
-  color: var(--brand-blue-dark);
+.event-card-eyebrow {
+  color: var(--subtle);
   font-size: 14px;
   font-weight: 760;
   line-height: 1;
@@ -377,7 +354,7 @@ p {
   line-height: 1.25;
 }
 
-.event-card-body > p:not(.event-card-kicker) {
+.event-card-body > p:not(.event-card-eyebrow) {
   max-width: 600px;
   color: var(--muted);
   font-size: 18px;
@@ -434,131 +411,35 @@ p {
   text-decoration-color: var(--text);
 }
 
-.newsletter-section {
+.post-community-section {
   padding: 0 0 78px;
 }
 
-.newsletter-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
-  gap: 34px;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-soft);
-  padding: 34px;
-}
-
-.newsletter-copy h2 {
-  max-width: 10ch;
-  font-size: clamp(32px, 4vw, 46px);
-  font-weight: 780;
-  letter-spacing: 0;
-  line-height: 1.04;
-}
-
-.newsletter-copy p {
-  max-width: 480px;
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 19px;
-  line-height: 1.42;
-}
-
-.newsletter-form {
-  display: grid;
-  gap: 14px;
-  padding: 0;
-}
-
-.newsletter-form label {
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 740;
-  line-height: 1.2;
-}
-
-.newsletter-form-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px;
-}
-
-.newsletter-form input[type="email"] {
-  min-width: 0;
-  min-height: 52px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-elevated);
-  padding: 14px 16px;
-  color: var(--text);
-  font: inherit;
-  font-size: 17px;
-}
-
-.newsletter-form input[type="email"]::placeholder {
-  color: #5c6573;
-}
-
-.newsletter-form input[type="email"]:focus {
-  border-color: rgba(57, 65, 255, 0.62);
-  outline: 3px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-
-.newsletter-form button {
-  min-height: 52px;
-  border: 0;
-  border-radius: 8px;
-  background: var(--brand-blue);
-  padding: 14px 20px;
-  color: white;
-  cursor: pointer;
-  font: inherit;
-  font-size: 16px;
-  font-weight: 760;
-  line-height: 1;
-  transition:
-    background 160ms ease,
-    transform 160ms ease;
-}
-
-.newsletter-form button:hover {
-  background: var(--brand-blue-dark);
-  transform: translateY(-1px);
-}
-
-.newsletter-form p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.35;
-}
-
-.community-section {
-  padding: 0 0 78px;
-}
-
-.community-band {
+.post-community-panel {
   display: flex;
-  min-height: 132px;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  overflow: hidden;
+  gap: 28px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 82% 14%, rgba(122, 157, 255, 0.22), transparent 18rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(242, 244, 255, 0.92));
-  padding: 34px 38px;
-  color: var(--text);
+    radial-gradient(circle at 88% 20%, rgba(122, 157, 255, 0.18), transparent 18rem),
+    rgba(255, 255, 255, 0.58);
+  padding: 32px;
 }
 
-.community-band h2 {
-  font-size: clamp(28px, 4vw, 40px);
+.post-community-panel h2 {
+  font-size: clamp(30px, 4vw, 42px);
   font-weight: 780;
-  letter-spacing: 0;
-  line-height: 1.08;
+  line-height: 1.06;
+}
+
+.post-community-panel p {
+  max-width: 660px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.45;
 }
 
 .site-footer {
@@ -630,6 +511,295 @@ p {
   font-size: clamp(19px, 2vw, 24px);
   font-weight: 450;
   line-height: 1.32;
+}
+
+.community-page {
+  padding-bottom: 84px;
+}
+
+.community-hero {
+  padding: 70px 0 34px;
+}
+
+.community-hero-copy {
+  max-width: calc(var(--container) + 48px);
+}
+
+.community-hero-copy h1 {
+  max-width: 11.5ch;
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: 0.98;
+}
+
+.community-lede {
+  max-width: 940px;
+  margin-top: 28px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.56;
+  overflow-wrap: break-word;
+}
+
+.community-signup-section {
+  padding: 0 0 74px;
+}
+
+.community-signup-shell {
+  max-width: calc(var(--container) + 48px);
+}
+
+.signup-intro {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+}
+
+.signup-intro h2 {
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 780;
+  line-height: 1.06;
+}
+
+.signup-steps {
+  display: grid;
+  gap: 6px;
+  max-width: 900px;
+  margin: 14px 0 0;
+  padding-left: 1.35em;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.signup-card {
+  margin-top: 28px;
+  border: 1px solid rgba(57, 65, 255, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(242, 244, 255, 0.84), rgba(248, 249, 255, 0.68)),
+    var(--bg);
+  padding: 28px;
+  box-shadow: 0 1px 0 rgba(57, 65, 255, 0.08);
+}
+
+.signup-card h2 {
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 780;
+  line-height: 1.04;
+}
+
+.signup-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.42;
+}
+
+.community-signup-form {
+  display: grid;
+  gap: 18px;
+}
+
+.community-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 20px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.form-field label span {
+  color: var(--required);
+}
+
+.form-field p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.38;
+}
+
+.form-field input {
+  min-height: 52px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 14px 16px;
+  color: var(--text);
+  font: inherit;
+  font-size: 17px;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.form-field input:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.form-field input:focus {
+  border-color: rgba(57, 65, 255, 0.62);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.form-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 22px;
+  padding-top: 2px;
+}
+
+.community-signup-form button {
+  min-height: 56px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--brand-blue);
+  padding: 15px 20px;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 780;
+  line-height: 1;
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    opacity 160ms ease;
+}
+
+.community-signup-form button:hover {
+  background: var(--brand-blue-dark);
+  transform: translateY(-1px);
+}
+
+.community-signup-form button:active {
+  transform: translateY(0);
+}
+
+.community-signup-form button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+  transform: none;
+}
+
+.form-note {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.form-status {
+  min-height: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.form-status[data-state="error"] {
+  color: var(--danger);
+}
+
+.signup-success {
+  display: grid;
+  max-width: 620px;
+  gap: 18px;
+}
+
+.signup-success:focus {
+  outline: 0;
+}
+
+.signup-success p {
+  margin: 0;
+}
+
+.success-kicker {
+  width: max-content;
+  border: 1px solid rgba(57, 65, 255, 0.24);
+  border-radius: 999px;
+  background: var(--brand-blue-soft);
+  padding: 7px 12px;
+  color: var(--brand-blue-dark);
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1;
+}
+
+.community-faq-section {
+  padding: 0 0 26px;
+}
+
+.community-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.45fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.community-faq-grid h2 {
+  max-width: 8ch;
+  font-size: clamp(34px, 5vw, 50px);
+  font-weight: 780;
+  line-height: 1.05;
+}
+
+.faq-list {
+  display: grid;
+  border-top: 1px solid var(--border);
+}
+
+.faq-item {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.48fr) minmax(0, 1fr);
+  gap: 26px;
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+.faq-item:last-child {
+  border-bottom: 0;
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  font-weight: 760;
+  line-height: 1.18;
+}
+
+.faq-item p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.faq-item a {
+  color: var(--brand-blue-dark);
+  font-weight: 720;
+  text-decoration-color: rgba(57, 65, 255, 0.45);
+  text-underline-offset: 4px;
+}
+
+.faq-item a:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
 }
 
 .blog-list-section {
@@ -893,7 +1063,9 @@ p {
 @media (max-width: 860px) {
   .container,
   .header-inner {
-    max-width: 100%;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
     padding-inline: 16px;
   }
 
@@ -945,10 +1117,80 @@ p {
   .hero-copy,
   .hero-actions,
   .meetups-list,
-  .newsletter-panel,
-  .community-band {
-    width: calc(100vw - 32px);
-    max-width: calc(100vw - 32px);
+  .post-community-panel,
+  .community-hero-copy,
+  .signup-card,
+  .community-faq-grid {
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .community-hero {
+    padding: 54px 0 30px;
+  }
+
+  .community-hero-copy h1 {
+    max-width: 9.5ch;
+    font-size: clamp(42px, 12vw, 64px);
+  }
+
+  .community-lede {
+    font-size: 18px;
+  }
+
+  .signup-card {
+    position: static;
+    padding: 26px 22px;
+  }
+
+  .community-signup-section {
+    padding-bottom: 58px;
+  }
+
+  .signup-intro {
+    padding-top: 24px;
+  }
+
+  .signup-steps {
+    font-size: 16px;
+  }
+
+  .community-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-wide {
+    grid-column: auto;
+  }
+
+  .form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .community-signup-form button {
+    width: 100%;
+  }
+
+  .community-signup-form,
+  .form-field,
+  .form-field input {
+    min-width: 0;
+  }
+
+  .community-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .community-faq-grid h2 {
+    max-width: none;
+  }
+
+  .faq-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .event-card {
@@ -964,19 +1206,14 @@ p {
     max-height: none;
   }
 
-  .community-band {
+  .post-community-panel {
     align-items: flex-start;
     flex-direction: column;
     padding: 28px 24px;
   }
 
-  .newsletter-panel {
-    grid-template-columns: 1fr;
-    padding: 28px 24px;
-  }
-
-  .newsletter-copy h2 {
-    max-width: none;
+  .post-community-panel .button {
+    width: auto;
   }
 
   .page-hero {
@@ -1011,6 +1248,14 @@ p {
 }
 
 @media (max-width: 520px) {
+  .community-hero-copy,
+  .signup-card,
+  .community-faq-grid {
+    width: 100%;
+    max-width: 100%;
+    margin-right: auto;
+  }
+
   .hero-actions {
     align-items: stretch;
     flex-direction: column;
@@ -1023,8 +1268,25 @@ p {
     padding-inline: 16px;
   }
 
-  .newsletter-form-row {
-    grid-template-columns: 1fr;
+  .community-hero-copy h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .community-lede {
+    font-size: 17px;
+  }
+
+  .signup-card h2,
+  .community-faq-grid h2 {
+    font-size: 30px;
+  }
+
+  .signup-intro h2 {
+    font-size: 32px;
+  }
+
+  .faq-item p {
+    font-size: 17px;
   }
 
   .post-card {
@@ -1041,10 +1303,6 @@ p {
 
   .post-content iframe {
     min-height: 210px;
-  }
-
-  .meetups-item p {
-    font-size: 18px;
   }
 
   .event-card-body {
@@ -1066,12 +1324,6 @@ p {
 
   .event-card-actions a {
     width: 100%;
-  }
-
-  .meetups-item {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 24px;
   }
 
   .data-logo {

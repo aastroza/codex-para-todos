@@ -72,6 +72,7 @@ const isBlog = Astro.url.pathname.startsWith("/blog");
         </a>
         <nav class="site-nav" aria-label="Navegación principal">
           <a href="/" aria-current={isHome ? "page" : undefined}>Inicio</a>
+          <a href="/comunidad/" aria-current={Astro.url.pathname.startsWith("/comunidad") ? "page" : undefined}>Comunidad</a>
           <a href="/blog/" aria-current={isBlog ? "page" : undefined}>Blog</a>
         </nav>
       </div>

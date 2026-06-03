@@ -1,0 +1,189 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const title = "Comunidad";
+const description =
+  "Únete al boletín y a la comunidad de WhatsApp de Codex para todos.";
+const canonical = "https://codexparatodos.com/comunidad/";
+const whatsappUrl = "https://chat.whatsapp.com/IzEnuC9qRl9I51hCqZC1PZ?s=cl&p=i&ilr=2";
+const faqs = [
+  {
+    question: "¿Qué es Codex?",
+    answer:
+      "es una herramienta de OpenAI que funciona como un agente de IA para crear, revisar y mejorar proyectos digitales a partir de instrucciones escritas en lenguaje común. Aunque nació para tareas de programación, también puede ayudar a cualquier trabajo que tenga que ver con manejo de información.",
+    codexLink: true,
+  },
+  {
+    question: "¿Para quién es esta comunidad?",
+    answer:
+      "Para profesionales que quieren usar Codex y agentes de IA en trabajo real, aunque no programen. También son bienvenidas las personas técnicas que quieran explicar, acompañar y aprender con otras.",
+  },
+  {
+    question: "¿Qué recibiré en el boletín?",
+    answer:
+      "Recibirás recursos, ejemplos, talleres, notas y aprendizajes prácticos sobre cómo pensar y trabajar con Codex sin convertirlo en una caja negra.",
+  },
+  {
+    question: "¿Tengo que pagar algo?",
+    answer: "No. Participar de esta comunidad es gratis.",
+  },
+];
+
+---
+
+<SiteLayout title={title} description={description} canonical={canonical}>
+  <main class="community-page">
+    <section class="community-hero" aria-labelledby="community-title">
+      <div class="container community-hero-copy">
+        <h1 id="community-title">Aprendamos juntos</h1>
+        <p class="community-lede">
+          Hacer trabajo real con agentes de IA puede sentirse como magia. Cuando descubres lo que pueden hacer, tu vida laboral cambia para siempre. Durante mucho tiempo, este territorio pareció reservado para otras personas: quienes programan y hablan el idioma de la tecnología. <strong>Esta comunidad parte de una creencia distinta: Codex también puede ser para el resto de nosotros.</strong> Más personas merecen espacio para pensar, crear y participar en el mundo que se está construyendo a su alrededor.
+        </p>
+      </div>
+    </section>
+
+    <section class="community-signup-section" aria-labelledby="signup-title">
+      <div class="container community-signup-shell">
+        <div class="signup-intro">
+          <h2 id="signup-title">Quiero participar</h2>
+          <ul class="signup-steps">
+            <li>Completa el formulario, todos los campos son obligatorios.</li>
+            <li>Te registraremos en el boletín para enviarte recursos, novedades, invitaciones a encuentros y talleres.</li>
+            <li><strong>Después de inscribirte, aparecerá aquí mismo el enlace para entrar a la comunidad de WhatsApp.</strong></li>
+          </ul>
+        </div>
+
+        <div class="signup-card">
+          <div class="signup-form-view" data-form-view>
+            <form class="community-signup-form" data-community-form>
+              <div class="community-form-grid">
+                <div class="form-field">
+                  <label for="community-name">Nombre <span aria-hidden="true">*</span></label>
+                  <input id="community-name" name="name" type="text" autocomplete="name" required />
+                </div>
+                <div class="form-field">
+                  <label for="community-email">Email <span aria-hidden="true">*</span></label>
+                  <input id="community-email" name="email" type="email" autocomplete="email" inputmode="email" required />
+                </div>
+                <div class="form-field form-field-wide">
+                  <label for="community-phone">Teléfono <span aria-hidden="true">*</span></label>
+                  <p>Ingresa tu número con código de país. Ejemplo: +56912345678.</p>
+                  <input id="community-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+                </div>
+              </div>
+              <input type="hidden" name="source" value="pagina-comunidad" />
+              <div class="form-footer">
+                <p class="form-note">
+                  Usamos Codex como apoyo, pero el material es redactado por humanos. Vas a leer algo real, hecho con cuidado. Esa es la promesa.
+                </p>
+                <button type="submit">Inscribirme</button>
+              </div>
+              <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="signup-success" data-success-view hidden tabindex="-1">
+            <p class="success-kicker">Inscripción recibida</p>
+            <h2>Ahora súmate al WhatsApp</h2>
+            <p>
+              Te registramos en el boletín. Te llegará un correo pidiendo confirmar la inscripción; revisa tu bandeja de entrada. Ahora puedes entrar a la comunidad en WhatsApp apretando el siguiente botón.
+            </p>
+            <a class="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+              Entrar al WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-faq-section" aria-labelledby="faq-title">
+      <div class="container community-faq-grid">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+        <div class="faq-list">
+          {
+            faqs.map((item) => (
+              <article class="faq-item">
+                <h3>{item.question}</h3>
+                {
+                  item.codexLink ? (
+                    <p>
+                      <a href="https://openai.com/codex/" target="_blank" rel="noreferrer">Codex</a> {item.answer}
+                    </p>
+                  ) : (
+                    <p>{item.answer}</p>
+                  )
+                }
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("[data-community-form]");
+    const status = document.querySelector("[data-form-status]");
+    const formView = document.querySelector("[data-form-view]");
+    const successView = document.querySelector("[data-success-view]");
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Inscribiendo...";
+      }
+
+      form.setAttribute("aria-busy", "true");
+
+      if (status instanceof HTMLElement) {
+        status.textContent = "";
+        status.dataset.state = "";
+      }
+
+      try {
+        const response = await fetch("/api/community-subscribe", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result?.message ?? "No pudimos completar la inscripción.");
+        }
+
+        if (formView instanceof HTMLElement) formView.hidden = true;
+        if (successView instanceof HTMLElement) {
+          successView.hidden = false;
+          successView.focus({ preventScroll: true });
+        }
+      } catch (error) {
+        if (status instanceof HTMLElement) {
+          status.dataset.state = "error";
+          status.textContent =
+            error instanceof Error
+              ? error.message
+              : "No pudimos completar la inscripción. Intenta nuevamente.";
+        }
+      } finally {
+        form.removeAttribute("aria-busy");
+
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Inscribirme";
+        }
+      }
+    });
+  </script>
+</SiteLayout>

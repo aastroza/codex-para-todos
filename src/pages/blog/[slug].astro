@@ -1,6 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import NewsletterEmbed from "../../components/NewsletterEmbed.astro";
+import PostCommunityCta from "../../components/PostCommunityCta.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 
 interface Props {
@@ -43,6 +43,6 @@ const canonical = new URL(`/blog/${post.id}/`, siteUrl).href;
       </div>
     </article>
 
-    <NewsletterEmbed />
+    <PostCommunityCta />
   </main>
 </SiteLayout>
