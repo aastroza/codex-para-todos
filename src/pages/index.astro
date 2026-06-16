@@ -3,6 +3,8 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 
 const lumaUrl = "https://luma.com/g1d4uxoi";
 const photosUrl = "https://photos.app.goo.gl/ziNiMck8oEBo4uxK7";
+const videoUrl = "https://youtube.com/shorts/PmifZOeo3jA";
+const videoThumbnailUrl = "https://i.ytimg.com/vi/PmifZOeo3jA/hqdefault.jpg";
 
 const title = "Codex para todos";
 const description =
@@ -40,14 +42,23 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
         <h2 id="meetups-title">Encuentros</h2>
         <div class="meetups-list" aria-label="Encuentros de Codex para todos">
           <article class="event-card" aria-labelledby="past-event-title">
-            <a class="event-card-media" href="/blog/primer-taller-codex-para-todos/" aria-label="Leer la nota del primer taller">
-              <img
-                src="/images/primer-taller-codex-para-todos.avif"
-                alt="Codex para todos: agentes de IA explicados en simple"
-                width="800"
-                height="800"
-                loading="lazy"
-              />
+            <a class="event-card-media event-card-video-preview" href={videoUrl} target="_blank" rel="noreferrer" aria-label="Ver video del primer taller en YouTube">
+              <span class="video-phone-frame" aria-hidden="true">
+                <img
+                  class="event-card-video-thumb"
+                  src={videoThumbnailUrl}
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+                <span class="video-play-button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </span>
+              <span class="video-preview-label">Ver video</span>
             </a>
             <div class="event-card-body">
               <p class="event-card-eyebrow">Encuentro anterior</p>
@@ -71,6 +82,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 <a href="/blog/primer-taller-codex-para-todos/">Leer nota</a>
                 <a href={lumaUrl} target="_blank" rel="noreferrer">Ver evento</a>
                 <a href={photosUrl} target="_blank" rel="noreferrer">Ver fotos</a>
+                <a href={videoUrl} target="_blank" rel="noreferrer">Ver video</a>
               </div>
             </div>
           </article>
