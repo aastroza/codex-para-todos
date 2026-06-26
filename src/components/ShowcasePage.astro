@@ -1,0 +1,230 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+type Lang = "es" | "en";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const isEnglish = lang === "en";
+
+const projects = [
+  {
+    name: "Calendaris",
+    team: "Nicolas Soto",
+    field: isEnglish
+      ? "Computer Science and Artificial Intelligence"
+      : "Ingeniería Civil Informática e Inteligencia Artificial",
+    url: "https://calendaris-inky.vercel.app/",
+    summary: isEnglish
+      ? "A university calendar for courses, evaluations, academic events and suggested study blocks, with privacy-aware shared calendars."
+      : "Calendario universitario con ramos, evaluaciones, eventos académicos y bloques de estudio sugeridos, con opción de calendario compartido y privacidad configurable.",
+    theme: "sky",
+  },
+  {
+    name: "StudyBrain",
+    team: "Nicolas Campos",
+    field: isEnglish
+      ? "Computer Science and Technological Innovation"
+      : "Ingeniería Civil Informática e Innovación Tecnológica",
+    url: "https://study-brain-cniico.vercel.app",
+    summary: isEnglish
+      ? "An academic platform to centralize notes, topics and evaluations, analyze mistakes and generate weekly study plans."
+      : "Plataforma académica para centralizar notas, temarios y evaluaciones, analizar errores y generar planes de estudio semanales.",
+    theme: "violet",
+  },
+  {
+    name: "BriefLab",
+    team: "Amelia Troncoso",
+    field: isEnglish ? "Graphic Design" : "Diseño Gráfico",
+    url: "https://brief-lab.vercel.app",
+    summary: isEnglish
+      ? "A generator of fictional design briefs for practice, skill-building and portfolio development without needing real clients."
+      : "Generador de briefs ficticios de diseño para practicar, reforzar habilidades y construir portafolio sin depender de clientes reales.",
+    theme: "rose",
+  },
+  {
+    name: "FinEx",
+    team: "Sebastian Ramirez",
+    field: isEnglish ? "Industrial Engineering" : "Ingeniería Civil Industrial",
+    url: "https://finex-public-frontend.vercel.app",
+    summary: isEnglish
+      ? "A personal finance app that imports Gmail notices, classifies expenses and visualizes budget behavior without constant manual entry."
+      : "App de finanzas personales que importa avisos de Gmail, clasifica gastos y visualiza presupuesto sin depender de carga manual constante.",
+    theme: "green",
+  },
+  {
+    name: "Fit Me",
+    team: "Diego Rivera y Valentina Castillo",
+    field: isEnglish ? "Psychology and Dentistry" : "Psicología y Odontología",
+    url: "/images/fit-me-codex-automation.jpg",
+    ctaLabel: "Demo",
+    summary: isEnglish
+      ? "A Codex automation that prepares seven weekly outfits from real clothing photos, style references and weather."
+      : "Automatización en Codex que prepara siete outfits semanales a partir de fotos de ropa real, referencias de estilo y clima.",
+    theme: "amber",
+  },
+  {
+    name: "RubricaCheck",
+    team: "Jose Tomas Cifuentes",
+    field: isEnglish ? "Civil Engineering" : "Ingeniería Civil Obras Civiles",
+    url: "https://rubricacheck-mvp.vercel.app",
+    summary: isEnglish
+      ? "A web app that turns rubrics, assignment instructions and teacher comments into a clearer structure for preparing submissions."
+      : "App web que transforma rúbricas, instrucciones y comentarios del profesor en una estructura clara para preparar entregas.",
+    theme: "blue",
+  },
+];
+
+const copy = isEnglish
+  ? {
+      title: "ExploraTec Showcase",
+      description:
+        "Student projects built with Codex in the course Create your AI agent: automate your everyday work.",
+      canonical: "https://codexparatodos.com/showcase/en/",
+      languageLabel: "Español",
+      languageHref: "/showcase/",
+      introBefore:
+        'In the final exam for "Create your AI Agent", part of the ',
+      introLink: "ExploraTec program at Universidad del Desarrollo,",
+      introAfter:
+        " 30 students chose everyday problems close to their own work and study routines. Codex gave them a way to move from an idea to a demo with an interface, rules and something concrete to test.",
+      activity: "About the students",
+      activityText:
+        "There were 22 projects, built by 30 students from 14 majors. Most were early in their university path and many did not come from programming. That is the point: the work shows what happens when students use Codex to express judgment from their own field as a working prototype.",
+      stats: [
+        ["22", "projects"],
+        ["30", "students"],
+        ["14", "majors"],
+        ["6", "selected"],
+      ],
+      careersTitle: "Majors represented",
+      careersText:
+        "Commercial Engineering, Global Business Administration, Architecture, Dentistry, Medical Technology, Computer Science and Artificial Intelligence, Psychology, Computer Science and Technological Innovation, Law, Civil Engineering, Political Science and Public Policy, Industrial Engineering, Kinesiology and Design.",
+      findingsTitle: "What they tried to solve",
+      findingsIntro:
+        "The projects came from problems students already had: planning courses and exams, reading long rubrics, studying with too much material, controlling expenses, deciding what to buy, preparing design briefs, reviewing campaigns or choosing outfits for the week.",
+      findingsText:
+        "The common move was small and practical. They took a task done by hand and used Codex to make it visible, repeatable and testable. Sometimes that became a web app. Sometimes, as with Fit Me, it became an automation that produces a useful output every Sunday.",
+      codexTitle: "How Codex helped",
+      codexText:
+        "The stronger signal is pedagogical. First-year students, many without technical training and several with no plan to become programmers, built things that could be opened, tested and explained. Codex gave them a way to turn judgment from their own discipline into interfaces, rules and small automations. That changes who gets to prototype.",
+      galleryTitle: "Selected projects",
+      visit: "Open project",
+      back: "Back to home",
+    }
+  : {
+      title: "Showcase ExploraTec",
+      description:
+        "Proyectos estudiantiles creados con Codex en el curso Crea tu Agente de IA: automatiza tu día a día.",
+      canonical: "https://codexparatodos.com/showcase/",
+      languageLabel: "English",
+      languageHref: "/showcase/en/",
+      introBefore:
+        'En el examen final del curso "Crea tu Agente de IA" del programa ',
+      introLink: "ExploraTec de la Universidad del Desarrollo,",
+      introAfter:
+        " 30 estudiantes eligieron problemas cercanos a los desafíos de su día a día. Codex les dio una forma de pasar de una idea a una demo con interfaz, reglas y una prueba concreta.",
+      activity: "Sobre los estudiantes",
+      activityText:
+        "Hubo 22 proyectos, creados por 30 estudiantes de 14 carreras. La mayoría estaba al comienzo de su camino universitario y muchos no venían desde la programación. Ese es el punto: el trabajo muestra qué pasa cuando estudiantes usan Codex para expresar criterio de su propia carrera en un prototipo funcional.",
+      stats: [
+        ["22", "proyectos"],
+        ["30", "estudiantes"],
+        ["14", "carreras"],
+        ["6", "seleccionados"],
+      ],
+      careersTitle: "Carreras representadas",
+      careersText:
+        "Ingeniería Comercial, Global Business Administration, Arquitectura, Odontología, Tecnología Médica, Ingeniería Civil en Informática e Inteligencia Artificial, Psicología, Ingeniería Civil en Informática e Innovación Tecnológica, Derecho, Ingeniería Civil Obras Civiles, Ciencia Política y Políticas Públicas, Ingeniería Civil Industrial, Kinesiología y Diseño.",
+      findingsTitle: "Qué intentaron resolver",
+      findingsIntro:
+        "Los proyectos nacieron de problemas que los estudiantes ya conocían: ordenar ramos y evaluaciones, entender rúbricas largas, estudiar con demasiado material, clasificar gastos, decidir compras, preparar briefs de diseño, analizar campañas o planificar outfits para la semana.",
+      findingsText:
+        "El movimiento común fue pequeño y práctico. Tomaron una tarea hecha a mano y usaron Codex para volverla visible, repetible y fácil de probar. A veces eso terminó en una app web. Otras veces, como en Fit Me, terminó en una automatización que produce un resultado útil cada domingo.",
+      codexTitle: "Cómo les fue con Codex",
+      codexText:
+        "La señal fuerte es pedagógica. Estudiantes de primer año, muchos sin formación técnica y varios sin intención de programar profesionalmente, construyeron cosas que se podían abrir, probar y explicar. Codex les dio una forma de traducir criterio de su propia carrera en interfaces, reglas y automatizaciones pequeñas. Eso cambia quién puede prototipar.",
+      galleryTitle: "Proyectos seleccionados",
+      visit: "Abrir proyecto",
+      back: "Volver al inicio",
+    };
+---
+
+<SiteLayout title={copy.title} description={copy.description} canonical={copy.canonical} lang={lang}>
+  <main class="showcase-page">
+    <section class="showcase-hero" aria-labelledby="showcase-title">
+      <div class="container showcase-hero-grid">
+        <div class="showcase-hero-copy">
+          <a class="back-link" href="/">{copy.back}</a>
+          <h1 id="showcase-title">{copy.title}</h1>
+          <p>{copy.introBefore}<a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">{copy.introLink}</a>{copy.introAfter}</p>
+          <a class="language-switch" href={copy.languageHref} hreflang={isEnglish ? "es" : "en"}>
+            {copy.languageLabel}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-overview" aria-labelledby="activity-title">
+      <div class="container showcase-overview-grid">
+        <div>
+          <h2 id="activity-title">{copy.activity}</h2>
+          <p>{copy.activityText}</p>
+        </div>
+        <div class="showcase-stats" aria-label={isEnglish ? "Showcase stats" : "Datos del showcase"}>
+          {copy.stats.map(([value, label]) => (
+            <div class="showcase-stat">
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+          <div class="career-list">
+            <h3>{copy.careersTitle}</h3>
+            <p>{copy.careersText}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-insights" aria-labelledby="findings-title">
+      <div class="container showcase-insights-grid">
+        <div>
+          <h2 id="findings-title">{copy.findingsTitle}</h2>
+        </div>
+        <div class="insight-copy">
+          <p>{copy.findingsIntro}</p>
+          <p>{copy.findingsText}</p>
+          <h3>{copy.codexTitle}</h3>
+          <p>{copy.codexText}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-projects-section" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 id="projects-title">{copy.galleryTitle}</h2>
+        <div class="showcase-projects">
+          {projects.map((project) => (
+            <article class="project-card" data-theme={project.theme}>
+              <div class="project-card-art" aria-hidden="true"></div>
+              <div class="project-card-body">
+                <h3>{project.name}</h3>
+                <p class="project-team">{project.team}</p>
+                <p class="project-field">{project.field}</p>
+                <p>{project.summary}</p>
+                {
+                  project.url ? (
+                    <a href={project.url} target="_blank" rel="noreferrer">{project.ctaLabel ?? copy.visit}</a>
+                  ) : null
+                }
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

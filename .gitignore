@@ -6,6 +6,9 @@ dist/
 .DS_Store
 .env
 .env.*
+canvas_examen_proyecto_final_downloads/
+canvas_examen_proyecto_final_extracted/
+canvas_examen_proyecto_final_raw/
 
 # Source media is copied into public/ in optimized/deployable form.
 fotos/
