@@ -9,222 +9,787 @@ interface Props {
 
 const { lang } = Astro.props;
 const isEnglish = lang === "en";
+const demoBasePath = "/images/demo-screenshots";
 
-const projects = [
+const projectBase = [
   {
     name: "Calendaris",
-    team: "Nicolas Soto",
-    field: isEnglish
-      ? "Computer Science and Artificial Intelligence"
-      : "Ingeniería Civil Informática e Inteligencia Artificial",
+    team: "Nicolás Soto",
+    fieldEs: "Ingeniería Civil Informática e Inteligencia Artificial",
+    fieldEn: "Computer Science and Artificial Intelligence",
     url: "https://calendaris-inky.vercel.app/",
-    summary: isEnglish
-      ? "A university calendar for courses, evaluations, academic events and suggested study blocks, with privacy-aware shared calendars."
-      : "Calendario universitario con ramos, evaluaciones, eventos académicos y bloques de estudio sugeridos, con opción de calendario compartido y privacidad configurable.",
+    summaryEs:
+      "Calendario universitario con ramos, evaluaciones, eventos y bloques de estudio sugeridos.",
+    summaryEn:
+      "A university calendar for courses, evaluations, events and suggested study blocks.",
     theme: "sky",
+    demoImages: [
+      {
+        src: `${demoBasePath}/calendaris-01-portada.png`,
+        altEs: "Portada de Calendaris con calendario académico y acceso",
+        altEn: "Calendaris cover screen with academic calendar and access panel",
+      },
+      {
+        src: `${demoBasePath}/calendaris-02-login.png`,
+        altEs: "Pantalla de inicio de sesión de Calendaris",
+        altEn: "Calendaris sign-in screen",
+      },
+    ],
   },
   {
     name: "StudyBrain",
-    team: "Nicolas Campos",
-    field: isEnglish
-      ? "Computer Science and Technological Innovation"
-      : "Ingeniería Civil Informática e Innovación Tecnológica",
+    team: "Nicolás Campos",
+    fieldEs: "Ingeniería Civil Informática e Innovación Tecnológica",
+    fieldEn: "Computer Science and Technological Innovation",
     url: "https://study-brain-cniico.vercel.app",
-    summary: isEnglish
-      ? "An academic platform to centralize notes, topics and evaluations, analyze mistakes and generate weekly study plans."
-      : "Plataforma académica para centralizar notas, temarios y evaluaciones, analizar errores y generar planes de estudio semanales.",
+    summaryEs:
+      "Plataforma académica para centralizar notas, temarios, evaluaciones y planes semanales.",
+    summaryEn:
+      "An academic platform for notes, topics, evaluations and weekly study plans.",
     theme: "violet",
+    demoImages: [
+      {
+        src: `${demoBasePath}/studybrain-01-portada.png`,
+        altEs: "Pantalla de acceso de StudyBrain",
+        altEn: "StudyBrain access screen",
+      },
+      {
+        src: `${demoBasePath}/studybrain-02-login-o-flujo.png`,
+        altEs: "Formulario de inicio de sesión de StudyBrain",
+        altEn: "StudyBrain sign-in form",
+      },
+    ],
   },
   {
     name: "BriefLab",
     team: "Amelia Troncoso",
-    field: isEnglish ? "Graphic Design" : "Diseño Gráfico",
+    fieldEs: "Diseño Gráfico",
+    fieldEn: "Graphic Design",
     url: "https://brief-lab.vercel.app",
-    summary: isEnglish
-      ? "A generator of fictional design briefs for practice, skill-building and portfolio development without needing real clients."
-      : "Generador de briefs ficticios de diseño para practicar, reforzar habilidades y construir portafolio sin depender de clientes reales.",
+    summaryEs:
+      "Generador de briefs ficticios para practicar diseño y construir portafolio sin clientes reales.",
+    summaryEn:
+      "A fictional brief generator for design practice and portfolio building without real clients.",
     theme: "rose",
+    demoImages: [
+      {
+        src: `${demoBasePath}/brieflab-01-portada.png`,
+        altEs: "Portada de BriefLab",
+        altEn: "BriefLab cover screen",
+      },
+      {
+        src: `${demoBasePath}/brieflab-02-flujo.png`,
+        altEs: "Selección de área en BriefLab",
+        altEn: "BriefLab area selection flow",
+      },
+    ],
   },
   {
     name: "FinEx",
-    team: "Sebastian Ramirez",
-    field: isEnglish ? "Industrial Engineering" : "Ingeniería Civil Industrial",
+    team: "Sebastián Ramírez",
+    fieldEs: "Ingeniería Civil Industrial",
+    fieldEn: "Industrial Engineering",
     url: "https://finex-public-frontend.vercel.app",
-    summary: isEnglish
-      ? "A personal finance app that imports Gmail notices, classifies expenses and visualizes budget behavior without constant manual entry."
-      : "App de finanzas personales que importa avisos de Gmail, clasifica gastos y visualiza presupuesto sin depender de carga manual constante.",
+    summaryEs:
+      "Finanzas personales local-first: importa avisos de Gmail, clasifica gastos y visualiza presupuesto.",
+    summaryEn:
+      "A local-first personal finance app that imports Gmail notices, classifies expenses and visualizes budgets.",
     theme: "green",
+    demoImages: [
+      {
+        src: `${demoBasePath}/finex-01-portada.png`,
+        altEs: "Portada de FinEx",
+        altEn: "FinEx cover screen",
+      },
+      {
+        src: `${demoBasePath}/finex-02-demo-dashboard.png`,
+        altEs: "Dashboard de modo demo de FinEx",
+        altEn: "FinEx demo mode dashboard",
+      },
+      {
+        src: `${demoBasePath}/finex-03-importar.png`,
+        altEs: "Vista de importación de correos en FinEx",
+        altEn: "FinEx email import view",
+      },
+      {
+        src: `${demoBasePath}/finex-03-movimiento.png`,
+        altEs: "Vista de movimientos en FinEx",
+        altEn: "FinEx movements view",
+      },
+      {
+        src: `${demoBasePath}/finex-03-obligaciones.png`,
+        altEs: "Vista de obligaciones en FinEx",
+        altEn: "FinEx obligations view",
+      },
+    ],
   },
   {
     name: "Fit Me",
     team: "Diego Rivera y Valentina Castillo",
-    field: isEnglish ? "Psychology and Dentistry" : "Psicología y Odontología",
+    fieldEs: "Psicología y Odontología",
+    fieldEn: "Psychology and Dentistry",
     url: "/images/fit-me-codex-automation.jpg",
     ctaLabel: "Demo",
-    summary: isEnglish
-      ? "A Codex automation that prepares seven weekly outfits from real clothing photos, style references and weather."
-      : "Automatización en Codex que prepara siete outfits semanales a partir de fotos de ropa real, referencias de estilo y clima.",
+    summaryEs:
+      "Automatización en Codex que arma siete outfits semanales con ropa real, estilo y clima.",
+    summaryEn:
+      "A Codex automation that prepares seven weekly outfits from real clothing, style references and weather.",
     theme: "amber",
+    demoImages: [
+      {
+        src: `${demoBasePath}/fit-me-02-propuesta-final.jpg`,
+        altEs: "Resultado visual de outfits semanales de Fit Me",
+        altEn: "Fit Me weekly outfit visual result",
+      },
+    ],
   },
   {
     name: "RubricaCheck",
-    team: "Jose Tomas Cifuentes",
-    field: isEnglish ? "Civil Engineering" : "Ingeniería Civil Obras Civiles",
+    team: "José Tomás Cifuentes",
+    fieldEs: "Ingeniería Civil Obras Civiles",
+    fieldEn: "Civil Engineering",
     url: "https://rubricacheck-mvp.vercel.app",
-    summary: isEnglish
-      ? "A web app that turns rubrics, assignment instructions and teacher comments into a clearer structure for preparing submissions."
-      : "App web que transforma rúbricas, instrucciones y comentarios del profesor en una estructura clara para preparar entregas.",
+    summaryEs:
+      "App web que convierte rúbricas e instrucciones en una estructura clara para preparar entregas.",
+    summaryEn:
+      "A web app that turns rubrics and assignment instructions into a clearer structure for submissions.",
     theme: "blue",
+    demoImages: [
+      {
+        src: `${demoBasePath}/rubricacheck-01-portada.png`,
+        altEs: "Portada de RubricaCheck",
+        altEn: "RubricaCheck cover screen",
+      },
+      {
+        src: `${demoBasePath}/rubricacheck-02-ejemplo-o-formulario.png`,
+        altEs: "Ejemplo cargado en RubricaCheck",
+        altEn: "RubricaCheck loaded example",
+      },
+    ],
   },
 ];
+
+const projects = projectBase.map((project) => ({
+  name: project.name,
+  team: project.team,
+  field: isEnglish ? project.fieldEn : project.fieldEs,
+  url: project.url,
+  ctaLabel: project.ctaLabel,
+  summary: isEnglish ? project.summaryEn : project.summaryEs,
+  theme: project.theme,
+  demoImages: project.demoImages.map((image) => ({
+    src: image.src,
+    alt: isEnglish ? image.altEn : image.altEs,
+    focus: image.focus,
+  })),
+}));
+
+const projectGroups = [projects.slice(0, 3), projects.slice(3, 6)];
+
+const stats = isEnglish
+  ? [
+      ["30", "students"],
+      ["22", "projects"],
+      ["14", "majors"],
+    ]
+  : [
+      ["30", "estudiantes"],
+      ["22", "proyectos"],
+      ["14", "carreras"],
+    ];
+
+const careers = isEnglish
+  ? [
+      ["Commercial Engineering", "9"],
+      ["Global Business Administration", "3"],
+      ["Architecture", "3"],
+      ["Dentistry", "2"],
+      ["Medical Technology", "2"],
+      ["Computer Science and AI", "2"],
+      ["Psychology", "2"],
+      ["Computer Science and Technological Innovation", "1"],
+      ["Law", "1"],
+      ["Civil Engineering", "1"],
+      ["Political Science and Public Policy", "1"],
+      ["Industrial Engineering", "1"],
+      ["Kinesiology", "1"],
+      ["Design", "1"],
+    ]
+  : [
+      ["Ingeniería Comercial", "9"],
+      ["Global Business Administration", "3"],
+      ["Arquitectura", "3"],
+      ["Odontología", "2"],
+      ["Tecnología Médica", "2"],
+      ["Ing. Civil Informática e IA", "2"],
+      ["Psicología", "2"],
+      ["Ing. Civil Informática e Innovación Tecnológica", "1"],
+      ["Derecho", "1"],
+      ["Ingeniería Civil Obras Civiles", "1"],
+      ["Ciencia Política y Políticas Públicas", "1"],
+      ["Ingeniería Civil Industrial", "1"],
+      ["Kinesiología", "1"],
+      ["Diseño", "1"],
+    ];
+
+const challenges = isEnglish
+  ? [
+      {
+        theme: "Academic planning",
+        problem: "Dates, courses, evaluations and study time were scattered.",
+        solution:
+          "Academic calendars, weekly planners, prioritization by urgency or difficulty and suggested study blocks.",
+      },
+      {
+        theme: "Instructions and material",
+        problem: "Rubrics, assignments, notes and summaries were long or unclear.",
+        solution:
+          "Apps that simplify instructions, extract requirements and generate study guides, flashcards or review plans.",
+      },
+      {
+        theme: "Wellbeing and habits",
+        problem: "Procrastination, overload, anxiety, lack of sleep and daily time loss.",
+        solution:
+          "Focus sessions, preventive alerts, realistic schedules, outfit automation and personal organization.",
+      },
+      {
+        theme: "Finance and consumption",
+        problem: "Students struggled to control expenses, plan purchases or decide with limited budget.",
+        solution:
+          "Financial dashboards, expense classifiers, optimized shopping lists and price-benefit recommendations.",
+      },
+      {
+        theme: "Specific career tools",
+        problem: "Health, design, advertising and academic evaluation had discipline-specific needs.",
+        solution:
+          "Generated design briefs, health study simulators, campaign analysis and rubric assistants.",
+      },
+    ]
+  : [
+      {
+        theme: "Planificación académica",
+        problem: "Fechas, ramos, evaluaciones y tiempos de estudio dispersos.",
+        solution:
+          "Calendarios, planificadores semanales, prioridades y bloques de estudio sugeridos.",
+      },
+      {
+        theme: "Instrucciones y material",
+        problem: "Rúbricas, tareas, apuntes y resúmenes largos o poco claros.",
+        solution:
+          "Apps que simplifican requisitos y generan guías, flashcards o planes de repaso.",
+      },
+      {
+        theme: "Bienestar y hábitos",
+        problem: "Procrastinación, sobrecarga, ansiedad, falta de sueño o pérdida de tiempo.",
+        solution:
+          "Foco, alertas, horarios realistas, automatización de outfits y organización personal.",
+      },
+      {
+        theme: "Finanzas y consumo",
+        problem: "Controlar gastos, planificar compras o decidir con presupuesto limitado.",
+        solution:
+          "Paneles financieros, clasificadores de gasto, listas optimizadas y recomendaciones.",
+      },
+      {
+        theme: "Herramientas por carrera",
+        problem: "Necesidades de salud, diseño, publicidad o evaluación académica.",
+        solution:
+          "Briefs generados, simuladores de estudio, análisis de campañas y asistentes de rúbricas.",
+      },
+    ];
+
+const agenticTools = isEnglish
+  ? [
+      {
+        title: "Codex as a prototyping partner",
+        text: "Students used Codex to move from a written idea to interface, data model, rules and a working demo.",
+      },
+      {
+        title: "Iteration as method",
+        text: "They asked for a first version, tested what broke, narrowed scope and returned with more precise instructions.",
+      },
+      {
+        title: "Code, tests and documentation",
+        text: "Codex helped write UI, logic, parsers, local storage, API flows, documentation and deployment steps.",
+      },
+      {
+        title: "Human judgment stayed in the loop",
+        text: "The student chose the problem, decided the limits and explained why the prototype was useful.",
+      },
+    ]
+  : [
+      {
+        title: "Codex como compañero de prototipado",
+        text: "Lo usaron para pasar de una idea escrita a interfaz, modelo de datos, reglas y demo funcionando.",
+      },
+      {
+        title: "Iterar como método",
+        text: "Pidieron una primera versión, probaron qué fallaba, acotaron alcance y volvieron con instrucciones más precisas.",
+      },
+      {
+        title: "Código, pruebas y documentación",
+        text: "Codex ayudó a escribir UI, lógica, parsers, almacenamiento local, flujos de API, documentación y pasos de despliegue.",
+      },
+      {
+        title: "El criterio siguió siendo humano",
+        text: "El estudiante eligió el problema, decidió los límites y explicó por qué el prototipo tenía sentido.",
+      },
+    ];
 
 const copy = isEnglish
   ? {
       title: "ExploraTec Showcase",
       description:
-        "Student projects built with Codex in the course Create your AI agent: automate your everyday work.",
+        "Student projects built with Codex in XTECC21 Create your AI Agent.",
       canonical: "https://codexparatodos.com/showcase/en/",
       languageLabel: "Español",
       languageHref: "/showcase/",
-      introBefore:
-        'In the final exam for "Create your AI Agent", part of the ',
-      introLink: "ExploraTec program at Universidad del Desarrollo,",
-      introAfter:
-        " 30 students chose everyday problems close to their own work and study routines. Codex gave them a way to move from an idea to a demo with an interface, rules and something concrete to test.",
-      activity: "About the students",
-      activityText:
-        "There were 22 projects, built by 30 students from 14 majors. Most were early in their university path and many did not come from programming. That is the point: the work shows what happens when students use Codex to express judgment from their own field as a working prototype.",
-      stats: [
-        ["22", "projects"],
-        ["30", "students"],
-        ["14", "majors"],
-        ["6", "selected"],
-      ],
-      careersTitle: "Majors represented",
-      careersText:
-        "Commercial Engineering, Global Business Administration, Architecture, Dentistry, Medical Technology, Computer Science and Artificial Intelligence, Psychology, Computer Science and Technological Innovation, Law, Civil Engineering, Political Science and Public Policy, Industrial Engineering, Kinesiology and Design.",
-      findingsTitle: "What they tried to solve",
-      findingsIntro:
-        "The projects came from problems students already had: planning courses and exams, reading long rubrics, studying with too much material, controlling expenses, deciding what to buy, preparing design briefs, reviewing campaigns or choosing outfits for the week.",
-      findingsText:
-        "The common move was small and practical. They took a task done by hand and used Codex to make it visible, repeatable and testable. Sometimes that became a web app. Sometimes, as with Fit Me, it became an automation that produces a useful output every Sunday.",
-      codexTitle: "How Codex helped",
-      codexText:
-        "The stronger signal is pedagogical. First-year students, many without technical training and several with no plan to become programmers, built things that could be opened, tested and explained. Codex gave them a way to turn judgment from their own discipline into interfaces, rules and small automations. That changes who gets to prototype.",
-      galleryTitle: "Selected projects",
+      course: "XTECC21 Create your AI Agent",
+      date: "June 26, 2026",
+      intro:
+        "In the final exam for the ExploraTec program at Universidad del Desarrollo, students turned everyday problems into demos with interface, rules and evidence.",
+      courseTitle: "Course data",
+      courseText:
+        "The course brought together students from 14 majors. Most were early in their university path, and many did not come from programming. The result is a useful signal: agentic tools let students express judgment from their own field as a working prototype.",
+      challengesTitle: "Challenges students found",
+      challengesText:
+        "The projects show the same practical pattern: students had to turn vague friction into a flow that could be tested.",
+      agenticTitle: "How they used agentic tools",
+      agenticText:
+        "Codex was useful when it became part of a loop: specify, build, test, correct and explain.",
+      projectsFirstTitle: "Projects 1 to 3",
+      projectsSecondTitle: "Projects 4 to 6",
       visit: "Open project",
+      demo: "Demo",
+      closeDemo: "Close demo",
+      nextDemo: "Next screenshot",
+      previousDemo: "Previous screenshot",
+      demoCounter: "Screenshot",
       back: "Back to home",
     }
   : {
       title: "Showcase ExploraTec",
       description:
-        "Proyectos estudiantiles creados con Codex en el curso Crea tu Agente de IA: automatiza tu día a día.",
+        "Proyectos estudiantiles creados con Codex en XTECC21 Crea tu Agente de IA.",
       canonical: "https://codexparatodos.com/showcase/",
       languageLabel: "English",
       languageHref: "/showcase/en/",
-      introBefore:
-        'En el examen final del curso "Crea tu Agente de IA" del programa ',
-      introLink: "ExploraTec de la Universidad del Desarrollo,",
-      introAfter:
-        " 30 estudiantes eligieron problemas cercanos a los desafíos de su día a día. Codex les dio una forma de pasar de una idea a una demo con interfaz, reglas y una prueba concreta.",
-      activity: "Sobre los estudiantes",
-      activityText:
-        "Hubo 22 proyectos, creados por 30 estudiantes de 14 carreras. La mayoría estaba al comienzo de su camino universitario y muchos no venían desde la programación. Ese es el punto: el trabajo muestra qué pasa cuando estudiantes usan Codex para expresar criterio de su propia carrera en un prototipo funcional.",
-      stats: [
-        ["22", "proyectos"],
-        ["30", "estudiantes"],
-        ["14", "carreras"],
-        ["6", "seleccionados"],
-      ],
-      careersTitle: "Carreras representadas",
-      careersText:
-        "Ingeniería Comercial, Global Business Administration, Arquitectura, Odontología, Tecnología Médica, Ingeniería Civil en Informática e Inteligencia Artificial, Psicología, Ingeniería Civil en Informática e Innovación Tecnológica, Derecho, Ingeniería Civil Obras Civiles, Ciencia Política y Políticas Públicas, Ingeniería Civil Industrial, Kinesiología y Diseño.",
-      findingsTitle: "Qué intentaron resolver",
-      findingsIntro:
-        "Los proyectos nacieron de problemas que los estudiantes ya conocían: ordenar ramos y evaluaciones, entender rúbricas largas, estudiar con demasiado material, clasificar gastos, decidir compras, preparar briefs de diseño, analizar campañas o planificar outfits para la semana.",
-      findingsText:
-        "El movimiento común fue pequeño y práctico. Tomaron una tarea hecha a mano y usaron Codex para volverla visible, repetible y fácil de probar. A veces eso terminó en una app web. Otras veces, como en Fit Me, terminó en una automatización que produce un resultado útil cada domingo.",
-      codexTitle: "Cómo les fue con Codex",
-      codexText:
-        "La señal fuerte es pedagógica. Estudiantes de primer año, muchos sin formación técnica y varios sin intención de programar profesionalmente, construyeron cosas que se podían abrir, probar y explicar. Codex les dio una forma de traducir criterio de su propia carrera en interfaces, reglas y automatizaciones pequeñas. Eso cambia quién puede prototipar.",
-      galleryTitle: "Proyectos seleccionados",
+      course: "XTECC21 Crea tu Agente de IA",
+      date: "26 de junio de 2026",
+      intro:
+        "En el examen final de ExploraTec UDD, estudiantes de distintas carreras convirtieron problemas cotidianos en demos con interfaz, reglas y evidencia.",
+      courseTitle: "Datos del curso",
+      courseText:
+        "La muestra reúne estudiantes de 14 carreras. Muchos no venían desde la programación. Justamente por eso el resultado importa: herramientas agénticas les permitieron expresar criterio de su propia disciplina en prototipos funcionales.",
+      challengesTitle: "Temáticas, problemas y soluciones",
+      challengesText:
+        "Los proyectos partieron desde problemas cercanos al día a día y los convirtieron en flujos que se podían probar.",
+      agenticTitle: "Cómo usaron herramientas agénticas",
+      agenticText:
+        "Codex fue más útil cuando entró en un ciclo: especificar, construir, probar, corregir y explicar.",
+      projectsFirstTitle: "Proyectos 1 a 3",
+      projectsSecondTitle: "Proyectos 4 a 6",
       visit: "Abrir proyecto",
+      demo: "Demo",
+      closeDemo: "Cerrar demo",
+      nextDemo: "Siguiente captura",
+      previousDemo: "Captura anterior",
+      demoCounter: "Captura",
       back: "Volver al inicio",
     };
+
+const deckSlides = isEnglish ? [] : [
+  "Portada",
+  "Datos del curso",
+  "Desafíos",
+  "Herramientas agénticas",
+  "Proyectos 1 a 3",
+  "Proyectos 4 a 6",
+];
+
+const demoProjects = projects.map((project) => ({
+  name: project.name,
+  images: project.demoImages,
+}));
 ---
 
 <SiteLayout title={copy.title} description={copy.description} canonical={copy.canonical} lang={lang}>
-  <main class="showcase-page">
-    <section class="showcase-hero" aria-labelledby="showcase-title">
-      <div class="container showcase-hero-grid">
-        <div class="showcase-hero-copy">
-          <a class="back-link" href="/">{copy.back}</a>
-          <h1 id="showcase-title">{copy.title}</h1>
-          <p>{copy.introBefore}<a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">{copy.introLink}</a>{copy.introAfter}</p>
-          <a class="language-switch" href={copy.languageHref} hreflang={isEnglish ? "es" : "en"}>
-            {copy.languageLabel}
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="showcase-overview" aria-labelledby="activity-title">
-      <div class="container showcase-overview-grid">
-        <div>
-          <h2 id="activity-title">{copy.activity}</h2>
-          <p>{copy.activityText}</p>
-        </div>
-        <div class="showcase-stats" aria-label={isEnglish ? "Showcase stats" : "Datos del showcase"}>
-          {copy.stats.map(([value, label]) => (
-            <div class="showcase-stat">
-              <strong>{value}</strong>
-              <span>{label}</span>
+  {
+    isEnglish ? (
+      <main class="showcase-page">
+        <section class="showcase-hero" aria-labelledby="showcase-title">
+          <div class="container showcase-hero-grid">
+            <div class="showcase-hero-copy">
+              <a class="back-link" href="/">{copy.back}</a>
+              <h1 id="showcase-title">{copy.title}</h1>
+              <p>
+                <a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">ExploraTec at Universidad del Desarrollo</a>{" "}
+                hosted the final exam for {copy.course}. {copy.intro}
+              </p>
+              <a class="language-switch" href={copy.languageHref} hreflang="es">
+                {copy.languageLabel}
+              </a>
             </div>
-          ))}
-          <div class="career-list">
-            <h3>{copy.careersTitle}</h3>
-            <p>{copy.careersText}</p>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="showcase-insights" aria-labelledby="findings-title">
-      <div class="container showcase-insights-grid">
-        <div>
-          <h2 id="findings-title">{copy.findingsTitle}</h2>
-        </div>
-        <div class="insight-copy">
-          <p>{copy.findingsIntro}</p>
-          <p>{copy.findingsText}</p>
-          <h3>{copy.codexTitle}</h3>
-          <p>{copy.codexText}</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="showcase-projects-section" aria-labelledby="projects-title">
-      <div class="container">
-        <h2 id="projects-title">{copy.galleryTitle}</h2>
-        <div class="showcase-projects">
-          {projects.map((project) => (
-            <article class="project-card" data-theme={project.theme}>
-              <div class="project-card-art" aria-hidden="true"></div>
-              <div class="project-card-body">
-                <h3>{project.name}</h3>
-                <p class="project-team">{project.team}</p>
-                <p class="project-field">{project.field}</p>
-                <p>{project.summary}</p>
-                {
-                  project.url ? (
-                    <a href={project.url} target="_blank" rel="noreferrer">{project.ctaLabel ?? copy.visit}</a>
-                  ) : null
-                }
+        <section class="showcase-overview" aria-labelledby="activity-title">
+          <div class="container showcase-overview-grid">
+            <div>
+              <h2 id="activity-title">{copy.courseTitle}</h2>
+              <p>{copy.courseText}</p>
+            </div>
+            <div class="showcase-stats" aria-label="Course data">
+              {stats.map(([value, label]) => (
+                <div class="showcase-stat">
+                  <strong>{value}</strong>
+                  <span>{label}</span>
+                </div>
+              ))}
+              <div class="career-list">
+                <h3>Majors represented</h3>
+                <p>{careers.map(([career]) => career).join(", ")}.</p>
               </div>
-            </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase-insights" aria-labelledby="challenges-title">
+          <div class="container showcase-insights-grid">
+            <div>
+              <h2 id="challenges-title">{copy.challengesTitle}</h2>
+              <p>{copy.challengesText}</p>
+            </div>
+            <div class="insight-copy">
+              {challenges.map((item) => (
+                <article>
+                  <h3>{item.theme}</h3>
+                  <p><strong>Problem:</strong> {item.problem}</p>
+                  <p><strong>Solution:</strong> {item.solution}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase-insights showcase-agentic" aria-labelledby="agentic-title">
+          <div class="container showcase-insights-grid">
+            <div>
+              <h2 id="agentic-title">{copy.agenticTitle}</h2>
+              <p>{copy.agenticText}</p>
+            </div>
+            <div class="insight-copy">
+              {agenticTools.map((item) => (
+                <article>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase-projects-section" aria-labelledby="projects-title">
+          <div class="container">
+            <h2 id="projects-title">Student projects</h2>
+            <div class="showcase-projects">
+              {projects.map((project) => (
+                <article class="project-card" data-theme={project.theme}>
+                  <div class="project-card-art" aria-hidden="true"></div>
+                  <div class="project-card-body">
+                    <h3>{project.name}</h3>
+                    <p class="project-team">{project.team}</p>
+                    <p class="project-field">{project.field}</p>
+                    <p>{project.summary}</p>
+                    <button
+                      class="project-demo-button"
+                      type="button"
+                      data-demo-project={project.name}
+                    >
+                      {copy.demo}
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+    ) : (
+      <main class="showcase-deck" aria-label="Showcase ExploraTec slides">
+        <nav class="deck-nav" aria-label="Navegación de slides">
+          <a href="/">{copy.back}</a>
+          <a href={copy.languageHref} hreflang="en">{copy.languageLabel}</a>
+        </nav>
+
+        <ol class="deck-progress" aria-label="Slides">
+          {deckSlides.map((label, index) => (
+            <li>
+              <a href={`#slide-${index + 1}`} aria-label={`Ir a ${label}`}>
+                <span>{index + 1}</span>
+              </a>
+            </li>
           ))}
+        </ol>
+
+        <section id="slide-1" class="deck-slide deck-slide-cover" aria-labelledby="slide-title">
+          <div class="deck-bg" aria-hidden="true"></div>
+          <div class="deck-slide-inner deck-cover-grid">
+            <div>
+              <img class="deck-mark" src="/logos/exploratec-udd.png" alt="ExploraTec UDD" width="1128" height="172" />
+              <h1 id="slide-title">Showcase ExploraTec</h1>
+            </div>
+            <div class="deck-cover-meta">
+              <p>{copy.date}</p>
+              <p>{copy.course}</p>
+            </div>
+          </div>
+          <p class="deck-slide-count">1 / 6</p>
+        </section>
+
+        <section id="slide-2" class="deck-slide" aria-labelledby="course-data-title">
+          <div class="deck-slide-inner deck-data-grid">
+            <div>
+              <h2 id="course-data-title">{copy.courseTitle}</h2>
+              <p class="deck-lede">{copy.courseText}</p>
+            </div>
+            <div class="deck-stat-grid">
+              {stats.map(([value, label]) => (
+                <div class="deck-stat">
+                  <strong>{value}</strong>
+                  <span>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div class="career-rack" aria-label="Carreras representadas">
+              {careers.map(([career, count]) => (
+                <div>
+                  <span>{career}</span>
+                  <strong>{count}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p class="deck-slide-count">2 / 6</p>
+        </section>
+
+        <section id="slide-3" class="deck-slide deck-slide-soft" aria-labelledby="challenges-slide-title">
+          <div class="deck-slide-inner deck-two-column">
+            <div>
+              <h2 id="challenges-slide-title">{copy.challengesTitle}</h2>
+              <p class="deck-lede">{copy.challengesText}</p>
+            </div>
+            <div class="challenge-matrix">
+              {challenges.map((item) => (
+                <article>
+                  <h3>{item.theme}</h3>
+                  <p>{item.problem}</p>
+                  <p>{item.solution}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <p class="deck-slide-count">3 / 6</p>
+        </section>
+
+        <section id="slide-4" class="deck-slide" aria-labelledby="agentic-slide-title">
+          <div class="deck-slide-inner deck-two-column">
+            <div>
+              <h2 id="agentic-slide-title">{copy.agenticTitle}</h2>
+              <p class="deck-lede">{copy.agenticText}</p>
+            </div>
+            <div class="deck-list deck-list-numbered">
+              {agenticTools.map((item, index) => (
+                <article>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <p class="deck-slide-count">4 / 6</p>
+        </section>
+
+        <section id="slide-5" class="deck-slide deck-slide-projects" aria-label="Proyectos 1 a 3">
+          <div class="deck-slide-inner">
+            <div class="deck-project-grid">
+              {projectGroups[0].map((project) => (
+                <article class="project-card" data-theme={project.theme}>
+                  <div class="project-card-art" aria-hidden="true"></div>
+                  <div class="project-card-body">
+                    <h3>{project.name}</h3>
+                    <p class="project-team">{project.team}</p>
+                    <p class="project-field">{project.field}</p>
+                    <p>{project.summary}</p>
+                    <button
+                      class="project-demo-button"
+                      type="button"
+                      data-demo-project={project.name}
+                    >
+                      {copy.demo}
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+          <p class="deck-slide-count">5 / 6</p>
+        </section>
+
+        <section id="slide-6" class="deck-slide deck-slide-projects deck-slide-soft" aria-label="Proyectos 4 a 6">
+          <div class="deck-slide-inner">
+            <div class="deck-project-grid">
+              {projectGroups[1].map((project) => (
+                <article class="project-card" data-theme={project.theme}>
+                  <div class="project-card-art" aria-hidden="true"></div>
+                  <div class="project-card-body">
+                    <h3>{project.name}</h3>
+                    <p class="project-team">{project.team}</p>
+                    <p class="project-field">{project.field}</p>
+                    <p>{project.summary}</p>
+                    <button
+                      class="project-demo-button"
+                      type="button"
+                      data-demo-project={project.name}
+                    >
+                      {copy.demo}
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+          <p class="deck-slide-count">6 / 6</p>
+        </section>
+      </main>
+    )
+  }
+
+  <div class="demo-modal" data-demo-modal data-demo-counter-label={copy.demoCounter} hidden>
+    <div class="demo-modal-backdrop" data-demo-close></div>
+    <section
+      class="demo-modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demo-modal-title"
+      tabindex="-1"
+    >
+      <div class="demo-modal-header">
+        <div>
+          <p data-demo-count>{copy.demoCounter} 1 / 1</p>
+          <h2 id="demo-modal-title" data-demo-title></h2>
         </div>
+        <button class="demo-modal-close" type="button" data-demo-close aria-label={copy.closeDemo}>
+          ×
+        </button>
       </div>
+      <div class="demo-modal-stage">
+        <button class="demo-modal-nav demo-modal-nav-prev" type="button" data-demo-prev aria-label={copy.previousDemo}>
+          ‹
+        </button>
+        <figure class="demo-modal-figure">
+          <img data-demo-image src="" alt="" />
+        </figure>
+        <button class="demo-modal-nav demo-modal-nav-next" type="button" data-demo-next aria-label={copy.nextDemo}>
+          ›
+        </button>
+      </div>
+      <div class="demo-modal-thumbs" data-demo-thumbs aria-label="Demo screenshots"></div>
     </section>
-  </main>
+  </div>
+
+  <script type="application/json" id="demo-projects-data" set:html={JSON.stringify(demoProjects)} />
+  <script is:inline>
+    (() => {
+      const dataEl = document.getElementById("demo-projects-data");
+      const modal = document.querySelector("[data-demo-modal]");
+      if (!dataEl || !modal) return;
+
+      const projects = JSON.parse(dataEl.textContent || "[]");
+      const title = modal.querySelector("[data-demo-title]");
+      const count = modal.querySelector("[data-demo-count]");
+      const image = modal.querySelector("[data-demo-image]");
+      const thumbs = modal.querySelector("[data-demo-thumbs]");
+      const prev = modal.querySelector("[data-demo-prev]");
+      const next = modal.querySelector("[data-demo-next]");
+      const panel = modal.querySelector(".demo-modal-panel");
+      let activeProject = null;
+      let activeIndex = 0;
+      let lastFocus = null;
+
+      const render = () => {
+        if (!activeProject) return;
+        const images = activeProject.images;
+        const current = images[activeIndex];
+        title.textContent = activeProject.name;
+        count.textContent = `${modal.dataset.demoCounterLabel} ${activeIndex + 1} / ${images.length}`;
+        image.src = current.src;
+        image.alt = current.alt;
+        image.dataset.focus = current.focus || "";
+        prev.disabled = images.length < 2;
+        next.disabled = images.length < 2;
+        thumbs.replaceChildren(
+          ...images.map((item, index) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "demo-modal-thumb";
+            button.setAttribute("aria-label", `${activeProject.name} ${index + 1}`);
+            button.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+            button.addEventListener("click", () => {
+              activeIndex = index;
+              render();
+            });
+
+            const thumb = document.createElement("img");
+            thumb.src = item.src;
+            thumb.alt = "";
+            thumb.dataset.focus = item.focus || "";
+            button.append(thumb);
+            return button;
+          }),
+        );
+      };
+
+      const open = (name, trigger) => {
+        activeProject = projects.find((project) => project.name === name);
+        if (!activeProject) return;
+        activeIndex = 0;
+        lastFocus = trigger;
+        render();
+        modal.hidden = false;
+        document.documentElement.classList.add("demo-modal-open");
+        requestAnimationFrame(() => panel?.focus());
+      };
+
+      const close = () => {
+        modal.hidden = true;
+        document.documentElement.classList.remove("demo-modal-open");
+        lastFocus?.focus();
+      };
+
+      const move = (direction) => {
+        if (!activeProject || activeProject.images.length < 2) return;
+        activeIndex =
+          (activeIndex + direction + activeProject.images.length) % activeProject.images.length;
+        render();
+      };
+
+      document.querySelectorAll("[data-demo-project]").forEach((button) => {
+        button.addEventListener("click", () => open(button.dataset.demoProject, button));
+      });
+
+      modal.querySelectorAll("[data-demo-close]").forEach((button) => {
+        button.addEventListener("click", close);
+      });
+      prev?.addEventListener("click", () => move(-1));
+      next?.addEventListener("click", () => move(1));
+      document.addEventListener("keydown", (event) => {
+        if (modal.hidden) return;
+        if (event.key === "Escape") close();
+        if (event.key === "ArrowLeft") move(-1);
+        if (event.key === "ArrowRight") move(1);
+      });
+    })();
+  </script>
 </SiteLayout>
