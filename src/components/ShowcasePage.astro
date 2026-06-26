@@ -45,7 +45,7 @@ const projectBase = [
     summaryEs:
       "Plataforma académica para centralizar notas, temarios, evaluaciones y planes semanales.",
     summaryEn:
-      "An academic platform for notes, topics, evaluations and weekly study plans.",
+      "An academic platform for grades, topics, evaluations and weekly study plans.",
     theme: "violet",
     demoImages: [
       {
@@ -301,20 +301,20 @@ const challenges = isEnglish
 const agenticTools = isEnglish
   ? [
       {
-        title: "Codex as a prototyping partner",
-        text: "Students used Codex to move from a written idea to interface, data model, rules and a working demo.",
+        title: "A faster path from idea to demo",
+        text: "Students described a problem in plain language, then used Codex to turn it into screens, data, rules and a working first version.",
       },
       {
-        title: "Iteration as method",
-        text: "They asked for a first version, tested what broke, narrowed scope and returned with more precise instructions.",
+        title: "Iteration became part of the work",
+        text: "They tested what broke, narrowed the scope and came back with better instructions. The prototype improved because the student kept making choices.",
       },
       {
-        title: "Code, tests and documentation",
-        text: "Codex helped write UI, logic, parsers, local storage, API flows, documentation and deployment steps.",
+        title: "Software could be personal",
+        text: "Several projects were not business ideas. They were small tools built for one person's routine, calendar, budget, closet or class. Codex made that kind of custom software realistic.",
       },
       {
-        title: "Human judgment stayed in the loop",
-        text: "The student chose the problem, decided the limits and explained why the prototype was useful.",
+        title: "The student still owned the judgment",
+        text: "Codex could produce code, but the student chose the problem, set the limits and decided whether the result made sense.",
       },
     ]
   : [
@@ -347,16 +347,16 @@ const copy = isEnglish
       course: "XTECC21 Create your AI Agent",
       date: "June 26, 2026",
       intro:
-        "In the final exam for the ExploraTec program at Universidad del Desarrollo, students turned everyday problems into demos with interface, rules and evidence.",
+        "Students built small, working demos from problems they knew firsthand: study planning, rubrics, budgets, habits and workflows from their own fields.",
       courseTitle: "Course data",
       courseText:
-        "The course brought together students from 14 majors. Most were early in their university path, and many did not come from programming. The result is a useful signal: agentic tools let students express judgment from their own field as a working prototype.",
+        "The course brought together 30 students, 22 projects and 14 majors. Most students were early in their university path, and many did not come from coding. That is what made the work interesting: they used Codex to turn judgment from their own field into a prototype they could test.",
       challengesTitle: "Challenges students found",
       challengesText:
         "The projects show the same practical pattern: students had to turn vague friction into a flow that could be tested.",
-      agenticTitle: "How they used agentic tools",
+      agenticTitle: "What Codex made possible",
       agenticText:
-        "Codex was useful when it became part of a loop: specify, build, test, correct and explain.",
+        "Codex worked best as a practical loop: describe the problem, build a version, test it, then make the next instruction sharper.",
       projectsFirstTitle: "Projects 1 to 3",
       projectsSecondTitle: "Projects 4 to 6",
       visit: "Open project",
@@ -423,8 +423,9 @@ const demoProjects = projects.map((project) => ({
               <a class="back-link" href="/">{copy.back}</a>
               <h1 id="showcase-title">{copy.title}</h1>
               <p>
-                <a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">ExploraTec at Universidad del Desarrollo</a>{" "}
-                hosted the final exam for {copy.course}. {copy.intro}
+                In the final exam for {copy.course}, students in{" "}
+                <a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">ExploraTec UDD</a>{" "}
+                built small, working demos from problems they knew firsthand: study planning, rubrics, budgets, habits and workflows from their own fields.
               </p>
               <a class="language-switch" href={copy.languageHref} hreflang="es">
                 {copy.languageLabel}
@@ -434,18 +435,13 @@ const demoProjects = projects.map((project) => ({
         </section>
 
         <section class="showcase-overview" aria-labelledby="activity-title">
-          <div class="container showcase-overview-grid">
+          <div class="container showcase-overview-grid showcase-overview-prose">
             <div>
               <h2 id="activity-title">{copy.courseTitle}</h2>
-              <p>{copy.courseText}</p>
-            </div>
-            <div class="showcase-stats" aria-label="Course data">
-              {stats.map(([value, label]) => (
-                <div class="showcase-stat">
-                  <strong>{value}</strong>
-                  <span>{label}</span>
-                </div>
-              ))}
+              <p>
+                The course brought together <strong>30 students</strong>, <strong>22 projects</strong> and <strong>14 majors</strong>.
+                Most students were early in their university path, and many did not come from coding. That is what made the work interesting: they used Codex to turn judgment from their own field into a prototype they could test.
+              </p>
               <div class="career-list">
                 <h3>Majors represented</h3>
                 <p>{careers.map(([career]) => career).join(", ")}.</p>
@@ -519,6 +515,10 @@ const demoProjects = projects.map((project) => ({
                 </article>
               ))}
             </div>
+            <p class="showcase-contact-note">
+              For more information, contact the professor:{" "}
+              <a href="https://x.com/aastroza" target="_blank" rel="noreferrer">@aastroza</a>
+            </p>
           </div>
         </section>
       </main>
@@ -545,6 +545,9 @@ const demoProjects = projects.map((project) => ({
             <div>
               <img class="deck-mark" src="/logos/exploratec-udd.png" alt="ExploraTec UDD" width="1128" height="172" />
               <h1 id="slide-title">Showcase ExploraTec</h1>
+              <p class="deck-contact">
+                Si quieres tener más información escribe a <a href="mailto:alonsoastroza@udd.cl">alonsoastroza@udd.cl</a>
+              </p>
             </div>
             <div class="deck-cover-meta">
               <p>{copy.date}</p>

@@ -201,6 +201,7 @@ p {
   flex-wrap: wrap;
   gap: 14px;
   align-items: center;
+  justify-content: center;
   margin-top: 38px;
 }
 
@@ -564,6 +565,22 @@ body:has(.showcase-deck) .site-footer {
   margin-bottom: 28px;
 }
 
+.deck-contact {
+  max-width: 520px;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.3vw, 22px);
+  font-weight: 620;
+  line-height: 1.32;
+}
+
+.deck-contact a {
+  color: var(--text);
+  font-weight: 760;
+  text-decoration-color: rgba(9, 11, 16, 0.28);
+  text-underline-offset: 4px;
+}
+
 .showcase-deck h1,
 .showcase-deck h2 {
   max-width: none;
@@ -919,6 +936,10 @@ body:has(.showcase-deck) .site-footer {
   align-items: start;
 }
 
+.showcase-overview-prose {
+  grid-template-columns: minmax(0, 920px);
+}
+
 .showcase-overview h2,
 .showcase-insights h2,
 .showcase-projects-section h2 {
@@ -934,6 +955,20 @@ body:has(.showcase-deck) .site-footer {
   color: var(--muted);
   font-size: 19px;
   line-height: 1.5;
+}
+
+.showcase-overview-prose p {
+  max-width: 900px;
+}
+
+.showcase-overview-prose strong {
+  color: var(--text);
+  font-weight: 820;
+}
+
+.showcase-overview-prose .career-list {
+  max-width: 900px;
+  padding-top: 24px;
 }
 
 .showcase-stats {
@@ -1039,6 +1074,21 @@ body:has(.showcase-deck) .site-footer {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 30px;
+}
+
+.showcase-contact-note {
+  max-width: 720px;
+  margin-top: 34px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.showcase-contact-note a {
+  color: var(--text);
+  font-weight: 780;
+  text-decoration-color: rgba(9, 11, 16, 0.26);
+  text-underline-offset: 4px;
 }
 
 .project-card {
@@ -2337,6 +2387,10 @@ body:has(.showcase-deck) .site-footer {
   }
 
   .events-list {
+    grid-template-columns: 1fr;
+  }
+
+  .past-events-section .events-list {
     grid-template-columns: 1fr;
   }
 
