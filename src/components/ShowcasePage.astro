@@ -501,13 +501,20 @@ const demoProjects = projects.map((project) => ({
                     <p class="project-team">{project.team}</p>
                     <p class="project-field">{project.field}</p>
                     <p>{project.summary}</p>
-                    <button
-                      class="project-demo-button"
-                      type="button"
-                      data-demo-project={project.name}
-                    >
-                      {copy.demo}
-                    </button>
+                    <div class="project-card-actions">
+                      {project.name !== "Fit Me" ? (
+                        <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
+                          {copy.visit}
+                        </a>
+                      ) : null}
+                      <button
+                        class="project-demo-button"
+                        type="button"
+                        data-demo-project={project.name}
+                      >
+                        {copy.demo}
+                      </button>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -622,13 +629,20 @@ const demoProjects = projects.map((project) => ({
                     <p class="project-team">{project.team}</p>
                     <p class="project-field">{project.field}</p>
                     <p>{project.summary}</p>
-                    <button
-                      class="project-demo-button"
-                      type="button"
-                      data-demo-project={project.name}
-                    >
-                      {copy.demo}
-                    </button>
+                    <div class="project-card-actions">
+                      {project.name !== "Fit Me" ? (
+                        <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
+                          {copy.visit}
+                        </a>
+                      ) : null}
+                      <button
+                        class="project-demo-button"
+                        type="button"
+                        data-demo-project={project.name}
+                      >
+                        {copy.demo}
+                      </button>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -648,13 +662,20 @@ const demoProjects = projects.map((project) => ({
                     <p class="project-team">{project.team}</p>
                     <p class="project-field">{project.field}</p>
                     <p>{project.summary}</p>
-                    <button
-                      class="project-demo-button"
-                      type="button"
-                      data-demo-project={project.name}
-                    >
-                      {copy.demo}
-                    </button>
+                    <div class="project-card-actions">
+                      {project.name !== "Fit Me" ? (
+                        <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
+                          {copy.visit}
+                        </a>
+                      ) : null}
+                      <button
+                        class="project-demo-button"
+                        type="button"
+                        data-demo-project={project.name}
+                      >
+                        {copy.demo}
+                      </button>
+                    </div>
                   </div>
                 </article>
               ))}

@@ -828,9 +828,13 @@ body:has(.showcase-deck) .site-footer {
   line-height: 1.28;
 }
 
+.showcase-deck .project-card-actions {
+  margin-top: 8px;
+}
+
+.showcase-deck .project-open-link,
 .showcase-deck .project-demo-button {
   min-height: 46px;
-  margin-top: 8px;
   padding: 13px 16px;
   font-size: 17px;
 }
@@ -1149,6 +1153,14 @@ body:has(.showcase-deck) .site-footer {
   line-height: 1.45;
 }
 
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.project-open-link,
 .project-demo-button,
 .project-card span {
   display: inline-flex;
@@ -1156,7 +1168,6 @@ body:has(.showcase-deck) .site-footer {
   min-height: 40px;
   align-items: center;
   justify-content: center;
-  margin-top: 6px;
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 15px;
@@ -1165,9 +1176,17 @@ body:has(.showcase-deck) .site-footer {
   text-decoration: none;
 }
 
+.project-open-link {
+  background: var(--text);
+  color: white;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
 .project-demo-button {
   border: 0;
-  background: var(--text);
+  background: var(--brand-blue);
   color: white;
   cursor: pointer;
   font-family: inherit;
@@ -1176,6 +1195,7 @@ body:has(.showcase-deck) .site-footer {
     transform 160ms ease;
 }
 
+.project-open-link:hover,
 .project-demo-button:hover {
   background: var(--brand-blue-dark);
   transform: translateY(-1px);
