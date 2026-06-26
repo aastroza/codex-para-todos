@@ -184,20 +184,6 @@ const projects = projectBase.map((project) => ({
   })),
 }));
 
-const projectGroups = [projects.slice(0, 3), projects.slice(3, 6)];
-
-const stats = isEnglish
-  ? [
-      ["30", "students"],
-      ["22", "projects"],
-      ["14", "majors"],
-    ]
-  : [
-      ["30", "estudiantes"],
-      ["22", "proyectos"],
-      ["14", "carreras"],
-    ];
-
 const careers = isEnglish
   ? [
       ["Commercial Engineering", "9"],
@@ -347,7 +333,7 @@ const copy = isEnglish
       course: "XTECC21 Create your AI Agent",
       date: "June 26, 2026",
       intro:
-        "Students built small, working demos from problems they knew firsthand: study planning, rubrics, budgets, habits and workflows from their own fields.",
+        "built small, working demos from problems they knew firsthand: study planning, rubrics, budgets, habits and workflows from their own fields.",
       courseTitle: "Course data",
       courseText:
         "The course brought together 30 students, 22 projects and 14 majors. Most students were early in their university path, and many did not come from coding. That is what made the work interesting: they used Codex to turn judgment from their own field into a prototype they could test.",
@@ -359,6 +345,11 @@ const copy = isEnglish
         "Codex worked best as a practical loop: describe the problem, build a version, test it, then make the next instruction sharper.",
       projectsFirstTitle: "Projects 1 to 3",
       projectsSecondTitle: "Projects 4 to 6",
+      majorsTitle: "Majors represented",
+      projectsTitle: "Student projects",
+      problemLabel: "Problem",
+      solutionLabel: "Solution",
+      contactNote: "For more information, contact the professor:",
       visit: "Open project",
       demo: "Demo",
       closeDemo: "Close demo",
@@ -377,7 +368,7 @@ const copy = isEnglish
       course: "XTECC21 Crea tu Agente de IA",
       date: "26 de junio de 2026",
       intro:
-        "En el examen final de ExploraTec UDD, estudiantes de distintas carreras convirtieron problemas cotidianos en demos con interfaz, reglas y evidencia.",
+        "convirtieron problemas cotidianos en demos con interfaz, reglas y evidencia.",
       courseTitle: "Datos del curso",
       courseText:
         "La muestra reúne estudiantes de 14 carreras. Muchos no venían desde la programación. Justamente por eso el resultado importa: herramientas agénticas les permitieron expresar criterio de su propia disciplina en prototipos funcionales.",
@@ -389,6 +380,11 @@ const copy = isEnglish
         "Codex fue más útil cuando entró en un ciclo: especificar, construir, probar, corregir y explicar.",
       projectsFirstTitle: "Proyectos 1 a 3",
       projectsSecondTitle: "Proyectos 4 a 6",
+      majorsTitle: "Carreras representadas",
+      projectsTitle: "Proyectos estudiantiles",
+      problemLabel: "Problema",
+      solutionLabel: "Solución",
+      contactNote: "Para más información, contacta al profesor:",
       visit: "Abrir proyecto",
       demo: "Demo",
       closeDemo: "Cerrar demo",
@@ -398,15 +394,6 @@ const copy = isEnglish
       back: "Volver al inicio",
     };
 
-const deckSlides = isEnglish ? [] : [
-  "Portada",
-  "Datos del curso",
-  "Desafíos",
-  "Herramientas agénticas",
-  "Proyectos 1 a 3",
-  "Proyectos 4 a 6",
-];
-
 const demoProjects = projects.map((project) => ({
   name: project.name,
   images: project.demoImages,
@@ -414,281 +401,110 @@ const demoProjects = projects.map((project) => ({
 ---
 
 <SiteLayout title={copy.title} description={copy.description} canonical={copy.canonical} lang={lang}>
-  {
-    isEnglish ? (
-      <main class="showcase-page">
-        <section class="showcase-hero" aria-labelledby="showcase-title">
-          <div class="container showcase-hero-grid">
-            <div class="showcase-hero-copy">
-              <a class="back-link" href="/">{copy.back}</a>
-              <h1 id="showcase-title">{copy.title}</h1>
-              <p>
-                In the final exam for {copy.course}, students in{" "}
-                <a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">ExploraTec UDD</a>{" "}
-                built small, working demos from problems they knew firsthand: study planning, rubrics, budgets, habits and workflows from their own fields.
-              </p>
-              <a class="language-switch" href={copy.languageHref} hreflang="es">
-                {copy.languageLabel}
-              </a>
-            </div>
-          </div>
-        </section>
+  <main class="showcase-page">
+    <section class="showcase-hero" aria-labelledby="showcase-title">
+      <div class="container showcase-hero-grid">
+        <div class="showcase-hero-copy">
+          <a class="back-link" href="/">{copy.back}</a>
+          <h1 id="showcase-title">{copy.title}</h1>
+          <p>
+            {isEnglish ? "In the final exam for" : "En el examen final de"} {copy.course},{" "}
+            {isEnglish ? "students in" : "estudiantes de"}{" "}
+            <a href="https://exploratec.udd.cl" target="_blank" rel="noreferrer">ExploraTec UDD</a>{" "}
+            {copy.intro}
+          </p>
+          <a class="language-switch" href={copy.languageHref} hreflang={isEnglish ? "es" : "en"}>
+            {copy.languageLabel}
+          </a>
+        </div>
+      </div>
+    </section>
 
-        <section class="showcase-overview" aria-labelledby="activity-title">
-          <div class="container showcase-overview-grid showcase-overview-prose">
-            <div>
-              <h2 id="activity-title">{copy.courseTitle}</h2>
-              <p>
-                The course brought together <strong>30 students</strong>, <strong>22 projects</strong> and <strong>14 majors</strong>.
-                Most students were early in their university path, and many did not come from coding. That is what made the work interesting: they used Codex to turn judgment from their own field into a prototype they could test.
-              </p>
-              <div class="career-list">
-                <h3>Majors represented</h3>
-                <p>{careers.map(([career]) => career).join(", ")}.</p>
-              </div>
-            </div>
+    <section class="showcase-overview" aria-labelledby="activity-title">
+      <div class="container showcase-overview-grid showcase-overview-prose">
+        <div>
+          <h2 id="activity-title">{copy.courseTitle}</h2>
+          <p>{copy.courseText}</p>
+          <div class="career-list">
+            <h3>{copy.majorsTitle}</h3>
+            <p>{careers.map(([career]) => career).join(", ")}.</p>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <section class="showcase-insights" aria-labelledby="challenges-title">
-          <div class="container showcase-insights-grid">
-            <div>
-              <h2 id="challenges-title">{copy.challengesTitle}</h2>
-              <p>{copy.challengesText}</p>
-            </div>
-            <div class="insight-copy">
-              {challenges.map((item) => (
-                <article>
-                  <h3>{item.theme}</h3>
-                  <p><strong>Problem:</strong> {item.problem}</p>
-                  <p><strong>Solution:</strong> {item.solution}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section class="showcase-insights showcase-agentic" aria-labelledby="agentic-title">
-          <div class="container showcase-insights-grid">
-            <div>
-              <h2 id="agentic-title">{copy.agenticTitle}</h2>
-              <p>{copy.agenticText}</p>
-            </div>
-            <div class="insight-copy">
-              {agenticTools.map((item) => (
-                <article>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section class="showcase-projects-section" aria-labelledby="projects-title">
-          <div class="container">
-            <h2 id="projects-title">Student projects</h2>
-            <div class="showcase-projects">
-              {projects.map((project) => (
-                <article class="project-card" data-theme={project.theme}>
-                  <div class="project-card-art" aria-hidden="true"></div>
-                  <div class="project-card-body">
-                    <h3>{project.name}</h3>
-                    <p class="project-team">{project.team}</p>
-                    <p class="project-field">{project.field}</p>
-                    <p>{project.summary}</p>
-                    <div class="project-card-actions">
-                      {project.name !== "Fit Me" ? (
-                        <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
-                          {copy.visit}
-                        </a>
-                      ) : null}
-                      <button
-                        class="project-demo-button"
-                        type="button"
-                        data-demo-project={project.name}
-                      >
-                        {copy.demo}
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <p class="showcase-contact-note">
-              For more information, contact the professor:{" "}
-              <a href="https://x.com/aastroza" target="_blank" rel="noreferrer">@aastroza</a>
-            </p>
-          </div>
-        </section>
-      </main>
-    ) : (
-      <main class="showcase-deck" aria-label="Showcase ExploraTec slides">
-        <nav class="deck-nav" aria-label="Navegación de slides">
-          <a href="/">{copy.back}</a>
-          <a href={copy.languageHref} hreflang="en">{copy.languageLabel}</a>
-        </nav>
-
-        <ol class="deck-progress" aria-label="Slides">
-          {deckSlides.map((label, index) => (
-            <li>
-              <a href={`#slide-${index + 1}`} aria-label={`Ir a ${label}`}>
-                <span>{index + 1}</span>
-              </a>
-            </li>
+    <section class="showcase-insights" aria-labelledby="challenges-title">
+      <div class="container showcase-insights-grid">
+        <div>
+          <h2 id="challenges-title">{copy.challengesTitle}</h2>
+          <p>{copy.challengesText}</p>
+        </div>
+        <div class="insight-copy">
+          {challenges.map((item) => (
+            <article>
+              <h3>{item.theme}</h3>
+              <p><strong>{copy.problemLabel}:</strong> {item.problem}</p>
+              <p><strong>{copy.solutionLabel}:</strong> {item.solution}</p>
+            </article>
           ))}
-        </ol>
+        </div>
+      </div>
+    </section>
 
-        <section id="slide-1" class="deck-slide deck-slide-cover" aria-labelledby="slide-title">
-          <div class="deck-bg" aria-hidden="true"></div>
-          <div class="deck-slide-inner deck-cover-grid">
-            <div>
-              <img class="deck-mark" src="/logos/exploratec-udd.png" alt="ExploraTec UDD" width="1128" height="172" />
-              <h1 id="slide-title">Showcase ExploraTec</h1>
-              <p class="deck-contact">
-                Si quieres tener más información escribe a <a href="mailto:alonsoastroza@udd.cl">alonsoastroza@udd.cl</a>
-              </p>
-            </div>
-            <div class="deck-cover-meta">
-              <p>{copy.date}</p>
-              <p>{copy.course}</p>
-            </div>
-          </div>
-          <p class="deck-slide-count">1 / 6</p>
-        </section>
+    <section class="showcase-insights showcase-agentic" aria-labelledby="agentic-title">
+      <div class="container showcase-insights-grid">
+        <div>
+          <h2 id="agentic-title">{copy.agenticTitle}</h2>
+          <p>{copy.agenticText}</p>
+        </div>
+        <div class="insight-copy">
+          {agenticTools.map((item) => (
+            <article>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-        <section id="slide-2" class="deck-slide" aria-labelledby="course-data-title">
-          <div class="deck-slide-inner deck-data-grid">
-            <div>
-              <h2 id="course-data-title">{copy.courseTitle}</h2>
-              <p class="deck-lede">{copy.courseText}</p>
-            </div>
-            <div class="deck-stat-grid">
-              {stats.map(([value, label]) => (
-                <div class="deck-stat">
-                  <strong>{value}</strong>
-                  <span>{label}</span>
+    <section class="showcase-projects-section" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 id="projects-title">{copy.projectsTitle}</h2>
+        <div class="showcase-projects">
+          {projects.map((project) => (
+            <article class="project-card" data-theme={project.theme}>
+              <div class="project-card-art" aria-hidden="true"></div>
+              <div class="project-card-body">
+                <h3>{project.name}</h3>
+                <p class="project-team">{project.team}</p>
+                <p class="project-field">{project.field}</p>
+                <p>{project.summary}</p>
+                <div class="project-card-actions">
+                  {project.name !== "Fit Me" ? (
+                    <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
+                      {copy.visit}
+                    </a>
+                  ) : null}
+                  <button
+                    class="project-demo-button"
+                    type="button"
+                    data-demo-project={project.name}
+                  >
+                    {copy.demo}
+                  </button>
                 </div>
-              ))}
-            </div>
-            <div class="career-rack" aria-label="Carreras representadas">
-              {careers.map(([career, count]) => (
-                <div>
-                  <span>{career}</span>
-                  <strong>{count}</strong>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p class="deck-slide-count">2 / 6</p>
-        </section>
-
-        <section id="slide-3" class="deck-slide deck-slide-soft" aria-labelledby="challenges-slide-title">
-          <div class="deck-slide-inner deck-two-column">
-            <div>
-              <h2 id="challenges-slide-title">{copy.challengesTitle}</h2>
-              <p class="deck-lede">{copy.challengesText}</p>
-            </div>
-            <div class="challenge-matrix">
-              {challenges.map((item) => (
-                <article>
-                  <h3>{item.theme}</h3>
-                  <p>{item.problem}</p>
-                  <p>{item.solution}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-          <p class="deck-slide-count">3 / 6</p>
-        </section>
-
-        <section id="slide-4" class="deck-slide" aria-labelledby="agentic-slide-title">
-          <div class="deck-slide-inner deck-two-column">
-            <div>
-              <h2 id="agentic-slide-title">{copy.agenticTitle}</h2>
-              <p class="deck-lede">{copy.agenticText}</p>
-            </div>
-            <div class="deck-list deck-list-numbered">
-              {agenticTools.map((item, index) => (
-                <article>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-          <p class="deck-slide-count">4 / 6</p>
-        </section>
-
-        <section id="slide-5" class="deck-slide deck-slide-projects" aria-label="Proyectos 1 a 3">
-          <div class="deck-slide-inner">
-            <div class="deck-project-grid">
-              {projectGroups[0].map((project) => (
-                <article class="project-card" data-theme={project.theme}>
-                  <div class="project-card-art" aria-hidden="true"></div>
-                  <div class="project-card-body">
-                    <h3>{project.name}</h3>
-                    <p class="project-team">{project.team}</p>
-                    <p class="project-field">{project.field}</p>
-                    <p>{project.summary}</p>
-                    <div class="project-card-actions">
-                      {project.name !== "Fit Me" ? (
-                        <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
-                          {copy.visit}
-                        </a>
-                      ) : null}
-                      <button
-                        class="project-demo-button"
-                        type="button"
-                        data-demo-project={project.name}
-                      >
-                        {copy.demo}
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-          <p class="deck-slide-count">5 / 6</p>
-        </section>
-
-        <section id="slide-6" class="deck-slide deck-slide-projects deck-slide-soft" aria-label="Proyectos 4 a 6">
-          <div class="deck-slide-inner">
-            <div class="deck-project-grid">
-              {projectGroups[1].map((project) => (
-                <article class="project-card" data-theme={project.theme}>
-                  <div class="project-card-art" aria-hidden="true"></div>
-                  <div class="project-card-body">
-                    <h3>{project.name}</h3>
-                    <p class="project-team">{project.team}</p>
-                    <p class="project-field">{project.field}</p>
-                    <p>{project.summary}</p>
-                    <div class="project-card-actions">
-                      {project.name !== "Fit Me" ? (
-                        <a class="project-open-link" href={project.url} target="_blank" rel="noreferrer">
-                          {copy.visit}
-                        </a>
-                      ) : null}
-                      <button
-                        class="project-demo-button"
-                        type="button"
-                        data-demo-project={project.name}
-                      >
-                        {copy.demo}
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-          <p class="deck-slide-count">6 / 6</p>
-        </section>
-      </main>
-    )
-  }
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="showcase-contact-note">
+          {copy.contactNote}{" "}
+          <a href="https://x.com/aastroza" target="_blank" rel="noreferrer">@aastroza</a>
+        </p>
+      </div>
+    </section>
+  </main>
 
   <div class="demo-modal" data-demo-modal data-demo-counter-label={copy.demoCounter} hidden>
     <div class="demo-modal-backdrop" data-demo-close></div>
