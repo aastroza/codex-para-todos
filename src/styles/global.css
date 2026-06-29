@@ -2127,6 +2127,26 @@ body:has(.showcase-deck) .site-footer {
   border-radius: 8px;
 }
 
+.post-content figure {
+  width: min(960px, calc(100vw - 48px));
+  max-width: none;
+  margin: 36px 0 38px;
+}
+
+.post-content figure img {
+  background: var(--surface);
+  outline: 1px solid var(--border);
+  outline-offset: 0;
+}
+
+.post-content figcaption {
+  max-width: 760px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
 .post-content p:has(> img:only-child) {
   width: min(960px, calc(100vw - 48px));
   max-width: none;
