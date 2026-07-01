@@ -31,58 +31,58 @@ Ese trabajo caso a caso fue exigente, pero también fue donde el curso empezó a
 
 <figure>
   <img src="/images/demo-screenshots/calendaris-01-portada.png" alt="Portada de Calendaris con calendario académico y panel de acceso" />
-  <figcaption>Calendaris partió desde una necesidad muy local: un calendario que entendiera cómo se organiza la vida académica en la universidad.</figcaption>
+  <figcaption>Calendaris parte desde una necesidad muy local: un calendario que entienda cómo se organiza la vida académica en la universidad.</figcaption>
 </figure>
 
 ## Problemas pequeños, software específico
 
-Uno de los proyectos que elegí para el showcase fue [Calendaris](https://calendaris-inky.vercel.app/), de Nicolás Soto. La idea parece simple: un calendario universitario. Pero esa simpleza es engañosa.
+Uno de los proyectos del showcase es [Calendaris](https://calendaris-inky.vercel.app/), de Nicolás Soto. La idea parece simple: un calendario universitario. Pero esa simpleza es engañosa.
 
 Existen muchas aplicaciones de calendario. Ninguna habla exactamente el lenguaje de estos estudiantes. En la universidad conviven semestres, bimestres, trimestres, combinaciones por carrera y formas distintas de organizar evaluaciones. Calendaris toma esa necesidad específica y la convierte en una herramienta diseñada para ese contexto.
 
 Ese tipo de problema me interesa mucho. No siempre hace falta una idea universal. A veces una buena aplicación nace porque alguien entiende una rutina mejor que cualquier software genérico.
 
-[StudyBrain](https://study-brain-cniico.vercel.app), de Nicolás Campos, iba por otro camino. Yo lo describo como un CRM para estudiantes. Centraliza notas, temarios, evaluaciones y planes semanales. Lo notable es que Nicolás es estudiante de primer año de informática y ya tenía usuarios usando el sistema.
+[StudyBrain](https://study-brain-cniico.vercel.app), de Nicolás Campos, va por otro camino. Yo lo describo como un CRM para estudiantes. Centraliza notas, temarios, evaluaciones y planes semanales. Lo notable es que Nicolás es estudiante de primer año de informática y ya tiene usuarios usando el sistema.
 
-También había una segunda capa: StudyBrain estaba pensado para humanos y agentes. Nicolás creó un plugin para Codex y Claude Code para gestionar necesidades estudiantiles desde esas herramientas. Ese detalle muestra hacia dónde puede ir este tipo de software. Una aplicación puede quedar preparada para personas haciendo clic y para agentes operando sobre ella.
+También hay una segunda capa: StudyBrain está pensado para humanos y agentes. Nicolás tiene un plugin para Codex y Claude Code que permite gestionar necesidades estudiantiles desde esas herramientas. Ese detalle muestra hacia dónde puede ir este tipo de software. Una aplicación puede quedar preparada para personas haciendo clic y para agentes operando sobre ella.
 
 <figure>
   <img src="/images/demo-screenshots/studybrain-01-portada.png" alt="Vista de agentes de StudyBrain" />
-  <figcaption>StudyBrain funcionaba como un sistema de gestión académica personal y además dejaba espacio para agentes conectados al flujo académico.</figcaption>
+  <figcaption>StudyBrain funciona como un sistema de gestión académica personal y además deja espacio para agentes conectados al flujo académico.</figcaption>
 </figure>
 
-[BriefLab](https://brief-lab.vercel.app), de Amelia Troncoso, fue otro caso que me gustó mucho. Amelia viene de diseño, no de programación. Eso se nota para bien. La aplicación tiene gusto visual, cuidado y una idea clara: generar briefs ficticios para practicar diseño y construir portafolio sin depender de clientes reales.
+[BriefLab](https://brief-lab.vercel.app), de Amelia Troncoso, es otro caso que me gusta mucho. Amelia viene de diseño, no de programación. Eso se nota para bien. La aplicación tiene gusto visual, cuidado y una idea clara: generar briefs ficticios para practicar diseño y construir portafolio sin depender de clientes reales.
 
-Codex puso parte de la ejecución técnica. Amelia puso el criterio de diseño. Esa combinación fue una de las mejores señales del curso. Cuando una herramienta agéntica baja el costo de construir, el gusto y el conocimiento de dominio pesan más.
+Codex aporta parte de la ejecución técnica. Amelia aporta el criterio de diseño. Esa combinación es una de las mejores señales del curso. Cuando una herramienta agéntica baja el costo de construir, el gusto y el conocimiento de dominio pesan más.
 
 <figure>
   <img src="/images/demo-screenshots/brieflab-02-flujo.png" alt="Flujo de selección de área en BriefLab" />
   <figcaption>BriefLab muestra algo que me interesa especialmente: una estudiante sin foco en programación usando Codex para materializar criterio de diseño.</figcaption>
 </figure>
 
-[FinEx](https://finex-public-frontend.vercel.app), de Sebastián Ramírez, abordó finanzas personales. Es un terreno donde ya existen muchas aplicaciones, pero el proyecto tenía una fuerza distinta porque nacía de una práctica real. Sebastián venía ordenando finanzas en Excel y llevó esa lógica a una app con importación desde Gmail, clasificación de gastos y visualización de presupuesto.
+[FinEx](https://finex-public-frontend.vercel.app), de Sebastián Ramírez, aborda finanzas personales. Es un terreno donde ya existen muchas aplicaciones, pero el proyecto tiene una fuerza distinta porque nace de una práctica real. Sebastián venía ordenando finanzas en Excel y llevó esa lógica a una app con importación desde Gmail, clasificación de gastos y visualización de presupuesto.
 
-También tenía usuarios. Él mismo la usaba. Otras personas podían probarla. La gracia estaba en convertir un flujo propio de finanzas personales en un producto más claro, compartible y bien terminado.
+También tiene usuarios. Él mismo la usa. Otras personas pueden probarla. La gracia está en convertir un flujo propio de finanzas personales en un producto más claro, compartible y bien terminado.
 
 <figure>
   <img src="/images/demo-screenshots/finex-02-demo-dashboard.png" alt="Dashboard de FinEx con resumen financiero" />
-  <figcaption>FinEx transformó una forma personal de ordenar gastos en una aplicación que otros podían usar.</figcaption>
+  <figcaption>FinEx transforma una forma personal de ordenar gastos en una aplicación que otros pueden usar.</figcaption>
 </figure>
 
-Fit Me, de Diego Rivera y Valentina Castillo, fue quizá el proyecto más conceptual de todos. En vez de una aplicación web pública, construyeron una automatización que corría los domingos en el computador de sus creadores y preparaba siete outfits semanales con ropa real, referencias de estilo y clima.
+Fit Me, de Diego Rivera y Valentina Castillo, es quizá el proyecto más conceptual de todos. En vez de una aplicación web pública, es una automatización que corre los domingos en el computador de sus creadores y prepara siete outfits semanales con ropa real, referencias de estilo y clima.
 
-Me pareció brutal por una razón: mostraba que el software también puede ser privado, específico y pequeño. Nadie habría financiado una gran plataforma para resolver exactamente esa necesidad. Antes habría sido demasiado caro construir algo así para una sola persona. Con agentes, ese costo baja lo suficiente como para que valga la pena.
+Me parece brutal por una razón: muestra que el software también puede ser privado, específico y pequeño. Nadie habría financiado una gran plataforma para resolver exactamente esa necesidad. Antes habría sido demasiado caro construir algo así para una sola persona. Con agentes, ese costo baja lo suficiente como para que valga la pena.
 
 Y está bien que sea privado. La ropa, el clima, la agenda y las preferencias personales no tienen por qué convertirse en una startup. Pueden convertirse en una automatización que le haga un poquito más feliz el día a alguien.
 
 <figure>
   <img src="/images/demo-screenshots/fit-me-02-propuesta-final.jpg" alt="Resultado visual de outfits semanales generados por Fit Me" />
-  <figcaption>Fit Me llevó la idea de software personal a un extremo muy claro: una automatización privada para decidir qué vestir durante la semana.</figcaption>
+  <figcaption>Fit Me lleva la idea de software personal a un extremo muy claro: una automatización privada para decidir qué vestir durante la semana.</figcaption>
 </figure>
 
-[RubricaCheck](https://rubricacheck-mvp.vercel.app), de José Tomás Cifuentes, cerraba muy bien la selección. José Tomás estudia Ingeniería Civil Obras Civiles. Su problema era concreto: los profesores entregan rúbricas e instrucciones, y muchas veces el estudiante necesita traducir ese material en criterios claros para preparar una entrega.
+[RubricaCheck](https://rubricacheck-mvp.vercel.app), de José Tomás Cifuentes, cierra muy bien la selección. José Tomás estudia Ingeniería Civil Obras Civiles. Su problema es concreto: los profesores entregan rúbricas e instrucciones, y muchas veces el estudiante necesita traducir ese material en criterios claros para preparar una entrega.
 
-RubricaCheck convierte rúbricas e instrucciones en una estructura más manejable. Usa la API de Gemini y tiene un flujo completo. Me gustó porque no intentaba hacer de todo. Tomaba una fricción académica común y la volvía operable.
+RubricaCheck convierte rúbricas e instrucciones en una estructura más manejable. Usa la API de Gemini y tiene un flujo completo. Me gusta porque no intenta hacer de todo. Toma una fricción académica común y la vuelve operable.
 
 <figure>
   <img src="/images/demo-screenshots/rubricacheck-02-ejemplo-o-formulario.png" alt="Ejemplo cargado en RubricaCheck" />
