@@ -1,18 +1,46 @@
 ---
+interface Props {
+  lang?: "es" | "en";
+}
+
+const { lang = "es" } = Astro.props;
+const copy = lang === "en"
+  ? {
+      imageAlt: "Portrait of Alonso Astroza Tagle",
+      bio:
+        "I have worked on AI projects for more than 15 years and teach Codex to students and professionals from different fields.",
+      navLabel: "Author links",
+      links: {
+        site: "Alonso Astroza's website",
+        x: "Alonso Astroza on X",
+        linkedin: "Alonso Astroza on LinkedIn",
+      },
+    }
+  : {
+      imageAlt: "Retrato de Alonso Astroza Tagle",
+      bio:
+        "Trabajo hace más de 15 años en proyectos de IA y enseño Codex a estudiantes y profesionales de distintas áreas.",
+      navLabel: "Enlaces del autor",
+      links: {
+        site: "Sitio de Alonso Astroza",
+        x: "Alonso Astroza en X",
+        linkedin: "Alonso Astroza en LinkedIn",
+      },
+    };
 const authorLinks = [
   {
     href: "https://www.alonsoastroza.com/",
-    label: "Sitio de Alonso Astroza",
+    label: copy.links.site,
     icon: "site",
   },
   {
     href: "https://x.com/aastroza",
-    label: "Alonso Astroza en X",
+    label: copy.links.x,
     icon: "x",
   },
   {
     href: "https://www.linkedin.com/in/aastrozacl/",
-    label: "Alonso Astroza en LinkedIn",
+    label: copy.links.linkedin,
     icon: "linkedin",
   },
 ];
@@ -21,7 +49,7 @@ const authorLinks = [
 <aside class="post-author" aria-labelledby="post-author-title">
   <img
     src="/images/alonso-astroza-author.webp"
-    alt="Retrato de Alonso Astroza Tagle"
+    alt={copy.imageAlt}
     width="320"
     height="320"
     loading="lazy"
@@ -30,9 +58,9 @@ const authorLinks = [
   <div>
     <p id="post-author-title" class="post-author-name">Alonso Astroza Tagle</p>
     <p class="post-author-bio">
-      Trabajo hace más de 15 años en proyectos de IA y enseño Codex a estudiantes y profesionales de distintas áreas.
+      {copy.bio}
     </p>
-    <nav class="post-author-links" aria-label="Enlaces del autor">
+    <nav class="post-author-links" aria-label={copy.navLabel}>
       {
         authorLinks.map((link) => (
           <a href={link.href} target="_blank" rel="noreferrer" aria-label={link.label}>

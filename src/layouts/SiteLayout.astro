@@ -8,6 +8,7 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   lang?: string;
+  robots?: string;
 }
 
 const siteName = "Codex para todos";
@@ -25,6 +26,7 @@ const {
   ogImage = defaultOgImage,
   ogType = "website",
   lang = "es",
+  robots,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://codexparatodos.com");
@@ -32,6 +34,27 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`;
 const isHome = Astro.url.pathname === "/";
 const isBlog = Astro.url.pathname.startsWith("/blog");
+const navCopy = lang === "en"
+  ? {
+      label: "Main navigation",
+      home: "Home",
+      community: "Community",
+      blog: "Blog",
+      initiative: "An initiative by",
+      dataScience: "UDD Data Science Institute",
+      dataScienceAlt: "UDD Data Science Institute 10 years",
+      informatica: "UDD Computer Science",
+    }
+  : {
+      label: "Navegación principal",
+      home: "Inicio",
+      community: "Comunidad",
+      blog: "Blog",
+      initiative: "Una iniciativa de",
+      dataScience: "Instituto de Data Science UDD",
+      dataScienceAlt: "Instituto de Data Science UDD 10 años",
+      informatica: "Informática UDD",
+    };
 ---
 
 <!doctype html>
@@ -41,6 +64,7 @@ const isBlog = Astro.url.pathname.startsWith("/blog");
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {robots ? <meta name="robots" content={robots} /> : null}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/logos/codex-color.png" />
@@ -72,10 +96,10 @@ const isBlog = Astro.url.pathname.startsWith("/blog");
           <img src="/logos/codex.png" alt="" width="32" height="32" />
           <span>Codex para todos</span>
         </a>
-        <nav class="site-nav" aria-label="Navegación principal">
-          <a href="/" aria-current={isHome ? "page" : undefined}>Inicio</a>
-          <a href="/comunidad/" aria-current={Astro.url.pathname.startsWith("/comunidad") ? "page" : undefined}>Comunidad</a>
-          <a href="/blog/" aria-current={isBlog ? "page" : undefined}>Blog</a>
+        <nav class="site-nav" aria-label={navCopy.label}>
+          <a href="/" aria-current={isHome ? "page" : undefined}>{navCopy.home}</a>
+          <a href="/comunidad/" aria-current={Astro.url.pathname.startsWith("/comunidad") ? "page" : undefined}>{navCopy.community}</a>
+          <a href="/blog/" aria-current={isBlog ? "page" : undefined}>{navCopy.blog}</a>
         </nav>
       </div>
     </header>
@@ -84,20 +108,20 @@ const isBlog = Astro.url.pathname.startsWith("/blog");
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="footer-label">Una iniciativa de</p>
-        <a href={dataScienceUrl} target="_blank" rel="noreferrer" aria-label="Instituto de Data Science UDD">
+        <p class="footer-label">{navCopy.initiative}</p>
+        <a href={dataScienceUrl} target="_blank" rel="noreferrer" aria-label={navCopy.dataScience}>
           <img
             class="data-logo"
             src="/logos/data-science-udd-10-cropped.png"
-            alt="Instituto de Data Science UDD 10 años"
+            alt={navCopy.dataScienceAlt}
             loading="lazy"
           />
         </a>
-        <a href={informaticaUrl} target="_blank" rel="noreferrer" aria-label="Informática UDD">
+        <a href={informaticaUrl} target="_blank" rel="noreferrer" aria-label={navCopy.informatica}>
           <img
             class="informatica-logo"
             src="/logos/informatica-udd-cropped.png"
-            alt="Informática UDD"
+            alt={navCopy.informatica}
             loading="lazy"
           />
         </a>

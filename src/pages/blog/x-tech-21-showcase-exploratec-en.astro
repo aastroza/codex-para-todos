@@ -1,0 +1,283 @@
+---
+import PostAuthorBio from "../../components/PostAuthorBio.astro";
+import PostCommunityCta from "../../components/PostCommunityCta.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const title = "What happens when students from 14 undergraduate majors build software with Codex";
+const description =
+  "A reflection on a course where students from different majors used Codex to turn everyday problems into working prototypes.";
+const pubDate = new Date("2026-07-01T12:00:00-04:00");
+const formatDate = new Intl.DateTimeFormat("en-US", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+const siteUrl = Astro.site ?? new URL("https://codexparatodos.com");
+const canonical = new URL("/blog/x-tech-21-showcase-exploratec-en/", siteUrl).href;
+---
+
+<SiteLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogType="article"
+  lang="en"
+  robots="noindex, nofollow"
+>
+  <main>
+    <article class="post-page container">
+      <a class="back-link" href="/blog/">Back to blog</a>
+      <header class="post-header">
+        <time datetime={pubDate.toISOString()}>
+          {formatDate.format(pubDate)}
+        </time>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </header>
+
+      <div class="post-content">
+        <p>
+          This semester I taught XTECC21: "Create your own agent: automate your day-to-day work."
+          It is a course in <a href="https://exploratec.udd.cl/">ExploraTech</a>, a program from the
+          Faculty of Engineering at Universidad del Desarrollo, but it is open to students from every
+          major on campus. That is why the room had students from engineering, design, dentistry,
+          psychology, architecture, law, medical technology and other areas.
+        </p>
+
+        <p>
+          The course began with an introduction to generative artificial intelligence and the use of
+          <a href="https://chatgpt.com/">ChatGPT</a>. Then we moved to
+          <a href="https://openai.com/codex/">Codex</a>. The question was why we needed a tool like
+          that if we already had chatbots that could write, summarize and answer questions.
+        </p>
+
+        <p>
+          The answer has to do with a skill we have developed for decades: operating computational
+          devices. We open programs, copy data, fill out forms, rename files, review spreadsheets,
+          upload documents, click through menus and repeat whole sequences of work.
+        </p>
+
+        <p>
+          Automating those operations has always been possible. The problem was the cost. You had to
+          know how to program, understand the system, write scripts, test them and maintain them. With
+          agentic tools like Codex, that boundary moves. A student can describe what they want to
+          achieve, and the agent programs what is needed to move closer to that result.
+        </p>
+
+        <p>
+          Most students did not have prior programming experience. So the course had to start from a
+          different place. Before looking at files or technical decisions, they needed to learn how to
+          formulate, narrow the scope, test what Codex returned and decide when the result was useful.
+        </p>
+
+        <h2>Three weeks to turn an idea into software</h2>
+
+        <p>
+          The course lasted three months, with two sessions each week. There were written exams to
+          assess concepts, but the final stretch was practical.
+        </p>
+
+        <p>
+          During the last three weeks, I asked students to find a problem that could be solved with an
+          app, software or an agent. The prompt was deliberately broad. I wanted to see what problems
+          appeared when the starting point was the students' own routines, not an assignment designed
+          by the professor.
+        </p>
+
+        <p>
+          The classes during those weeks were shorter. I introduced one technical piece, and then we
+          worked on the projects. We covered the basics of
+          <a href="https://en.wikipedia.org/wiki/Vibe_coding">vibe coding</a>, publishing with
+          <a href="https://vercel.com/">Vercel</a>, login with
+          <a href="https://firebase.google.com/">Firebase</a> and other pieces the demos needed to
+          reach a good finish.
+        </p>
+
+        <p>
+          The most important work happened in the guidance. Each student had a different need. Some
+          needed to bring an idea that was too large down to a first version. Others needed to
+          understand why their app was not saving data. Others wanted to connect APIs, clean up an
+          interface, add authentication or prepare a demo that would not break during the presentation.
+        </p>
+
+        <p>
+          That one-on-one work was demanding, but it was also where the course began to show its
+          value. Students were working with a new tool, their own expectations and the limits of time.
+        </p>
+
+        <figure>
+          <img src="/images/demo-screenshots/calendaris-01-portada.png" alt="Calendaris cover with an academic calendar and access panel" />
+          <figcaption>Calendaris starts from a very local need: a calendar that understands how academic life is organized at the university.</figcaption>
+        </figure>
+
+        <h2>Big problems, small problems, specific software</h2>
+
+        <p>
+          One of the projects in the showcase is
+          <a href="https://calendaris-inky.vercel.app/">Calendaris</a>, by Nicolás Soto. The idea
+          sounds simple: a university calendar. But that simplicity is misleading.
+        </p>
+
+        <p>
+          There are many calendar apps. None speak exactly the language of these students. At the
+          university, semesters, bimesters, trimesters, major-specific combinations and different ways
+          of organizing evaluations all coexist. Calendaris takes that specific need and turns it into
+          a tool designed for that context.
+        </p>
+
+        <p>
+          I care a lot about that kind of problem. A good app does not always need a universal idea.
+          Sometimes it begins because someone understands a routine better than any generic piece of
+          software does.
+        </p>
+
+        <p>
+          <a href="https://study-brain-cniico.vercel.app">StudyBrain</a>, by Nicolás Campos, goes in
+          another direction. I describe it as a CRM for students. It centralizes grades, topics,
+          evaluations and weekly plans. What stands out is that Nicolás is a first-year computer
+          science student, and he already has users using the system.
+        </p>
+
+        <p>
+          There is also a second layer: StudyBrain is designed for humans and agents. Nicolás has a
+          plugin for Codex and Claude Code that lets students manage academic needs from those tools.
+          That detail shows where this kind of software can go. An app can be prepared for people
+          clicking through it and for agents operating on top of it.
+        </p>
+
+        <figure>
+          <img src="/images/demo-screenshots/studybrain-01-portada.png" alt="StudyBrain agents view" />
+          <figcaption>StudyBrain works as a personal academic management system and also leaves room for agents connected to the academic workflow.</figcaption>
+        </figure>
+
+        <p>
+          <a href="https://brief-lab.vercel.app">BriefLab</a>, by Amelia Troncoso, is another case I
+          like a lot. Amelia comes from design, not programming. That shows, in the best way. The app
+          has visual taste, care and a clear idea: generating fictional briefs to practice design and
+          build a portfolio without depending on real clients.
+        </p>
+
+        <p>
+          Codex provides part of the technical execution. Amelia provides the design judgment. That
+          combination is one of the best signals from the course. When an agentic tool lowers the cost
+          of building, taste and domain knowledge matter more.
+        </p>
+
+        <figure>
+          <img src="/images/demo-screenshots/brieflab-02-flujo.png" alt="BriefLab area selection flow" />
+          <figcaption>BriefLab shows something I care about: a student without a programming focus using Codex to turn design judgment into software.</figcaption>
+        </figure>
+
+        <p>
+          <a href="https://finex-public-frontend.vercel.app">FinEx</a>, by Sebastián Ramírez, tackles
+          personal finance. It is an area with many existing apps, but this project has a different
+          force because it comes from a real practice. Sebastián had been organizing his finances in
+          Excel and brought that logic into an app with Gmail import, expense classification and
+          budget visualization.
+        </p>
+
+        <p>
+          It also has users. He uses it himself. Other people can try it. The point is to turn a
+          personal finance workflow into a clearer, shareable and well-finished product.
+        </p>
+
+        <figure>
+          <img src="/images/demo-screenshots/finex-02-demo-dashboard.png" alt="FinEx dashboard with a financial summary" />
+          <figcaption>FinEx turns a personal way of organizing expenses into an app other people can use.</figcaption>
+        </figure>
+
+        <p>
+          Fit Me, by Diego Rivera and Valentina Castillo, is perhaps the most conceptual project of
+          the group. Instead of a public web app, it is an automation that runs on Sundays on its
+          creators' computer and prepares seven weekly outfits using real clothes, style references
+          and weather.
+        </p>
+
+        <p>
+          I find it powerful for one reason: it shows that software can also be private, specific and
+          small. No one would have funded a large platform to solve exactly that need. Before, it
+          would have been too expensive to build something like that for one person. With agents, that
+          cost drops enough for it to be worth doing.
+        </p>
+
+        <p>
+          And it is fine that it stays private. Clothes, weather, calendars and personal preferences
+          do not have to become a startup. They can become an automation that makes someone's day a
+          little happier.
+        </p>
+
+        <figure>
+          <img src="/images/demo-screenshots/fit-me-02-propuesta-final.jpg" alt="Visual result of weekly outfits generated by Fit Me" />
+          <figcaption>Fit Me takes personal software to a clear edge case: a private automation for deciding what to wear during the week.</figcaption>
+        </figure>
+
+        <p>
+          <a href="https://rubricacheck-mvp.vercel.app">RubricaCheck</a>, by José Tomás Cifuentes,
+          closes the selection well. José Tomás studies civil engineering. His problem is concrete:
+          professors give students rubrics and instructions, and students often need to translate that
+          material into clear criteria for preparing a submission.
+        </p>
+
+        <p>
+          RubricaCheck turns rubrics and instructions into a more manageable structure. It uses the
+          Gemini API and has a complete flow. I like it because it does not try to do everything. It
+          takes a common academic friction and makes it workable.
+        </p>
+
+        <figure>
+          <img src="/images/demo-screenshots/rubricacheck-02-ejemplo-o-formulario.png" alt="Loaded example in RubricaCheck" />
+          <figcaption>RubricaCheck turns a rubric into a clearer workflow for preparing a submission.</figcaption>
+        </figure>
+
+        <h2>Teaching while the tool changes</h2>
+
+        <p>
+          The biggest challenge in the course was teaching something that was moving a lot while we
+          were teaching it.
+        </p>
+
+        <p>
+          The <a href="https://openai.com/index/introducing-the-codex-app/">Codex app</a> was very
+          recent. We lived through multiple model changes, and several features transformed
+          radically along the way.
+        </p>
+
+        <p>
+          That made the course harder and more fun. We had to adjust examples, expectations and ways
+          of working as we went. Sometimes an instruction that had required several steps began to
+          resolve more directly. Other times, new errors appeared. Students had to learn in an
+          unstable environment, similar to the workplace they will encounter.
+        </p>
+
+        <p>
+          That was another idea I wanted to give them. Whether their major includes programming or
+          not, they need to get used to working in this new professional environment. An environment
+          where part of the work is delegated to systems that read, write, program, test and operate.
+          The advantage is not in knowing how to press more buttons. It is in understanding what to
+          ask for, how to evaluate what comes back and when to intervene.
+        </p>
+
+        <h2>Presenting the projects to the community</h2>
+
+        <p>
+          After the final exam, I invited six projects to present to the community at the
+          <a href="https://codexparatodos.com/showcase/">ExploraTech Showcase</a>, an in-person
+          technology fair inside the university. If you follow the link, you can review the projects
+          in detail.
+        </p>
+
+        <p>
+          Seen together, these projects say something about the moment we are in. A student can get
+          much faster to a first working version, but the work does not disappear. You have to choose
+          better problems, formulate better, test more and have the judgment not to accept every
+          output from the agent. That is why the phrase I repeated most during the course still feels
+          useful to me: moving at machine speed, but with human judgment.
+        </p>
+      </div>
+
+      <PostAuthorBio lang="en" />
+    </article>
+
+    <PostCommunityCta lang="en" />
+  </main>
+</SiteLayout>
