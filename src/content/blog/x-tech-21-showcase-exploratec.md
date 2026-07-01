@@ -7,8 +7,6 @@ featured: false
 
 Este semestre dicté XTECC21: "Crea tu propio agente: automatiza tu día a día". Es un curso del programa [ExploraTech](https://exploratec.udd.cl/), de la Facultad de Ingeniería de la Universidad del Desarrollo, pero está abierto a estudiantes de todas las carreras del campus. Por eso en la sala había estudiantes de ingeniería, diseño, odontología, psicología, arquitectura, derecho, tecnología médica y otras áreas.
 
-Hace dos o tres años que venimos haciendo cursos de inteligencia artificial generativa dentro de este programa. Esta versión fue distinta porque el foco estuvo en agentes.
-
 El curso partió con una introducción a la inteligencia artificial generativa y al uso de [ChatGPT](https://chatgpt.com/). Después pasamos a [Codex](https://openai.com/codex/). La pregunta era por qué necesitábamos una herramienta como esa si ya teníamos chatbots capaces de escribir, resumir y responder preguntas.
 
 La respuesta tiene que ver con una habilidad que hemos desarrollado durante décadas: operar dispositivos computacionales. Abrimos programas, copiamos datos, llenamos formularios, renombramos archivos, revisamos planillas, subimos documentos, hacemos clic en menús y repetimos secuencias enteras de trabajo.
@@ -93,7 +91,7 @@ RubricaCheck convierte rúbricas e instrucciones en una estructura más manejabl
 
 El mayor desafío del curso fue enseñar algo que se movía mucho mientras lo enseñábamos.
 
-La [app de Codex](https://openai.com/index/introducing-the-codex-app/) era muy reciente. Vivimos múltiples cambios de modelo y varias funcionalidades se transformaron radicalmente en el camino. Podría decirlo de forma general, pero el guiño importa: GPT-5.5 cambió la manera en que trabajamos.
+La [app de Codex](https://openai.com/index/introducing-the-codex-app/) era muy reciente. Vivimos múltiples cambios de modelo y varias funcionalidades se transformaron radicalmente en el camino.
 
 Eso hizo el curso más difícil y más entretenido. Había que ajustar ejemplos, expectativas y formas de trabajo sobre la marcha. A veces una instrucción que antes requería varios pasos empezaba a resolverse de manera más directa. Otras veces aparecían errores nuevos. Los estudiantes tuvieron que aprender en un ambiente inestable, parecido al ambiente laboral que van a encontrar.
 
