@@ -1,0 +1,42 @@
+---
+const authorLinks = [
+  {
+    href: "https://www.alonsoastroza.com/",
+    label: "Sitio",
+  },
+  {
+    href: "https://x.com/aastroza",
+    label: "X",
+  },
+  {
+    href: "https://www.linkedin.com/in/aastrozacl/",
+    label: "LinkedIn",
+  },
+];
+---
+
+<aside class="post-author" aria-labelledby="post-author-title">
+  <img
+    src="/images/alonso-astroza-author.webp"
+    alt="Retrato de Alonso Astroza Tagle"
+    width="320"
+    height="320"
+    loading="lazy"
+    decoding="async"
+  />
+  <div>
+    <p id="post-author-title" class="post-author-name">Alonso Astroza Tagle</p>
+    <p class="post-author-bio">
+      Trabajo hace más de 15 años en proyectos de IA y enseño Codex a estudiantes y profesionales de distintas áreas.
+    </p>
+    <nav class="post-author-links" aria-label="Enlaces del autor">
+      {
+        authorLinks.map((link) => (
+          <a href={link.href} target="_blank" rel="noreferrer">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</aside>

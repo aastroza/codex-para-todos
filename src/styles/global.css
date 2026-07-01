@@ -2166,6 +2166,61 @@ body:has(.showcase-deck) .site-footer {
   outline-offset: 0;
 }
 
+.post-author {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 16px;
+  max-width: 760px;
+  margin-top: 52px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.post-author img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  outline: 1px solid var(--border);
+  outline-offset: 0;
+}
+
+.post-author-name {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 780;
+  line-height: 1.25;
+}
+
+.post-author-bio {
+  max-width: 620px;
+  margin: 5px 0 0;
+  font-size: 15px;
+  line-height: 1.46;
+}
+
+.post-author-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.post-author-links a {
+  color: var(--brand-blue-dark);
+  font-size: 14px;
+  font-weight: 720;
+  text-decoration-color: rgba(15, 122, 69, 0.32);
+  text-underline-offset: 4px;
+}
+
+.post-author-links a:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
+
 .post-content .youtube-short {
   width: min(360px, 100%);
   margin: 34px 0;
