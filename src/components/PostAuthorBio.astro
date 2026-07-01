@@ -2,15 +2,18 @@
 const authorLinks = [
   {
     href: "https://www.alonsoastroza.com/",
-    label: "Sitio",
+    label: "Sitio de Alonso Astroza",
+    icon: "site",
   },
   {
     href: "https://x.com/aastroza",
-    label: "X",
+    label: "Alonso Astroza en X",
+    icon: "x",
   },
   {
     href: "https://www.linkedin.com/in/aastrozacl/",
-    label: "LinkedIn",
+    label: "Alonso Astroza en LinkedIn",
+    icon: "linkedin",
   },
 ];
 ---
@@ -32,8 +35,22 @@ const authorLinks = [
     <nav class="post-author-links" aria-label="Enlaces del autor">
       {
         authorLinks.map((link) => (
-          <a href={link.href} target="_blank" rel="noreferrer">
-            {link.label}
+          <a href={link.href} target="_blank" rel="noreferrer" aria-label={link.label}>
+            {
+              link.icon === "site" ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.2a15.6 15.6 0 0 0-1.4-6 8.03 8.03 0 0 1 4.6 6ZM12 4.1c.8 1.2 1.5 3.5 1.7 6.9h-3.4c.2-3.4.9-5.7 1.7-6.9ZM4.3 13h3.9c.1 2.4.6 4.6 1.3 6.1A8.03 8.03 0 0 1 4.3 13Zm3.9-2H5.1a8.03 8.03 0 0 1 4.6-6 15.6 15.6 0 0 0-1.5 6Zm3.8 8.9c-.8-1.2-1.5-3.5-1.7-6.9h3.4c-.2 3.4-.9 5.7-1.7 6.9Zm2.5-.8c.7-1.5 1.2-3.7 1.3-6.1h3.9a8.03 8.03 0 0 1-5.2 6.1Z" />
+                </svg>
+              ) : link.icon === "x" ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13.9 10.7 21.3 2h-1.8l-6.4 7.5L8 2H2l7.8 11.4L2 22h1.8l6.8-7.9L16 22h6l-8.1-11.3Zm-2.4 2.8-.8-1.1L4.4 3.3h2.8l5 7.1.8 1.1 6.6 9.4h-2.8l-5.3-7.4Z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6 0h3.8V11h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v5.4h-4v-4.8c0-1.1 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5v4.9H9v-11Z" />
+                </svg>
+              )
+            }
           </a>
         ))
       }
