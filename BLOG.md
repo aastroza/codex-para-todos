@@ -8,7 +8,7 @@ This blog should make Codex and agentic work understandable to a broad Spanish-s
 - The opening now starts with a concrete scene from the final exam instead of background about the course.
 - The piece keeps the author's first-person judgment, including what was surprising, difficult, and worth showing.
 - The Showcase ExploraTech is framed as a curated selection, not a ranking of the best projects.
-- The links point readers to the general Showcase ExploraTech page instead of scattering attention across individual project links.
+- Project names can link to their live sites when those links help readers inspect the work directly.
 - Screenshots and captions are part of the story. They should help the reader see what students built, not decorate the article.
 - The central idea is professional development: students need to learn how to work in an environment where agents can operate software.
 - The recurring phrase "velocidad máquina, pero con criterio humano" is part of the blog's voice for this topic.
@@ -23,7 +23,7 @@ This blog should make Codex and agentic work understandable to a broad Spanish-s
 - Avoid hype. Do not describe AI as magic or destiny. Show what happened.
 - Avoid formulaic contrasts such as "no es X, es Y" unless the contrast is genuinely the point.
 - Avoid generic AI prose. Prefer plain verbs, direct nouns, and details from the actual work.
-- Use links sparingly. Choose the one next step that matters for the reader.
+- Use links sparingly. Link project names to their live sites when the article is discussing the project itself.
 - Use images when they carry evidence. Add captions that interpret the image in plain language.
 - Preserve names, dates, institutions, and course names exactly when they are part of the record.
 
