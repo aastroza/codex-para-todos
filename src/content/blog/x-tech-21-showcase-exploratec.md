@@ -32,7 +32,7 @@ Ese trabajo caso a caso fue exigente, pero también fue donde el curso empezó a
   <figcaption>Calendaris parte desde una necesidad muy local: un calendario que entienda cómo se organiza la vida académica en la universidad.</figcaption>
 </figure>
 
-## Problemas pequeños, software específico
+## Problemas grandes y chicos, software específico
 
 Uno de los proyectos del showcase es [Calendaris](https://calendaris-inky.vercel.app/), de Nicolás Soto. La idea parece simple: un calendario universitario. Pero esa simpleza es engañosa.
 
@@ -99,6 +99,6 @@ Esa fue otra idea que quise transmitirles. Independiente de si su carrera incluy
 
 ## La exposición de los proyectos a la comunidad
 
-Después del examen final, invitamos a seis proyectos a exponerse ante la comunidad en el [Showcase ExploraTech](/showcase/). En esa página dejamos una galería con capturas, enlaces y una descripción breve de cada demo.
+Después del examen final, invité a seis proyectos a exponerse ante la comunidad en el [Showcase ExploraTech](https://codexparatodos.com/showcase/), una feria tecnológica presencial dentro de la Universidad. Si sigues el enlace puedes revisar los proyectos en detalle.
 
 Vistos juntos, esos proyectos cuentan algo sobre el momento en que estamos. Un estudiante puede acercarse mucho más rápido a una primera versión funcional, pero el trabajo no desaparece. Hay que elegir mejores problemas, formular mejor, probar más y tener criterio para no aceptar cualquier salida del agente. Por eso la frase que más repetí durante el curso me sigue pareciendo útil: moverse a velocidad máquina, pero con criterio humano.
