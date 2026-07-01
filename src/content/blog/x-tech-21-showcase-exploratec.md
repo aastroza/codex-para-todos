@@ -1,11 +1,11 @@
 ---
 title: "Qué pasa cuando estudiantes de 14 carreras de pregrado construyen software con Codex"
 description: "Una reflexión sobre un curso donde estudiantes de distintas carreras usaron Codex para convertir problemas cotidianos en prototipos funcionales."
-pubDate: 2026-06-29T12:00:00-04:00
+pubDate: 2026-07-01T12:00:00-04:00
 featured: false
 ---
 
-XTECC21 se llama "Crea tu propio agente: automatiza tu día a día". Es un curso del programa [ExploraTech](https://exploratec.udd.cl/), de la Facultad de Ingeniería de la Universidad del Desarrollo, pero está abierto a estudiantes de todas las carreras del campus. Por eso en la sala había estudiantes de ingeniería, diseño, odontología, psicología, arquitectura, derecho, tecnología médica y otras áreas.
+Este semestre dicté XTECC21: "Crea tu propio agente: automatiza tu día a día". Es un curso del programa [ExploraTech](https://exploratec.udd.cl/), de la Facultad de Ingeniería de la Universidad del Desarrollo, pero está abierto a estudiantes de todas las carreras del campus. Por eso en la sala había estudiantes de ingeniería, diseño, odontología, psicología, arquitectura, derecho, tecnología médica y otras áreas.
 
 Hace dos o tres años que venimos haciendo cursos de inteligencia artificial generativa dentro de este programa. Esta versión fue distinta porque el foco estuvo en agentes.
 
@@ -15,9 +15,7 @@ La respuesta tiene que ver con una habilidad que hemos desarrollado durante déc
 
 Automatizar esas operaciones siempre fue posible. El problema era el costo. Había que saber programar, entender el sistema, escribir scripts, probarlos y mantenerlos. Con herramientas agénticas como Codex, esa frontera se mueve. El estudiante puede describir lo que quiere lograr y el agente programa lo necesario para acercarse a ese resultado.
 
-Durante el curso repetí una idea varias veces: nos movíamos a velocidad máquina, pero con criterio humano.
-
-Ese criterio era lo importante. Codex podía escribir código, crear interfaces, proponer estructuras de datos o ayudar a publicar una aplicación. El estudiante tenía que elegir el problema, acotar el alcance, probar el resultado y decidir si la solución tenía sentido.
+La mayoría de los estudiantes no tenía experiencia previa programando. Por eso el curso tenía que partir desde otro lugar. Antes de mirar archivos o decisiones técnicas, necesitaban aprender a formular, acotar, probar lo que Codex devolvía y decidir cuándo el resultado servía.
 
 ## Tres semanas para convertir una idea en software
 
@@ -25,7 +23,7 @@ El curso duró tres meses, con dos sesiones semanales. Hubo certámenes escritos
 
 En las últimas tres semanas les pedí que encontraran un problema que pudiera resolverse con una aplicación, un software o un agente. La consigna era amplia a propósito. Quería ver qué problemas aparecían cuando el punto de partida era la rutina de los propios estudiantes, no un enunciado diseñado por el profesor.
 
-Las clases de esas semanas fueron más cortas. Yo introducía una pieza técnica y después trabajábamos en los proyectos. Vimos lo básico de vibe coding, publicación con Vercel, login con Firebase y otras piezas necesarias para que las demos llegaran a buen puerto.
+Las clases de esas semanas fueron más cortas. Yo introducía una pieza técnica y después trabajábamos en los proyectos. Vimos lo básico de [vibe coding](https://en.wikipedia.org/wiki/Vibe_coding), publicación con [Vercel](https://vercel.com/) y login con [Firebase](https://firebase.google.com/), junto con otras piezas necesarias para que las demos llegaran a buen puerto.
 
 Lo más importante ocurrió en el acompañamiento. Cada estudiante tenía una necesidad distinta. Algunos necesitaban bajar una idea demasiado grande a una primera versión. Otros necesitaban entender por qué su app no guardaba datos. Otros querían conectar APIs, limpiar una interfaz, agregar autenticación o preparar una demo que no se cayera al presentarla.
 
@@ -75,7 +73,7 @@ Fit Me, de Diego Rivera y Valentina Castillo, fue quizá el proyecto más concep
 
 Me pareció brutal por una razón: mostraba que el software también puede ser privado, específico y pequeño. Nadie habría financiado una gran plataforma para resolver exactamente esa necesidad. Antes habría sido demasiado caro construir algo así para una sola persona. Con agentes, ese costo baja lo suficiente como para que valga la pena.
 
-Y está bien que sea privado. La ropa, el clima, la agenda y las preferencias personales no tienen por qué convertirse en una startup. Pueden convertirse en una automatización útil para alguien.
+Y está bien que sea privado. La ropa, el clima, la agenda y las preferencias personales no tienen por qué convertirse en una startup. Pueden convertirse en una automatización que le haga un poquito más feliz el día a alguien.
 
 <figure>
   <img src="/images/demo-screenshots/fit-me-02-propuesta-final.jpg" alt="Resultado visual de outfits semanales generados por Fit Me" />
@@ -93,9 +91,9 @@ RubricaCheck convierte rúbricas e instrucciones en una estructura más manejabl
 
 ## Enseñar mientras la herramienta cambia
 
-El mayor desafío del curso fue enseñar algo que se movía mientras lo enseñábamos.
+El mayor desafío del curso fue enseñar algo que se movía mucho mientras lo enseñábamos.
 
-La [app de Codex](https://openai.com/index/introducing-the-codex-app/) era muy reciente. Durante el curso cambió bastante. También vivimos un salto importante de modelo. Podría decirlo de forma general, pero el guiño importa: GPT-5.5 cambió radicalmente la manera en que trabajamos.
+La [app de Codex](https://openai.com/index/introducing-the-codex-app/) era muy reciente. Vivimos múltiples cambios de modelo y varias funcionalidades se transformaron radicalmente en el camino. Podría decirlo de forma general, pero el guiño importa: GPT-5.5 cambió la manera en que trabajamos.
 
 Eso hizo el curso más difícil y más entretenido. Había que ajustar ejemplos, expectativas y formas de trabajo sobre la marcha. A veces una instrucción que antes requería varios pasos empezaba a resolverse de manera más directa. Otras veces aparecían errores nuevos. Los estudiantes tuvieron que aprender en un ambiente inestable, parecido al ambiente laboral que van a encontrar.
 
@@ -103,6 +101,6 @@ Esa fue otra idea que quise transmitirles. Independiente de si su carrera incluy
 
 ## La exposición de los proyectos a la comunidad
 
-Después del examen final, invitamos a seis proyectos a exponerse ante la comunidad en el [Showcase ExploraTech](/showcase/). En esa página dejamos una galería con capturas, enlaces y una descripción breve de cada demo. La selección no buscaba ordenar a los estudiantes en un ranking. Me interesaba mostrar seis formas distintas de usar Codex: un calendario para una universidad concreta, un CRM para estudiantes, una herramienta de diseño, una app de finanzas personales, una automatización privada de vestuario y un asistente para entender rúbricas.
+Después del examen final, invitamos a seis proyectos a exponerse ante la comunidad en el [Showcase ExploraTech](/showcase/). En esa página dejamos una galería con capturas, enlaces y una descripción breve de cada demo.
 
-Vistos juntos, esos proyectos cuentan algo sobre el momento en que estamos. Un estudiante puede acercarse mucho más rápido a una primera versión funcional, pero el trabajo no desaparece. Hay que elegir mejores problemas, formular mejor, probar más y tener criterio para no aceptar cualquier salida del agente. Por eso la frase que más repetí durante el curso me sigue pareciendo útil: moverse a velocidad máquina, pero con criterio humano. Puedes revisar los proyectos seleccionados en el [Showcase ExploraTech](/showcase/).
+Vistos juntos, esos proyectos cuentan algo sobre el momento en que estamos. Un estudiante puede acercarse mucho más rápido a una primera versión funcional, pero el trabajo no desaparece. Hay que elegir mejores problemas, formular mejor, probar más y tener criterio para no aceptar cualquier salida del agente. Por eso la frase que más repetí durante el curso me sigue pareciendo útil: moverse a velocidad máquina, pero con criterio humano.
