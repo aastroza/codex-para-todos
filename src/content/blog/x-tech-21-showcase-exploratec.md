@@ -1,25 +1,15 @@
 ---
-title: "Qué pasa cuando estudiantes de 14 carreras construyen software con Codex"
-description: "Una reflexión sobre X-Tech 21, el curso de ExploraTech UDD donde estudiantes de distintas carreras usaron Codex para convertir problemas cotidianos en prototipos funcionales."
+title: "Qué pasa cuando estudiantes de 14 carreras de pregrado construyen software con Codex"
+description: "Una reflexión sobre un curso donde estudiantes de distintas carreras usaron Codex para convertir problemas cotidianos en prototipos funcionales."
 pubDate: 2026-06-29T12:00:00-04:00
 featured: false
 ---
 
-En el examen final de X-Tech 21, la definición de agente de IA importaba menos que la demo. Cada estudiante tenía que mostrar algo funcionando.
-
-Tenían que explicar un problema real, contar cómo lo habían abordado y hacer una demo en vivo frente a sus compañeros. Algunos habían construido aplicaciones web. Otros, automatizaciones personales. Otros, herramientas que se parecían a productos pequeños, pero que partían de una necesidad muy concreta de su vida universitaria.
-
-Ese fue el cierre formal del curso. El [Showcase ExploraTech](/showcase/) vino después. Seleccioné seis proyectos que me parecían buenos ejemplos del espíritu del curso. No armé un ranking. Hubo proyectos muy potentes que incluso conectaban con emprendimientos previos, como una empresa para vender verduras con conexión a proveedores. Preferí elegir proyectos que hubieran nacido completamente dentro de estas tres semanas finales.
-
-Me interesaba mostrar otra cosa: qué pasa cuando estudiantes de muchas carreras reciben una herramienta agéntica, poco tiempo y una pregunta abierta sobre su propio día a día.
-
-## Un curso sobre agentes
-
-X-Tech 21 se llama "Crea tu propio agente: automatiza tu día a día". Es un curso del programa ExploraTech, de la Facultad de Ingeniería de la Universidad del Desarrollo, pero está abierto a estudiantes de todas las carreras del campus. Por eso en la sala había estudiantes de ingeniería, diseño, odontología, psicología, arquitectura, derecho, tecnología médica y otras áreas.
+XTECC21 se llama "Crea tu propio agente: automatiza tu día a día". Es un curso del programa [ExploraTech](https://exploratec.udd.cl/), de la Facultad de Ingeniería de la Universidad del Desarrollo, pero está abierto a estudiantes de todas las carreras del campus. Por eso en la sala había estudiantes de ingeniería, diseño, odontología, psicología, arquitectura, derecho, tecnología médica y otras áreas.
 
 Hace dos o tres años que venimos haciendo cursos de inteligencia artificial generativa dentro de este programa. Esta versión fue distinta porque el foco estuvo en agentes.
 
-El curso partió con una introducción a la inteligencia artificial generativa y al uso de ChatGPT. Después pasamos a Codex. La pregunta era por qué necesitábamos una herramienta como esa si ya teníamos chatbots capaces de escribir, resumir y responder preguntas.
+El curso partió con una introducción a la inteligencia artificial generativa y al uso de [ChatGPT](https://chatgpt.com/). Después pasamos a [Codex](https://openai.com/codex/). La pregunta era por qué necesitábamos una herramienta como esa si ya teníamos chatbots capaces de escribir, resumir y responder preguntas.
 
 La respuesta tiene que ver con una habilidad que hemos desarrollado durante décadas: operar dispositivos computacionales. Abrimos programas, copiamos datos, llenamos formularios, renombramos archivos, revisamos planillas, subimos documentos, hacemos clic en menús y repetimos secuencias enteras de trabajo.
 
@@ -105,26 +95,14 @@ RubricaCheck convierte rúbricas e instrucciones en una estructura más manejabl
 
 El mayor desafío del curso fue enseñar algo que se movía mientras lo enseñábamos.
 
-Codex en Windows era muy reciente. Durante el curso cambió bastante. También vivimos un salto importante de modelo. Podría decirlo de forma general, pero el guiño importa: GPT-5.5 cambió radicalmente la manera en que trabajamos.
+La [app de Codex](https://openai.com/index/introducing-the-codex-app/) era muy reciente. Durante el curso cambió bastante. También vivimos un salto importante de modelo. Podría decirlo de forma general, pero el guiño importa: GPT-5.5 cambió radicalmente la manera en que trabajamos.
 
 Eso hizo el curso más difícil y más entretenido. Había que ajustar ejemplos, expectativas y formas de trabajo sobre la marcha. A veces una instrucción que antes requería varios pasos empezaba a resolverse de manera más directa. Otras veces aparecían errores nuevos. Los estudiantes tuvieron que aprender en un ambiente inestable, parecido al ambiente laboral que van a encontrar.
 
 Esa fue otra idea que quise transmitirles. Independiente de si su carrera incluye programar o no, necesitan acostumbrarse a desenvolverse en este nuevo entorno profesional. Un entorno donde parte del trabajo se delega a sistemas que leen, escriben, programan, prueban y operan. La ventaja no queda en saber apretar más botones. Queda en entender qué pedir, cómo evaluar lo que vuelve y cuándo intervenir.
 
-## Lo que me dejó el showcase
+## La exposición de los proyectos a la comunidad
 
-El [Showcase ExploraTech](/showcase/) fue posterior al examen final. Para mí funcionó como una segunda lectura del curso.
+Después del examen final, invitamos a seis proyectos a exponerse ante la comunidad en el [Showcase ExploraTech](/showcase/). En esa página dejamos una galería con capturas, enlaces y una descripción breve de cada demo. La selección no buscaba ordenar a los estudiantes en un ranking. Me interesaba mostrar seis formas distintas de usar Codex: un calendario para una universidad concreta, un CRM para estudiantes, una herramienta de diseño, una app de finanzas personales, una automatización privada de vestuario y un asistente para entender rúbricas.
 
-En el examen vimos demos, avances y problemas resueltos bajo presión. En el showcase pude mirar con más calma qué representaba cada proyecto. Calendaris hablaba de software situado en una institución. StudyBrain mostraba una app preparada para humanos y agentes. BriefLab mostraba gusto disciplinar. FinEx mostraba el paso de Excel a producto. Fit Me mostraba software íntimo y personal. RubricaCheck mostraba cómo una necesidad académica podía convertirse en flujo.
-
-Vistos juntos, los seis proyectos cuentan algo sobre el momento en que estamos. Durante mucho tiempo, construir software exigía pasar primero por la programación. Ese filtro sigue siendo importante para muchas cosas, pero ya no ordena todo el mapa. Ahora un estudiante puede acercarse mucho más rápido a una primera versión funcional.
-
-El trabajo cambia.
-
-Hay que elegir mejores problemas. Hay que formular mejor. Hay que probar más. Hay que tener criterio para no aceptar cualquier salida del agente. Hay que entender cuándo una demo está lista para mostrarse y cuándo solo parece lista.
-
-Por eso la frase que más repetí durante el curso me sigue pareciendo útil: moverse a velocidad máquina, pero con criterio humano.
-
-Eso es lo que espero que los estudiantes se lleven: una forma de trabajar que les va a importar en su desarrollo profesional, programen o no programen. El nuevo ambiente laboral no va a esperar a que todos se conviertan en ingenieros de software. Va a pedir que más personas sepan convertir problemas, contexto y juicio en sistemas que funcionen.
-
-Puedes revisar los seis proyectos seleccionados en el [Showcase ExploraTech](/showcase/).
+Vistos juntos, esos proyectos cuentan algo sobre el momento en que estamos. Un estudiante puede acercarse mucho más rápido a una primera versión funcional, pero el trabajo no desaparece. Hay que elegir mejores problemas, formular mejor, probar más y tener criterio para no aceptar cualquier salida del agente. Por eso la frase que más repetí durante el curso me sigue pareciendo útil: moverse a velocidad máquina, pero con criterio humano. Puedes revisar los proyectos seleccionados en el [Showcase ExploraTech](/showcase/).
