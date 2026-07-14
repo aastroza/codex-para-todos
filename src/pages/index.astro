@@ -8,6 +8,7 @@ const upcomingEventUrl =
   "https://postgrados.udd.cl/programas/jornada-codex-para-todos-sede-concepcion-245032/";
 const upcomingEventSlidesUrl =
   "https://docs.google.com/presentation/d/1esEyAWCHxbHnDHsX7yKopm6QFtEA-3ParRcFK-Sh6kw/edit?usp=sharing";
+const dataScienceEventUrl = "https://ingenieria.udd.cl/eventos/codex-para-data-science/";
 const upcomingEventImage = "/images/codex-event-concepcion-abstract.webp";
 const pastEventImage = "/images/codex-event-past-abstract.webp";
 const showcaseEventImage = "/images/codex-showcase-abstract.webp";
@@ -37,7 +38,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
 
     <section class="events-section upcoming-events-section" aria-labelledby="upcoming-events-title">
       <div class="container">
-        <h2 id="upcoming-events-title">Próximo encuentro</h2>
+        <h2 id="upcoming-events-title">Próximos eventos</h2>
         <div class="events-list" aria-label="Próximos encuentros de Codex para todos">
           <article class="event-card event-card-featured" aria-labelledby="upcoming-event-title">
             <a class="event-card-media" href={upcomingEventUrl} target="_blank" rel="noreferrer" aria-label="Ver la jornada Codex para todos en Concepción">
@@ -78,6 +79,44 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
             </div>
           </article>
 
+          <article class="event-card event-card-featured" aria-labelledby="data-science-event-title">
+            <a class="event-card-media" href={dataScienceEventUrl} target="_blank" rel="noreferrer" aria-label="Ver Codex para Data Science">
+              <img
+                src={upcomingEventImage}
+                alt="Imagen abstracta en tonos rosados y celestes para Codex para Data Science"
+                width="1200"
+                height="675"
+                loading="lazy"
+              />
+            </a>
+            <div class="event-card-body">
+              <h3 id="data-science-event-title">
+                <a href={dataScienceEventUrl} target="_blank" rel="noreferrer">Codex para Data Science</a>
+              </h3>
+              <dl class="event-card-meta">
+                <div>
+                  <dt>Fecha</dt>
+                  <dd>20 de julio de 2026</dd>
+                </div>
+                <div>
+                  <dt>Horario</dt>
+                  <dd>09:00 a 15:00 hrs.</dd>
+                </div>
+                <div>
+                  <dt>Lugar</dt>
+                  <dd>Auditorio AFP Cuprum, Edificio de Postgrado UDD, Las Condes</dd>
+                </div>
+              </dl>
+              <p>
+                Un taller práctico para explorar cómo Codex y los agentes de IA pueden apoyar flujos reales de Data Science.
+              </p>
+              <div class="event-card-actions" aria-label="Enlaces de Codex para Data Science">
+                <a href={dataScienceEventUrl} target="_blank" rel="noreferrer">Inscribirme</a>
+                <a href={dataScienceEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -114,6 +153,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 Una muestra de proyectos estudiantiles creados con Codex para resolver problemas reales.
               </p>
               <div class="event-card-actions" aria-label="Enlaces del showcase">
+                <a href="/blog/x-tech-21-showcase-exploratec/">Leer nota</a>
                 <a href="/showcase/">Ver evento</a>
               </div>
             </div>
