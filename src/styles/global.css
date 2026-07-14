@@ -288,12 +288,8 @@ p {
 
 .events-list {
   display: grid;
-  grid-template-columns: minmax(0, 500px);
-  gap: 24px;
-}
-
-.past-events-section .events-list {
   grid-template-columns: repeat(2, minmax(0, 500px));
+  gap: 24px;
 }
 
 .event-card {
