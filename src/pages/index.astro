@@ -4,11 +4,15 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 const lumaUrl = "https://luma.com/g1d4uxoi";
 const photosUrl = "https://photos.app.goo.gl/ziNiMck8oEBo4uxK7";
 const videoUrl = "https://youtube.com/shorts/PmifZOeo3jA";
-const upcomingEventUrl =
+const buildWeekEventUrl = "https://luma.com/siyf8e74";
+const dataScienceEventUrl =
+  "https://ingenieria.udd.cl/eventos/codex-para-data-science/";
+const concepcionEventUrl =
   "https://postgrados.udd.cl/programas/jornada-codex-para-todos-sede-concepcion-245032/";
+const concepcionPhotosUrl = "https://photos.app.goo.gl/fsLPWaY8yNhw23n57";
 const upcomingEventSlidesUrl =
   "https://docs.google.com/presentation/d/1esEyAWCHxbHnDHsX7yKopm6QFtEA-3ParRcFK-Sh6kw/edit?usp=sharing";
-const dataScienceEventUrl = "https://ingenieria.udd.cl/eventos/codex-para-data-science/";
+const showcasePostUrl = "/blog/x-tech-21-showcase-exploratec/";
 const upcomingEventImage = "/images/codex-event-concepcion-abstract.webp";
 const pastEventImage = "/images/codex-event-past-abstract.webp";
 const showcaseEventImage = "/images/codex-showcase-abstract.webp";
@@ -40,41 +44,40 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
       <div class="container">
         <h2 id="upcoming-events-title">Próximos eventos</h2>
         <div class="events-list" aria-label="Próximos encuentros de Codex para todos">
-          <article class="event-card event-card-featured" aria-labelledby="upcoming-event-title">
-            <a class="event-card-media" href={upcomingEventUrl} target="_blank" rel="noreferrer" aria-label="Ver la jornada Codex para todos en Concepción">
+          <article class="event-card event-card-featured" aria-labelledby="build-week-event-title">
+            <a class="event-card-media" href={buildWeekEventUrl} target="_blank" rel="noreferrer" aria-label="Ver OpenAI Build Week Community Event - Santiago">
               <img
                 src={upcomingEventImage}
-                alt="Imagen abstracta en tonos rosados y celestes para la Jornada Codex para Todos sede Concepción"
+                alt="Imagen abstracta en tonos rosados y celestes para OpenAI Build Week Community Event - Santiago"
                 width="1200"
                 height="675"
                 loading="eager"
               />
             </a>
             <div class="event-card-body">
-              <h3 id="upcoming-event-title">
-                <a href={upcomingEventUrl} target="_blank" rel="noreferrer">Jornada Codex para Todos sede Concepción</a>
+              <h3 id="build-week-event-title">
+                <a href={buildWeekEventUrl} target="_blank" rel="noreferrer">OpenAI Build Week Community Event - Santiago</a>
               </h3>
               <dl class="event-card-meta">
                 <div>
                   <dt>Fecha</dt>
-                  <dd>14 de julio de 2026</dd>
+                  <dd>21 de julio de 2026</dd>
                 </div>
                 <div>
                   <dt>Horario</dt>
-                  <dd>10:00 a 13:00 hrs.</dd>
+                  <dd>16:00 a 20:00 hrs.</dd>
                 </div>
                 <div>
                   <dt>Lugar</dt>
-                  <dd>Auditorio AU001, Campus Barros Arana, UDD Concepción</dd>
+                  <dd>Universidad del Desarrollo, Las Condes</dd>
                 </div>
               </dl>
               <p>
-                Un taller práctico para entender cómo la IA puede trabajar para ti. No necesitas saber programar.
+                Una tarde práctica para explorar cómo ChatGPT, Codex y los agentes de IA pueden ayudarte a trabajar, crear y construir mejor.
               </p>
-              <div class="event-card-actions" aria-label="Enlaces de la jornada en Concepción">
-                <a href={upcomingEventUrl} target="_blank" rel="noreferrer">Inscribirme</a>
-                <a href={upcomingEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
-                <a href={upcomingEventSlidesUrl} target="_blank" rel="noreferrer">Slides</a>
+              <div class="event-card-actions" aria-label="Enlaces de OpenAI Build Week Community Event - Santiago">
+                <a href={buildWeekEventUrl} target="_blank" rel="noreferrer">Inscribirme</a>
+                <a href={buildWeekEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
               </div>
             </div>
           </article>
@@ -125,6 +128,45 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
       <div class="container">
         <h2 id="past-events-title">Eventos pasados</h2>
         <div class="events-list" aria-label="Encuentros pasados de Codex para todos">
+          <article class="event-card" aria-labelledby="concepcion-event-title">
+            <a class="event-card-media" href={concepcionEventUrl} target="_blank" rel="noreferrer" aria-label="Ver la jornada Codex para todos en Concepción">
+              <img
+                src={upcomingEventImage}
+                alt="Imagen abstracta en tonos rosados y celestes para la Jornada Codex para Todos sede Concepción"
+                width="1200"
+                height="675"
+                loading="lazy"
+              />
+            </a>
+            <div class="event-card-body">
+              <h3 id="concepcion-event-title">
+                <a href={concepcionEventUrl} target="_blank" rel="noreferrer">Jornada Codex para Todos sede Concepción</a>
+              </h3>
+              <dl class="event-card-meta">
+                <div>
+                  <dt>Fecha</dt>
+                  <dd>14 de julio de 2026</dd>
+                </div>
+                <div>
+                  <dt>Horario</dt>
+                  <dd>10:00 a 13:00 hrs.</dd>
+                </div>
+                <div>
+                  <dt>Lugar</dt>
+                  <dd>Auditorio AU001, Campus Barros Arana, UDD Concepción</dd>
+                </div>
+              </dl>
+              <p>
+                Un taller práctico para entender cómo la IA puede trabajar para ti. No necesitas saber programar.
+              </p>
+              <div class="event-card-actions" aria-label="Enlaces de la jornada en Concepción">
+                <a href={concepcionEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
+                <a href={concepcionPhotosUrl} target="_blank" rel="noreferrer">Ver fotos</a>
+                <a href={upcomingEventSlidesUrl} target="_blank" rel="noreferrer">Slides</a>
+              </div>
+            </div>
+          </article>
+
           <article class="event-card" aria-labelledby="showcase-event-title">
             <a class="event-card-media" href="/showcase/" aria-label="Ver Showcase ExploraTec">
               <img
@@ -153,7 +195,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 Una muestra de proyectos estudiantiles creados con Codex para resolver problemas reales.
               </p>
               <div class="event-card-actions" aria-label="Enlaces del showcase">
-                <a href="/blog/x-tech-21-showcase-exploratec/">Leer nota</a>
+                <a href={showcasePostUrl}>Leer nota</a>
                 <a href="/showcase/">Ver evento</a>
               </div>
             </div>
