@@ -637,6 +637,7 @@ p {
 .post-page {
   max-width: var(--container);
   padding-top: clamp(52px, 7vw, 88px);
+  padding-bottom: clamp(68px, 7vw, 96px);
 }
 
 .back-link {
@@ -698,6 +699,7 @@ p {
 
 .post-community-section {
   background: var(--accent-wash);
+  padding: clamp(56px, 6vw, 80px) 0 clamp(68px, 7vw, 96px);
 }
 
 .post-community-panel {
