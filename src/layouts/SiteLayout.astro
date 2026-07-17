@@ -73,11 +73,8 @@ const navCopy = lang === "en"
     <link rel="alternate" type="application/rss+xml" title="Codex para todos" href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="theme-color" content="#f5f0e6" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#f7f7f5" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
@@ -97,57 +94,41 @@ const navCopy = lang === "en"
     <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Saltar al contenido</a>
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="/" aria-label="Codex para todos">
-          <span class="brand-mark" aria-hidden="true">
-            <img src="/logos/codex.png" alt="" width="32" height="32" />
-          </span>
-          <span class="brand-copy">
-            <strong>Codex</strong>
-            <span>para todos</span>
-          </span>
+          <img src="/logos/codex.png" alt="" width="32" height="32" />
+          <span>Codex para todos</span>
         </a>
         <nav class="site-nav" aria-label={navCopy.label}>
           <a href="/" aria-current={isHome ? "page" : undefined}>{navCopy.home}</a>
           <a href="/comunidad/" aria-current={Astro.url.pathname.startsWith("/comunidad") ? "page" : undefined}>{navCopy.community}</a>
           <a href="/blog/" aria-current={isBlog ? "page" : undefined}>{navCopy.blog}</a>
         </nav>
-        <a class="header-cta" href="/comunidad/">
-          <span>{lang === "en" ? "Join" : "Participar"}</span>
-          <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </header>
 
-    <div id="main-content">
-      <slot />
-    </div>
+    <slot />
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div class="footer-statement">
-          <p class="footer-kicker">Codex para todos</p>
-          <p>{lang === "en" ? "Learn the tools. Keep your judgment." : "Aprender las herramientas. Conservar el criterio."}</p>
-        </div>
-        <div class="footer-nav" aria-label={lang === "en" ? "Footer navigation" : "Navegación del pie"}>
-          <a href="/">{navCopy.home}</a>
-          <a href="/comunidad/">{navCopy.community}</a>
-          <a href="/blog/">{navCopy.blog}</a>
-          <a href="/rss.xml">RSS</a>
-        </div>
-        <div class="footer-partners">
-          <p class="footer-label">{navCopy.initiative}</p>
-          <div class="footer-logos">
-            <a href={dataScienceUrl} target="_blank" rel="noreferrer" aria-label={navCopy.dataScience}>
-              <img class="data-logo" src="/logos/data-science-udd-10-cropped.png" alt={navCopy.dataScienceAlt} loading="lazy" />
-            </a>
-            <a href={informaticaUrl} target="_blank" rel="noreferrer" aria-label={navCopy.informatica}>
-              <img class="informatica-logo" src="/logos/informatica-udd-cropped.png" alt={navCopy.informatica} loading="lazy" />
-            </a>
-          </div>
-        </div>
+        <p class="footer-label">{navCopy.initiative}</p>
+        <a href={dataScienceUrl} target="_blank" rel="noreferrer" aria-label={navCopy.dataScience}>
+          <img
+            class="data-logo"
+            src="/logos/data-science-udd-10-cropped.png"
+            alt={navCopy.dataScienceAlt}
+            loading="lazy"
+          />
+        </a>
+        <a href={informaticaUrl} target="_blank" rel="noreferrer" aria-label={navCopy.informatica}>
+          <img
+            class="informatica-logo"
+            src="/logos/informatica-udd-cropped.png"
+            alt={navCopy.informatica}
+            loading="lazy"
+          />
+        </a>
       </div>
     </footer>
   </body>
