@@ -9,6 +9,7 @@ const dataScienceEventUrl =
   "https://ingenieria.udd.cl/eventos/codex-para-data-science/";
 const concepcionEventUrl =
   "https://postgrados.udd.cl/programas/jornada-codex-para-todos-sede-concepcion-245032/";
+const concepcionPostUrl = "/blog/codex-para-todos-concepcion/";
 const concepcionPhotosUrl = "https://photos.app.goo.gl/fsLPWaY8yNhw23n57";
 const upcomingEventSlidesUrl =
   "https://docs.google.com/presentation/d/1esEyAWCHxbHnDHsX7yKopm6QFtEA-3ParRcFK-Sh6kw/edit?usp=sharing";
@@ -130,7 +131,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
         <h2 id="past-events-title">Eventos pasados</h2>
         <div class="events-list" aria-label="Encuentros pasados de Codex para todos">
           <article class="event-card" aria-labelledby="concepcion-event-title">
-            <a class="event-card-media" href={concepcionEventUrl} target="_blank" rel="noreferrer" aria-label="Ver la jornada Codex para todos en Concepción">
+            <a class="event-card-media" href={concepcionPostUrl} aria-label="Leer la nota de Codex para todos en Concepción">
               <img
                 src={concepcionEventImage}
                 alt="Asistentes de la Jornada Codex para Todos en Concepción durante la presentación"
@@ -141,7 +142,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
             </a>
             <div class="event-card-body">
               <h3 id="concepcion-event-title">
-                <a href={concepcionEventUrl} target="_blank" rel="noreferrer">Jornada Codex para Todos sede Concepción</a>
+                <a href={concepcionPostUrl}>Jornada Codex para Todos sede Concepción</a>
               </h3>
               <dl class="event-card-meta">
                 <div>
@@ -161,6 +162,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 Un taller práctico para entender cómo la IA puede trabajar para ti. No necesitas saber programar.
               </p>
               <div class="event-card-actions" aria-label="Enlaces de la jornada en Concepción">
+                <a href={concepcionPostUrl}>Leer nota</a>
                 <a href={concepcionEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
                 <a href={concepcionPhotosUrl} target="_blank" rel="noreferrer">Ver fotos</a>
                 <a href={upcomingEventSlidesUrl} target="_blank" rel="noreferrer">Slides</a>
