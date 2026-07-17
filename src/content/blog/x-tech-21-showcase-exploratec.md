@@ -11,9 +11,11 @@ El curso partió con una introducción a la inteligencia artificial generativa y
 
 La respuesta tiene que ver con una habilidad que hemos desarrollado durante décadas: operar dispositivos computacionales. Abrimos programas, copiamos datos, llenamos formularios, renombramos archivos, revisamos planillas, subimos documentos, hacemos clic en menús y repetimos secuencias enteras de trabajo.
 
-Automatizar esas operaciones siempre fue posible. El problema era el costo. Había que saber programar, entender el sistema, escribir scripts, probarlos y mantenerlos. Con herramientas agénticas como Codex, esa frontera se mueve. El estudiante puede describir lo que quiere lograr y el agente programa lo necesario para acercarse a ese resultado.
+Automatizar esas operaciones siempre fue posible. El problema era el costo. Había que saber programar, entender el sistema, escribir scripts, probarlos y mantenerlos. Con herramientas agénticas como Codex, esa frontera se mueve. El estudiante puede describir lo que quiere lograr y trabajar con el agente para construir una primera versión. Sigue necesitando entender el problema, probar el resultado y decidir qué debe corregirse.
 
-La mayoría de los estudiantes no tenía experiencia previa programando. Por eso el curso tenía que partir desde otro lugar. Antes de mirar archivos o decisiones técnicas, necesitaban aprender a formular, acotar, probar lo que Codex devolvía y decidir cuándo el resultado servía.
+La sala reunía estudiantes de 14 carreras y con distintos niveles de experiencia técnica. Por eso el curso tenía que partir desde un terreno común. Antes de mirar archivos o decisiones técnicas, necesitaban aprender a formular, acotar, probar lo que Codex devolvía y decidir cuándo el resultado servía.
+
+El objetivo del curso era aprender a prototipar y trabajar con agentes. Construir, comprender y mantener software profesional sigue requiriendo formación en programación y en las demás disciplinas de la informática.
 
 ## Tres semanas para convertir una idea en software
 
@@ -49,13 +51,13 @@ También hay una segunda capa: StudyBrain está pensado para humanos y agentes. 
   <figcaption>StudyBrain funciona como un sistema de gestión académica personal y además deja espacio para agentes conectados al flujo académico.</figcaption>
 </figure>
 
-[BriefLab](https://brief-lab.vercel.app), de Amelia Troncoso, es otro caso que me gusta mucho. Amelia viene de diseño, no de programación. Eso se nota para bien. La aplicación tiene gusto visual, cuidado y una idea clara: generar briefs ficticios para practicar diseño y construir portafolio sin depender de clientes reales.
+[BriefLab](https://brief-lab.vercel.app), de Amelia Troncoso, es otro caso que me gusta mucho. Amelia estudia Diseño. Eso se nota para bien. La aplicación tiene gusto visual, cuidado y una idea clara: generar briefs ficticios para practicar diseño y construir portafolio sin depender de clientes reales.
 
 Codex aporta parte de la ejecución técnica. Amelia aporta el criterio de diseño. Esa combinación es una de las mejores señales del curso. Cuando una herramienta agéntica baja el costo de construir, el gusto y el conocimiento de dominio pesan más.
 
 <figure>
   <img src="/images/demo-screenshots/brieflab-02-flujo.png" alt="Flujo de selección de área en BriefLab" />
-  <figcaption>BriefLab muestra algo que me interesa especialmente: una estudiante sin foco en programación usando Codex para materializar criterio de diseño.</figcaption>
+  <figcaption>BriefLab muestra algo que me interesa especialmente: una estudiante de Diseño usando Codex para materializar criterio de su propia disciplina.</figcaption>
 </figure>
 
 [FinEx](https://finex-public-frontend.vercel.app), de Sebastián Ramírez, aborda finanzas personales. Es un terreno donde ya existen muchas aplicaciones, pero el proyecto tiene una fuerza distinta porque nace de una práctica real. Sebastián venía ordenando finanzas en Excel y llevó esa lógica a una app con importación desde Gmail, clasificación de gastos y visualización de presupuesto.

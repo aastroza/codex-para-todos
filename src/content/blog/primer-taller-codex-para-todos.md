@@ -7,7 +7,7 @@ featured: true
 
 El 28 de mayo de 2026 nos juntamos en la Universidad del Desarrollo para el primer taller presencial de **Codex para todos**.
 
-La pregunta era simple: ¿qué puede hacer Codex por alguien que no programa?
+La pregunta era simple: ¿cómo puede Codex apoyar el trabajo de personas de distintas disciplinas?
 
 Acá puedes revisar el [álbum de fotos](https://photos.app.goo.gl/ziNiMck8oEBo4uxK7), ver un resumen breve del encuentro y más abajo las **slides que revisamos**.
 

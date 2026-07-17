@@ -6,7 +6,7 @@ featured: false
 ---
 
 
-El 28 de mayo nos juntamos en la Universidad del Desarrollo para el primer taller presencial de Codex para todos. Éramos 40 personas con una pregunta bastante simple: **¿qué puede hacer Codex por alguien que no programa?**
+El 28 de mayo nos juntamos en la Universidad del Desarrollo para el primer taller presencial de Codex para todos. Éramos 40 personas con una pregunta bastante simple: **¿cómo puede Codex apoyar el trabajo de personas de distintas disciplinas?**
 
 Este boletín nace para seguir esa conversación. Una forma de mirar qué está cambiando en el trabajo cotidiano de quienes escriben, investigan, ordenan datos, preparan informes, revisan documentos o coordinan equipos.
 

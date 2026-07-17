@@ -1,6 +1,6 @@
 # Codex para todos
 
-Landing page de la comunidad **Codex para todos**, creada para compartir recursos, encuentros y formas simples de aprender a trabajar con Codex sin ser programador.
+Landing page de la comunidad **Codex para todos**, creada para compartir recursos, encuentros y formas simples de aprender a trabajar con Codex desde distintas disciplinas y niveles de experiencia.
 
 ## Desarrollo
 
