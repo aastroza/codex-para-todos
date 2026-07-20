@@ -174,28 +174,63 @@
 .goal-command>span:first-child{font:700 12px/1 var(--mono);letter-spacing:.12em;color:var(--orange)}
 
 .inline-link{color:var(--blue);font-weight:750;text-decoration-thickness:2px;text-underline-offset:4px}
+
+/* === REFINAMIENTO DE SLIDES 13, 17, 19 Y 21 === */
+.problem-card .inline-link{color:#fff;text-decoration-color:var(--cyan);text-decoration-thickness:3px;text-underline-offset:5px}
+.problem-card .inline-link:hover{color:var(--cyan)}
+
+.eda-layout{display:grid;grid-template-rows:1fr auto;gap:26px;width:100%;align-items:stretch}
+.eda-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;align-items:stretch}
+.eda-track::before{content:"";position:absolute;left:7%;right:7%;top:49px;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--orange));z-index:-1}
+.eda-step{position:relative;display:flex;min-width:0;flex-direction:column;padding:26px 25px 29px;border:1px solid var(--line);border-top:6px solid var(--blue);background:#fff;box-shadow:0 12px 30px rgba(20,33,57,.07)}
+.eda-step span{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;color:#fff;background:var(--blue);font:700 17px/1 var(--mono)}
+.eda-step strong{margin-top:32px;font-size:28px;letter-spacing:-.025em}.eda-step p{margin-top:14px;color:var(--muted);font-size:18px;line-height:1.45}
+.eda-step.is-focus{border-color:var(--orange);border-top-color:var(--orange);background:var(--orange-pale);transform:translateY(-13px)}
+.eda-step.is-focus span{background:var(--orange)}
+.eda-payoff{padding:18px 26px;border-left:5px solid var(--cyan);background:#eaf7fb;color:var(--ink);font-size:24px;font-weight:650}.eda-payoff span{color:var(--blue);font-weight:800}
+
+.goal-rework .head h2{font-size:58px}.goal-rework .body{margin-top:30px;padding-bottom:38px}
+.goal-workflow{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;width:100%;align-items:stretch}
+.goal-sequence{padding:30px 34px;background:linear-gradient(150deg,#0a2341,#0d477d);color:#fff;box-shadow:0 18px 45px rgba(8,24,42,.18)}
+.goal-sequence-label,.done-contract>span{color:var(--cyan);font:700 12px/1 var(--mono);letter-spacing:.12em}
+.goal-stage{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start;padding:21px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.goal-stage:last-child{border-bottom:0}.goal-stage b{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.35);border-radius:50%;font:700 13px/1 var(--mono)}
+.goal-stage strong{font-size:25px}.goal-stage p{margin-top:5px;color:rgba(255,255,255,.68);font-size:17px;line-height:1.36}.goal-stage-final strong{color:var(--cyan)}
+.done-contract{padding:31px 34px;border:2px solid var(--orange);background:linear-gradient(145deg,#fff8ed,#fff)}
+.done-contract>span{color:var(--orange)}.done-contract h3{margin-top:17px;font-size:29px;line-height:1.14}
+.done-contract ul{margin-top:20px;list-style:none}.done-contract li{position:relative;margin:12px 0;padding:0 0 12px 31px;border-bottom:1px solid rgba(232,146,36,.25);font-size:17px;line-height:1.38}.done-contract li:last-child{border-bottom:0}.done-contract li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-weight:900}
+
+.reasoning-rework .body{margin-top:34px;padding-bottom:40px}.reasoning-map{display:grid;grid-template-rows:1fr auto;gap:22px;width:100%}
+.reasoning-track-new{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.reasoning-card-new{position:relative;padding:28px 30px;border:2px solid var(--line);background:#fff;box-shadow:0 10px 26px rgba(20,33,57,.05)}
+.reasoning-level{font:800 32px/1 var(--mono);color:var(--blue)}.reasoning-signal{display:inline-flex;margin-top:18px;padding:7px 10px;background:var(--cyan-pale);color:var(--blue);font:700 11px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.reasoning-card-new h3{margin-top:22px;font-size:29px}.reasoning-card-new p{margin-top:12px;color:var(--muted);font-size:18px;line-height:1.42}
+.reasoning-card-new.is-default{border:4px solid var(--blue);transform:translateY(-10px)}.reasoning-card-new.is-default::after{content:"RECOMENDADO";position:absolute;right:20px;top:18px;color:var(--blue);font:700 11px/1 var(--mono);letter-spacing:.09em}
+.reasoning-card-new.is-escalation{border-color:var(--orange)}.reasoning-card-new.is-escalation .reasoning-level{color:var(--orange)}.reasoning-card-new.is-escalation .reasoning-signal{color:#a95b00;background:var(--orange-pale)}
+.reasoning-rule-new{padding:17px 24px;text-align:center;color:var(--ink);background:#eaf7fb;border-left:5px solid var(--cyan);font-size:23px}.reasoning-rule-new strong{color:var(--blue)}
+
 </style>
 </head>
 <body>
   <div id="progress"></div>
   <div class="deck-viewport"><main class="deck-stage" id="stage">
-    <section class="slide active"><header class="head reveal"><h1 data-editable>Nos volvimos muy buenos<br>operando computadores</h1><p class="lead" data-editable>Durante décadas aprendimos a traducir preguntas en instrucciones que una máquina pudiera ejecutar.</p></header><div class="body timeline-image reveal"><img src="/images/taller-ds/evolucion.PNG" alt="Evolución de los computadores: mainframe, computador personal, web y teléfono móvil"></div><span class="n">01</span></section>
+    <section class="slide active"><header class="head reveal"><h1 data-editable>Nos volvimos muy buenos<br>operando computadores</h1><p class="lead" data-editable>Durante décadas aprendimos a traducir preguntas en instrucciones que una máquina pudiera ejecutar.</p></header><div class="body timeline-image reveal"><img src="/images/taller-ds/evolucion.PNG" alt="Evolución de los computadores: mainframe, computador personal, web y teléfono móvil"></div><span class="n">1</span></section>
 
-    <section class="slide"><header class="head reveal"><h2 data-editable>Pero siempre quisimos que hicieran <span class="accent">más</span> por nosotros</h2><p class="lead" data-editable>No solo ejecutar una instrucción: reunir contexto, tomar decisiones y producir un resultado útil.</p></header><div class="body wish"><div class="inputs reveal"><div class="chip"><b>D</b>datos + esquema</div><div class="chip"><b>Q</b>pregunta de negocio</div><div class="chip"><b>C</b>código existente</div><div class="chip"><b>R</b>restricciones</div></div><div class="agent reveal"><span>trabajo<br>coordinado</span></div><div class="result reveal"><strong data-editable>Resultado verificable</strong><p data-editable>Un análisis reproducible, con código, evidencia y una salida lista para revisar.</p></div></div><span class="n">02</span></section>
+    <section class="slide"><header class="head reveal"><h2 data-editable>Pero siempre quisimos que hicieran <span class="accent">más</span> por nosotros</h2><p class="lead" data-editable>No solo ejecutar una instrucción: reunir contexto, tomar decisiones y producir un resultado útil.</p></header><div class="body wish"><div class="inputs reveal"><div class="chip"><b>D</b>datos + esquema</div><div class="chip"><b>Q</b>pregunta de negocio</div><div class="chip"><b>C</b>código existente</div><div class="chip"><b>R</b>restricciones</div></div><div class="agent reveal"><span>trabajo<br>coordinado</span></div><div class="result reveal"><strong data-editable>Resultado verificable</strong><p data-editable>Un análisis reproducible, con código, evidencia y una salida lista para revisar.</p></div></div><span class="n">2</span></section>
 
-    <section class="slide"><div class="body center-statement"><div class="center-copy reveal"><p data-editable><strong>La automatización se llama software.</strong></p><p data-editable>El muro era el costo de programar.</p><p class="small" data-editable>Muchos análisis eran valiosos, pero demasiado pequeños o cambiantes para justificar un proyecto de software.</p></div></div><span class="n">03</span></section>
+    <section class="slide"><div class="body center-statement"><div class="center-copy reveal"><p data-editable><strong>La automatización se llama software.</strong></p><p data-editable>El muro era el costo de programar.</p><p class="small" data-editable>Muchos análisis eran valiosos, pero demasiado pequeños o cambiantes para justificar un proyecto de software.</p></div></div><span class="n">3</span></section>
 
-    <section class="slide"><div class="body center-statement"><div class="center-copy reveal"><p data-editable><strong>La automatización siempre fue posible.</strong></p><p data-editable>Simplemente no era accesible para cada problema.</p><p class="small" data-editable><strong class="accent">Hasta ahora.</strong> Los agentes reducen el costo de crear código.</p></div></div><span class="n">04</span></section>
+    <section class="slide"><div class="body center-statement"><div class="center-copy reveal"><p data-editable><strong>La automatización siempre fue posible.</strong></p><p data-editable>Simplemente no era accesible para cada problema.</p><p class="small" data-editable><strong class="accent">Hasta ahora.</strong> Los agentes reducen el costo de crear código.</p></div></div><span class="n">4</span></section>
 
-    <section class="slide"><header class="head reveal"><h2 data-editable>Un agente trabaja por pasos</h2><p class="lead" data-editable>No solo responde: recibe un objetivo, reúne contexto, usa herramientas, actúa y revisa lo ocurrido.</p></header><div class="body track"><div class="step reveal" data-editable>Objetivo</div><div class="step reveal" data-editable>Contexto</div><div class="step reveal" data-editable>Herramientas</div><div class="step reveal" data-editable>Acción</div><div class="step reveal" data-editable>Revisión</div><p class="loop">observar → corregir → volver a intentar</p></div><span class="n">05</span></section>
+    <section class="slide"><header class="head reveal"><h2 data-editable>Un agente trabaja por pasos</h2><p class="lead" data-editable>No solo responde: recibe un objetivo, reúne contexto, usa herramientas, actúa y revisa lo ocurrido.</p></header><div class="body track"><div class="step reveal" data-editable>Objetivo</div><div class="step reveal" data-editable>Contexto</div><div class="step reveal" data-editable>Herramientas</div><div class="step reveal" data-editable>Acción</div><div class="step reveal" data-editable>Revisión</div><p class="loop">observar → corregir → volver a intentar</p></div><span class="n">5</span></section>
 
-    <section class="slide"><header class="head reveal"><h2 data-editable>Un buen agente se parece a un colega confiable</h2><p class="lead" data-editable>Avanza con autonomía, pero sabe reconocer incertidumbre, riesgo y límites.</p></header><div class="body cards"><article class="card reveal"><span class="badge">01</span><h3 data-editable>Destraba el trabajo</h3><p data-editable>Cuando un camino falla, busca evidencia y prueba una alternativa.</p><ul><li data-editable>Explora enfoques distintos</li><li data-editable>Contrasta hipótesis</li><li data-editable>Refina el plan</li></ul></article><article class="card reveal"><span class="badge">02</span><h3 data-editable>Escala con criterio</h3><p data-editable>No oculta lo incierto ni toma decisiones sensibles por su cuenta.</p><ul><li data-editable>Expone riesgos y supuestos</li><li data-editable>Pide contexto cuando importa</li><li data-editable>Devuelve el juicio a la persona</li></ul></article><article class="card reveal"><span class="badge">03</span><h3 data-editable>Deja evidencia</h3><p data-editable>Entrega resultados que otra persona puede inspeccionar y repetir.</p><ul><li data-editable>Guarda código y artefactos</li><li data-editable>Resume qué cambió</li><li data-editable>Propone el siguiente paso</li></ul></article></div><p class="source">Secuencia inspirada en <strong>Codex for Everyone — Introductory Workshop</strong>, Gabriel Chua (mayo de 2026).</p><span class="n">06</span></section>
+    <section class="slide"><header class="head reveal"><h2 data-editable>Un buen agente se parece a un colega confiable</h2><p class="lead" data-editable>Avanza con autonomía, pero sabe reconocer incertidumbre, riesgo y límites.</p></header><div class="body cards"><article class="card reveal"><span class="badge">01</span><h3 data-editable>Destraba el trabajo</h3><p data-editable>Cuando un camino falla, busca evidencia y prueba una alternativa.</p><ul><li data-editable>Explora enfoques distintos</li><li data-editable>Contrasta hipótesis</li><li data-editable>Refina el plan</li></ul></article><article class="card reveal"><span class="badge">02</span><h3 data-editable>Escala con criterio</h3><p data-editable>No oculta lo incierto ni toma decisiones sensibles por su cuenta.</p><ul><li data-editable>Expone riesgos y supuestos</li><li data-editable>Pide contexto cuando importa</li><li data-editable>Devuelve el juicio a la persona</li></ul></article><article class="card reveal"><span class="badge">03</span><h3 data-editable>Deja evidencia</h3><p data-editable>Entrega resultados que otra persona puede inspeccionar y repetir.</p><ul><li data-editable>Guarda código y artefactos</li><li data-editable>Resume qué cambió</li><li data-editable>Propone el siguiente paso</li></ul></article></div><p class="source">Secuencia inspirada en <strong>Codex for Everyone — Introductory Workshop</strong>, Gabriel Chua (mayo de 2026).</p><span class="n">6</span></section>
 
-    <section class="slide"><header class="head reveal"><h2 data-editable>Tres decisiones determinan cómo trabajará Codex</h2></header><div class="body cpf"><article class="context reveal"><h3 data-editable>1. Contexto</h3><ul><li><code>Q</code><span data-editable>¿Qué pregunta estamos intentando responder?</span></li><li><code>F</code><span data-editable>¿Qué archivos, datos y documentación son relevantes?</span></li><li><code>A</code><span data-editable>¿A qué herramientas y servicios puede acceder?</span></li></ul></article><div class="settings"><article class="setting reveal"><h3 data-editable>2. Permisos</h3><p data-editable>Qué acciones puede ejecutar por su cuenta y cuáles requieren aprobación.</p><code>perfil de seguridad</code></article><article class="setting reveal"><h3 data-editable>3. Esfuerzo</h3><p data-editable>Cuánto razonamiento conviene invertir según dificultad y riesgo.</p><code>profundidad adecuada</code></article></div></div><p class="source">Adaptado para Data Science a partir de <strong>Codex for Everyone — Introductory Workshop</strong>, Gabriel Chua (mayo de 2026).</p><span class="n">07</span></section>
+    <section class="slide"><header class="head reveal"><h2 data-editable>Tres decisiones determinan cómo trabajará Codex</h2></header><div class="body cpf"><article class="context reveal"><h3 data-editable>1. Contexto</h3><ul><li><code>Q</code><span data-editable>¿Qué pregunta estamos intentando responder?</span></li><li><code>F</code><span data-editable>¿Qué archivos, datos y documentación son relevantes?</span></li><li><code>A</code><span data-editable>¿A qué herramientas y servicios puede acceder?</span></li></ul></article><div class="settings"><article class="setting reveal"><h3 data-editable>2. Permisos</h3><p data-editable>Qué acciones puede ejecutar por su cuenta y cuáles requieren aprobación.</p><code>perfil de seguridad</code></article><article class="setting reveal"><h3 data-editable>3. Esfuerzo</h3><p data-editable>Cuánto razonamiento conviene invertir según dificultad y riesgo.</p><code>profundidad adecuada</code></article></div></div><p class="source">Adaptado para Data Science a partir de <strong>Codex for Everyone — Introductory Workshop</strong>, Gabriel Chua (mayo de 2026).</p><span class="n">7</span></section>
 
-    <section class="slide"><header class="head reveal"><h2 data-editable>Conectores: acceso a datos, herramientas y contexto externo</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>El agente puede trabajar más allá del repositorio cuando necesita consultar otros sistemas.</p><ul><li data-editable>Leer documentación, tickets y archivos</li><li data-editable>Consultar fuentes autorizadas</li><li data-editable>Conectar el análisis con el flujo real</li></ul></div><div class="feature-shot reveal"><img src="/images/taller-ds/plugins.PNG" alt="Pantalla de conectores de Codex"></div></div><span class="n">08</span></section>
+    <section class="slide"><header class="head reveal"><h2 data-editable>Conectores: acceso a datos, herramientas y contexto externo</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>El agente puede trabajar más allá del repositorio cuando necesita consultar otros sistemas.</p><ul><li data-editable>Leer documentación, tickets y archivos</li><li data-editable>Consultar fuentes autorizadas</li><li data-editable>Conectar el análisis con el flujo real</li></ul></div><div class="feature-shot reveal"><img src="/images/taller-ds/plugins.PNG" alt="Pantalla de conectores de Codex"></div></div><span class="n">8</span></section>
 
-    <section class="slide"><header class="head reveal"><h2 data-editable>Codex puede usar el navegador para completar el flujo</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>No todo vive en una API o un archivo. Algunas tareas requieren observar e interactuar con una interfaz.</p><ul><li data-editable>Navegar aplicaciones y documentación</li><li data-editable>Capturar evidencia visual</li><li data-editable>Verificar el resultado en contexto</li></ul></div><div class="feature-shot reveal"><img src="/images/taller-ds/computer-use.PNG" alt="Codex controlando el navegador"></div></div><span class="n">09</span></section>
+    <section class="slide"><header class="head reveal"><h2 data-editable>Codex puede usar el navegador para completar el flujo</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>No todo vive en una API o un archivo. Algunas tareas requieren observar e interactuar con una interfaz.</p><ul><li data-editable>Navegar aplicaciones y documentación</li><li data-editable>Capturar evidencia visual</li><li data-editable>Verificar el resultado en contexto</li></ul></div><div class="feature-shot reveal"><img src="/images/taller-ds/computer-use.PNG" alt="Codex controlando el navegador"></div></div><span class="n">9</span></section>
 
     <section class="slide"><header class="head reveal"><h2 data-editable>Codex convierte el trabajo en artefactos concretos</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>El resultado no tiene que ser una respuesta en el chat. Puede ser código ejecutable y todo lo que nace de él.</p><div class="artifacts"><div class="artifact"><code>.py / .sql</code><strong data-editable>Código y consultas</strong></div><div class="artifact"><code>.ipynb</code><strong data-editable>Notebooks</strong></div><div class="artifact"><code>tests/</code><strong data-editable>Pruebas</strong></div><div class="artifact"><code>pipeline</code><strong data-editable>Procesos de datos</strong></div><div class="artifact"><code>app</code><strong data-editable>Interfaces y apps</strong></div><div class="artifact"><code>report</code><strong data-editable>Gráficos e informes</strong></div></div></div><div class="feature-shot reveal"><img src="/images/taller-ds/artifacts.PNG" alt="Creación de artefactos en Codex"></div></div><span class="n">10</span></section>
 
@@ -215,15 +250,12 @@
 </section>
 
 <!-- 14 · Reglas que convierten el ejercicio en ciencia -->
-<section class="slide">
-  <header class="head reveal"><h2>Lo difícil no es entrenar. Es construir evidencia confiable.</h2><p class="lead">Estas cuatro reglas impiden que el ejercicio se convierta en una demo engañosa.</p></header>
-  <div class="body science-grid"><article class="science-rule reveal"><code>TEST</code><h3>Congelado desde el inicio</h3><p>No se usa para elegir clases, prompts, modelos, hiperparámetros ni umbrales.</p></article><article class="science-rule reveal"><code>DATA</code><h3>Procedencia preservada</h3><p>Cada ejemplo derivado conserva fuente, split e identificador.</p></article><article class="science-rule reveal"><code>METRIC</code><h3>Calidad por clase</h3><p>Macro-F1 y errores por intención, no solamente accuracy.</p></article><article class="science-rule reveal"><code>ABSTAIN</code><h3>Incertidumbre explícita</h3><p>Estudiamos confianza, cobertura y errores para decidir cuándo escalar.</p></article></div><span class="n">14</span>
-</section>
+
 
 <!-- 15 · Primera tarea -->
 <section class="slide">
   <header class="head reveal"><h2>La primera tarea no es implementar</h2></header>
-  <div class="body prompt-layout"><p class="prompt-lead reveal">Primero necesitamos un <strong>contrato experimental</strong> que podamos revisar.</p><article class="prompt-card reveal"><p>Inspecciona <strong>PROBLEMA.md</strong> y <strong>AGENTS.md</strong>. Reformula el problema, identifica las decisiones científicas abiertas y propón un plan por etapas. <strong>No implementes todavía.</strong></p></article></div><span class="n">15</span>
+  <div class="body prompt-layout"><p class="prompt-lead reveal">Primero necesitamos un <strong>contrato experimental</strong> que podamos revisar.</p><article class="prompt-card reveal"><p>Inspecciona <strong>PROBLEMA.md</strong> y <strong>AGENTS.md</strong>. Reformula el problema, identifica las decisiones científicas abiertas y propón un plan por etapas. <strong>No implementes todavía.</strong></p></article></div><span class="n">14</span>
 </section>
 
 <!-- 16 · Mapa de demostraciones -->
@@ -233,96 +265,99 @@
     <article class="demo-card reveal"><span>DEMO 01</span><h3>EDA visual como micrositio</h3><p>Codex perfila los datos y convierte los hallazgos en una página navegable, reproducible y fácil de discutir.</p><small>Datos → preguntas → visualizaciones → artefacto web</small></article>
     <article class="demo-card reveal"><span>DEMO 02</span><h3>Un agente propone; otro critica</h3><p>Separar formulación y auditoría ayuda a descubrir leakage, supuestos débiles y evidencia insuficiente.</p><small>Constructor → evidencia → revisor independiente</small></article>
     <article class="demo-card reveal"><span>DEMO 03</span><h3>Una herramienta de anotación con set_goal</h3><p>Primero aclaramos el contrato; luego Codex persigue un goal durable hasta entregar una interfaz verificable.</p><small>Incertidumbre → revisión humana → nuevas etiquetas</small></article>
-  </div><span class="n">16</span>
+  </div><span class="n">15</span>
 </section>
 
 <!-- 17 · Demo de EDA visual -->
-<section class="slide">
+<section class="slide eda-slide">
   <header class="head reveal"><h2>Demo 01: del EDA a una página que se puede explorar</h2><p class="lead">No queremos una colección de gráficos sueltos: queremos una historia visual con procedencia y una ruta de reproducción.</p></header>
-  <div class="body artifact-flow">
-    <div class="artifact-step reveal"><span>01</span><strong>Perfilar</strong><p>Clases, idioma, longitud, duplicados y valores faltantes.</p></div><div class="flow-arrow">→</div>
-    <div class="artifact-step reveal"><span>02</span><strong>Preguntar</strong><p>¿Qué explica la dificultad? ¿Dónde está el desbalance?</p></div><div class="flow-arrow">→</div>
-    <div class="artifact-step reveal"><span>03</span><strong>Visualizar</strong><p>Distribuciones, ejemplos, filtros y comparaciones útiles.</p></div><div class="flow-arrow">→</div>
-    <div class="artifact-step reveal"><span>04</span><strong>Publicar</strong><p>HTML autocontenido con supuestos, fuentes y fecha de corte.</p></div><div class="flow-arrow">→</div>
-    <div class="artifact-step reveal"><span>05</span><strong>Reproducir</strong><p>Script, ambiente y comando para regenerar el sitio.</p></div>
-  </div><p class="artifact-footer reveal">El análisis encuentra patrones. El micrositio permite interrogarlos.</p><span class="n">17</span>
+  <div class="body eda-layout">
+    <div class="eda-track">
+      <article class="eda-step reveal"><span>01</span><strong>Perfilar</strong><p>Clases, idioma, longitud, duplicados y valores faltantes.</p></article>
+      <article class="eda-step reveal"><span>02</span><strong>Preguntar</strong><p>¿Qué explica la dificultad? ¿Dónde está el desbalance?</p></article>
+      <article class="eda-step reveal is-focus"><span>03</span><strong>Visualizar</strong><p>Distribuciones, ejemplos, filtros y comparaciones útiles.</p></article>
+      <article class="eda-step reveal"><span>04</span><strong>Publicar</strong><p>HTML autocontenido con supuestos, fuentes y fecha de corte.</p></article>
+      <article class="eda-step reveal"><span>05</span><strong>Reproducir</strong><p>Script, ambiente y comando para regenerar el sitio.</p></article>
+    </div>
+    <p class="eda-payoff reveal"><span>EDA</span> encuentra patrones. <span>El micrositio</span> permite interrogarlos.</p>
+  </div><span class="n">16</span>
 </section>
 
 <!-- 18 · Demo de revisor -->
 <section class="slide">
   <header class="head reveal"><h2>Demo 02: el segundo agente no mejora el modelo; intenta romperlo</h2></header>
-  <div class="body review-grid"><article class="review-panel builder reveal"><h3>Agente constructor</h3><p>Implementa una etapa acotada del plan.</p><ul><li>Documenta supuestos</li><li>Registra configuración y resultados</li><li>Ejecuta pruebas proporcionales</li></ul></article><div class="review-arrow reveal">→</div><article class="review-panel reviewer reveal"><h3>Agente revisor</h3><p>Recibe el contrato y busca evidencia que lo contradiga.</p><ul><li>Leakage y test contaminado</li><li>Procedencia o splits rotos</li><li>Métricas insuficientes por clase</li><li>Confianza mal interpretada</li></ul></article></div><span class="n">18</span>
+  <div class="body review-grid"><article class="review-panel builder reveal"><h3>Agente constructor</h3><p>Implementa una etapa acotada del plan.</p><ul><li>Documenta supuestos</li><li>Registra configuración y resultados</li><li>Ejecuta pruebas proporcionales</li></ul></article><div class="review-arrow reveal">→</div><article class="review-panel reviewer reveal"><h3>Agente revisor</h3><p>Recibe el contrato y busca evidencia que lo contradiga.</p><ul><li>Leakage y test contaminado</li><li>Procedencia o splits rotos</li><li>Métricas insuficientes por clase</li><li>Confianza mal interpretada</li></ul></article></div><span class="n">17</span>
 </section>
 
 <!-- 19 · Demo set_goal y anotación -->
-<section class="slide goal-slide">
-  <header class="head reveal"><h2>Demo 03: investigar primero; formular set_goal después</h2><p class="lead">El pedido inicial no es el goal. Codex debe inspeccionar el repositorio, descubrir ambigüedades y redactar un contrato verificable.</p></header>
-  <div class="body goal-layout">
-    <div class="goal-command reveal"><span>ANTES DE SET_GOAL</span><p>Explora datos y código. Identifica decisiones abiertas. Pregunta lo necesario. Propón alcance, entregables y criterios de aceptación.</p><span class="goal-arrow">↓</span><code>/goal Construir una herramienta de anotación para revisar tickets inciertos…</code></div>
-    <div class="goal-stops reveal"><h3>El goal queda “terminado” cuando…</h3><ul><li>La interfaz muestra texto, predicción y confianza.</li><li>La persona puede aceptar, corregir o escalar.</li><li>Cada decisión queda registrada con procedencia.</li><li>Hay pruebas, instrucciones y un flujo reproducible.</li></ul></div>
-  </div><p class="source">Patrón inspirado por Vaibhav Srivastav (T14–T15) y respaldado por la guía oficial <a href="https://learn.chatgpt.com/use-cases/follow-goals" target="_blank" rel="noreferrer">Follow a goal ↗</a></p><span class="n">19</span>
+<section class="slide goal-rework">
+  <header class="head reveal"><h2>Demo 03: investigar primero; formular set_goal después</h2><p class="lead">El pedido inicial no es el goal. Codex inspecciona, aclara y recién entonces redacta un contrato verificable.</p></header>
+  <div class="body goal-workflow">
+    <div class="goal-sequence reveal">
+      <div class="goal-sequence-label">ANTES DE SET_GOAL</div>
+      <div class="goal-stage"><b>01</b><div><strong>Explorar</strong><p>Datos, código, restricciones y decisiones abiertas.</p></div></div>
+      <div class="goal-stage"><b>02</b><div><strong>Aclarar</strong><p>Preguntar lo necesario y acordar entregables.</p></div></div>
+      <div class="goal-stage goal-stage-final"><b>03</b><div><strong>Formular set_goal</strong><p>Construir una herramienta de anotación para revisar tickets inciertos.</p></div></div>
+    </div>
+    <div class="done-contract reveal"><span>DEFINICIÓN DE “TERMINADO”</span><h3>La herramienta deja evidencia humana utilizable</h3><ul><li>Muestra texto, predicción y confianza.</li><li>Permite aceptar, corregir o escalar.</li><li>Registra cada decisión con procedencia.</li><li>Incluye pruebas y una ruta reproducible.</li></ul></div>
+  </div><p class="source">Patrón inspirado por Vaibhav Srivastav (T14–T15) y respaldado por la guía oficial <a href="https://learn.chatgpt.com/use-cases/follow-goals" target="_blank" rel="noreferrer">Follow a goal ↗</a></p><span class="n">18</span>
 </section>
 
 <!-- 20 · Modelos -->
 <section class="slide">
   <header class="head reveal"><h2>Modelo: elegir por rol, no por ansiedad</h2><p class="lead">La ruta base funciona con el modelo disponible. Si tienes selector, asigna capacidad donde cambia el resultado.</p></header>
   <div class="body model-grid"><article class="model-card reveal"><h3>Luna</h3><span class="role">HACE</span><p>Lotes claros, extracción, limpieza repetible y trabajo de alto volumen.</p><strong>Rápida y económica cuando la tarea está bien especificada.</strong></article><article class="model-card reveal"><h3>Terra</h3><span class="role">RESUELVE</span><p>EDA, SQL, notebooks, documentación y trabajo cotidiano con herramientas.</p><strong>El equilibrio recomendado para la mayor parte del taller.</strong></article><article class="model-card reveal"><h3>Sol</h3><span class="role">DECIDE Y REVISA</span><p>Diseño experimental, decisiones ambiguas, auditoría metodológica y revisión final.</p><strong>Úsala donde el juicio sea más caro que el cómputo.</strong></article><div class="plan-note"><span><b>Free:</b> suficiente para explorar tareas breves.</span><span><b>Plus:</b> incorpora la familia Sol, Terra y Luna y sesiones más sostenidas.</span></div></div>
-  <p class="source"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Modelos</a> · <a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noreferrer">planes y uso</a></p><span class="n">20</span>
+  <p class="source"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Modelos</a> · <a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noreferrer">planes y uso</a></p><span class="n">19</span>
 </section>
 
 <!-- 21 · Reasoning -->
-<section class="slide">
+<section class="slide reasoning-rework">
   <header class="head reveal"><h2>Reasoning: usa el menor nivel que pase la evaluación</h2></header>
-  <div class="body reasoning-ladder"><article class="reasoning-step reveal"><code>LOW</code><h3>Tarea determinista</h3><p>Renombrar, extraer, transformar o ejecutar un procedimiento ya definido.</p></article><article class="reasoning-step reveal"><code>MEDIUM</code><h3>Valor predeterminado</h3><p>Trabajo no trivial con herramientas, análisis y decisiones locales.</p></article><article class="reasoning-step reveal"><code>HIGH</code><h3>Cuando una prueba falla</h3><p>Razonamiento metodológico, edge cases, debugging complejo o revisión crítica.</p></article><p class="reasoning-rule">Empieza en medium. Sube después de observar un fallo, no antes.</p></div>
-  <p class="source"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Guía oficial de modelos y reasoning ↗</a></p><span class="n">21</span>
+  <div class="body reasoning-map">
+    <div class="reasoning-track-new">
+      <article class="reasoning-card-new reveal"><div class="reasoning-level">LOW</div><span class="reasoning-signal">Tarea determinista</span><h3>Ejecutar lo definido</h3><p>Renombrar, extraer, transformar o seguir un procedimiento estable.</p></article>
+      <article class="reasoning-card-new is-default reveal"><div class="reasoning-level">MEDIUM</div><span class="reasoning-signal">Punto de partida</span><h3>Resolver el trabajo cotidiano</h3><p>Análisis no trivial, herramientas y decisiones locales.</p></article>
+      <article class="reasoning-card-new is-escalation reveal"><div class="reasoning-level">HIGH</div><span class="reasoning-signal">Una evaluación falló</span><h3>Escalar con evidencia</h3><p>Metodología, edge cases, debugging complejo o revisión crítica.</p></article>
+    </div>
+    <p class="reasoning-rule-new reveal"><strong>Empieza en medium.</strong> Sube después de observar un fallo, no antes.</p>
+  </div><p class="source"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Guía oficial de modelos y reasoning ↗</a></p><span class="n">20</span>
 </section>
 
 <!-- 22 · Presupuesto de uso -->
-<section class="slide">
-  <header class="head reveal"><h2>Presupuesta el trabajo por etapas, no por conversación</h2></header>
-  <div class="body budget-grid"><article class="budget-card reveal"><span class="budget-index">01 · ACOTAR</span><h3>Contexto pequeño</h3><p>Entrega solo archivos, columnas, periodos y reglas relevantes.</p><ul><li>Un thread por línea de análisis</li><li>Resúmenes compactos entre etapas</li></ul></article><article class="budget-card reveal"><span class="budget-index">02 · EJECUTAR</span><h3>Muestra antes del lote</h3><p>Compara calidad y consumo en una muestra representativa.</p><ul><li>Reutiliza perfiles y diccionarios</li><li>Evita repetir búsquedas</li></ul></article><article class="budget-card reveal"><span class="budget-index">03 · DETENER</span><h3>Condición de parada</h3><p>No sigas “mejorando” sin una métrica que justifique otra iteración.</p><ul><li>Presupuesto por checkpoint</li><li>Escala reasoning solo con evidencia</li></ul></article></div><span class="n">22</span>
-</section>
+
 
 <!-- 23 · Inicio del bloque práctico -->
 <section class="slide chapter">
-  <div class="chapter-inner reveal"><div class="chapter-index">03</div><div><h2>Manos a la obra</h2><p>Cada persona avanza a su ritmo. Nos reencontramos en tres checkpoints para tomar decisiones científicas.</p><span class="duration">Cada persona avanza a su ritmo</span></div></div><span class="n">23</span>
+  <div class="chapter-inner reveal"><div class="chapter-index">03</div><div><h2>Manos a la obra</h2><p>Nos reencontramos en tres checkpoints para tomar decisiones científicas.</p><span class="duration">Cada persona avanza a su ritmo</span></div></div><span class="n">21</span>
 </section>
 
 <!-- 24 · Checkpoint 1 -->
 <section class="slide">
-  <div class="body checkpoint"><div class="checkpoint-number reveal">01</div><div class="checkpoint-copy reveal"><h2>Inspeccionar y reformular</h2><p>Antes del plan, asegúrate de que Codex entendió el problema y sus límites.</p><div class="checkpoint-list"><div class="checkpoint-item">Leer README, PROBLEMA y AGENTS</div><div class="checkpoint-item">Explicar objetivo y restricciones</div><div class="checkpoint-item">Enumerar decisiones abiertas</div></div><div class="checkpoint-prompt">No implementes. Dime qué entendiste, qué falta decidir y qué riesgos científicos observas.</div></div></div><span class="n">24</span>
+  <div class="body checkpoint"><div class="checkpoint-number reveal">01</div><div class="checkpoint-copy reveal"><h2>Inspeccionar y reformular</h2><p>Antes del plan, asegúrate de que Codex entendió el problema y sus límites.</p><div class="checkpoint-list"><div class="checkpoint-item">Leer README, PROBLEMA y AGENTS</div><div class="checkpoint-item">Explicar objetivo y restricciones</div><div class="checkpoint-item">Enumerar decisiones abiertas</div></div><div class="checkpoint-prompt">No implementes. Dime qué entendiste, qué falta decidir y qué riesgos científicos observas.</div></div></div><span class="n">22</span>
 </section>
 
 <!-- 25 · Checkpoint 2 -->
 <section class="slide">
-  <div class="body checkpoint"><div class="checkpoint-number reveal">02</div><div class="checkpoint-copy reveal"><h2>Cerrar las decisiones que cambian el experimento</h2><p>No existe un buen plan mientras estas decisiones sigan implícitas.</p><div class="checkpoint-list"><div class="checkpoint-item">Clases y confusiones interesantes</div><div class="checkpoint-item">Estrategia para ejemplos en español</div><div class="checkpoint-item">Splits, métricas y abstención</div></div><div class="checkpoint-prompt">Preséntame 2–3 opciones por decisión, con riesgos y una recomendación. Espera mi elección.</div></div></div><span class="n">25</span>
+  <div class="body checkpoint"><div class="checkpoint-number reveal">02</div><div class="checkpoint-copy reveal"><h2>Cerrar las decisiones que cambian el experimento</h2><p>No existe un buen plan mientras estas decisiones sigan implícitas.</p><div class="checkpoint-list"><div class="checkpoint-item">Clases y confusiones interesantes</div><div class="checkpoint-item">Estrategia para ejemplos en español</div><div class="checkpoint-item">Splits, métricas y abstención</div></div><div class="checkpoint-prompt">Preséntame 2–3 opciones por decisión, con riesgos y una recomendación. Espera mi elección.</div></div></div><span class="n">23</span>
 </section>
 
 <!-- 26 · Checkpoint 3 -->
 <section class="slide">
-  <div class="body checkpoint"><div class="checkpoint-number reveal">03</div><div class="checkpoint-copy reveal"><h2>Convertir las decisiones en un plan revisable</h2><p>El plan debe preservar evidencia y permitir detenerse después de cada etapa.</p><div class="checkpoint-list"><div class="checkpoint-item">Pasos pequeños con artefactos</div><div class="checkpoint-item">Pruebas y métricas por checkpoint</div><div class="checkpoint-item">Preguntas que vuelven al humano</div></div><div class="checkpoint-prompt">Propón un plan por etapas. Para cada etapa indica entrada, salida, validación y decisión humana.</div></div></div><span class="n">26</span>
+  <div class="body checkpoint"><div class="checkpoint-number reveal">03</div><div class="checkpoint-copy reveal"><h2>Convertir las decisiones en un plan revisable</h2><p>El plan debe preservar evidencia y permitir detenerse después de cada etapa.</p><div class="checkpoint-list"><div class="checkpoint-item">Pasos pequeños con artefactos</div><div class="checkpoint-item">Pruebas y métricas por checkpoint</div><div class="checkpoint-item">Preguntas que vuelven al humano</div></div><div class="checkpoint-prompt">Propón un plan por etapas. Para cada etapa indica entrada, salida, validación y decisión humana.</div></div></div><span class="n">24</span>
 </section>
 
 <!-- 27 · Opciones de ejecución -->
-<section class="slide">
-  <header class="head reveal"><h2>Elige una idea del plan y ejecútala</h2><p class="lead">No intenten construir el proyecto completo. Busquen una pieza que deje evidencia.</p></header>
-  <div class="body execution-grid"><article class="execution-card reveal"><code>OPCIÓN A</code><h3>Datos y splits</h3><p>Crear el manifiesto de procedencia y congelar el test antes de explorar.</p><div class="done">Termina con IDs, checks y un contrato de no contaminación.</div></article><article class="execution-card reveal"><code>OPCIÓN B</code><h3>Baseline local</h3><p>Implementar una referencia CPU simple, determinista y reproducible.</p><div class="done">Termina con configuración, seed, comando y métricas por clase.</div></article><article class="execution-card reveal"><code>OPCIÓN C</code><h3>Política de abstención</h3><p>Analizar confianza, cobertura y errores sin tocar el test congelado.</p><div class="done">Termina con curvas, umbral provisional y reglas humanas.</div></article></div><span class="n">27</span>
-</section>
+
 
 <!-- 28 · Evidencia esperada -->
-<section class="slide">
-  <header class="head reveal"><h2>Una buena sesión termina con evidencia, no con sensación de avance</h2></header>
-  <div class="body evidence-board"><article class="evidence-item reveal"><h3>Decisiones</h3><code>decision_log.md</code></article><article class="evidence-item reveal"><h3>Procedencia</h3><code>data_manifest.csv</code></article><article class="evidence-item reveal"><h3>Configuración</h3><code>experiment.yaml</code></article><article class="evidence-item reveal"><h3>Resultados</h3><code>metrics.json</code></article><article class="evidence-item reveal"><h3>Reproducción</h3><code>README.md + comando</code></article></div><span class="n">28</span>
-</section>
+
 
 <!-- 29 · Cierre del bloque práctico -->
-<section class="slide">
-  <div class="body closing-practical"><div class="reveal"><h2>Explora. Decide. Ejecuta. Deja evidencia.</h2><p>No importa cuánto código alcances a escribir. Importa que el siguiente paso sea verificable y que otra persona pueda continuarlo.</p></div><div class="closing-actions reveal"><a href="https://github.com/idsudd/codex-para-data-science" target="_blank" rel="noreferrer"><span>Repositorio del taller</span><span>↗</span></a><a href="#30"><span>Explorar casos adicionales</span><span>→</span></a></div></div><span class="n">29</span>
-</section>
+
 
 <!-- 30 · Portada del apéndice -->
 <section class="slide chapter">
-  <div class="chapter-inner reveal"><div class="chapter-index">A</div><div><h2>Más ideas para seguir explorando</h2><p>Casos y patrones recopilados desde experiencias públicas. Cada tarjeta abre la fuente original.</p><span class="duration">Apéndice · material posterior</span></div></div><span class="n">30</span>
+  <div class="chapter-inner reveal"><div class="chapter-index">A</div><div><h2>Más ideas para seguir explorando</h2><p>Casos y patrones recopilados desde experiencias públicas. Cada tarjeta abre la fuente original.</p><span class="duration">Apéndice · material posterior</span></div></div><span class="n">25</span>
 </section>
 
 <!-- 31 · Galería: medición y artefactos -->
@@ -334,7 +369,7 @@
     <a class="tweet-card reveal" href="https://x.com/aakashgupta/status/2062298252075254074" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Aakash Gupta</div><div class="tweet-handle">@aakashgupta · T3</div></div><span>↗</span></div><span class="tweet-tag">Growth dashboard</span><p>Un dashboard profesional exige definiciones, cohortes, reconciliación y una ruta reproducible.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/ChrisGPT/status/2052230827371606441" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">ChrisGPT</div><div class="tweet-handle">@ChrisGPT · T4</div></div><span>↗</span></div><span class="tweet-tag">Spreadsheets</span><p>Codex puede editar y mejorar estructuralmente una hoja, no solo explicar sus fórmulas.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/nickbaumann_/status/2047813820211765576" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Nick Baumann</div><div class="tweet-handle">@nickbaumann_ · T5</div></div><span>↗</span></div><span class="tweet-tag">Artefactos</span><p>Las hojas de cálculo combinan datos, lógica y una entrega que otras personas pueden inspeccionar.</p><span class="tweet-link">Ver fuente</span></a>
-  </div><span class="n">31</span>
+  </div><span class="n">26</span>
 </section>
 
 <!-- 32 · Galería: revisión e investigación -->
@@ -347,7 +382,7 @@
     <a class="tweet-card reveal" href="https://x.com/lpachter/status/2064350121777823997" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Lior Pachter</div><div class="tweet-handle">@lpachter · T9</div></div><span>↗</span></div><span class="tweet-tag">Verificación formal</span><p>Un puente entre LaTeX legible para personas y Lean verificable por máquina.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/JeremyNguyenPhD/status/2055247189694390558" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Jeremy Nguyen</div><div class="tweet-handle">@JeremyNguyenPhD · T10</div></div><span>↗</span></div><span class="tweet-tag">Integrity gates</span><p>Separar búsqueda, extracción, análisis y redacción para proteger la evidencia.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/MushtaqBilalPhD/status/2054565093430493609" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Mushtaq Bilal</div><div class="tweet-handle">@MushtaqBilalPhD · T11</div></div><span>↗</span></div><span class="tweet-tag">Investigadores</span><p>Un punto de entrada accesible a Codex para investigación académica.</p><span class="tweet-link">Ver fuente</span></a>
-  </div><span class="n">32</span>
+  </div><span class="n">27</span>
 </section>
 
 <!-- 33 · Galería: integración y goals -->
@@ -358,7 +393,7 @@
     <a class="tweet-card reveal" href="https://x.com/gabrielchua/status/2045794950806458675" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Gabriel Chua</div><div class="tweet-handle">@gabrielchua · T13</div></div><span>↗</span></div><span class="tweet-tag">Decisión personal</span><p>Análisis de datos aplicado a una compra de vivienda: reunir contexto, comparar y explicitar supuestos.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/reach_vb/status/2076813989598662816" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Vaibhav Srivastav</div><div class="tweet-handle">@reach_vb · T14</div></div><span>↗</span></div><span class="tweet-tag">Antes de /goal</span><p>Investigar y reunir requisitos antes de convertir el pedido en un objetivo de larga duración.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/reach_vb/status/2077136521178517999" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Vaibhav Srivastav</div><div class="tweet-handle">@reach_vb · T15</div></div><span>↗</span></div><span class="tweet-tag">Contrato de término</span><p>Dejar que Codex formule el goal después de conversar sobre restricciones, checkpoints y definición de éxito.</p><span class="tweet-link">Ver fuente</span></a>
-  </div><span class="n">33</span>
+  </div><span class="n">28</span>
 </section>
 
 <!-- 34 · Galería: modelos, contexto y cuota -->
@@ -372,7 +407,7 @@
     <a class="tweet-card reveal" href="https://x.com/mweinbach/status/2075721970193252501" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Max Weinbach</div><div class="tweet-handle">@mweinbach · T20</div></div><span>↗</span></div><span class="tweet-tag">Coordinación</span><p>Un thread gestor puede sintetizar resultados de lanes independientes.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/aibuilderclub_/status/2076151989990477941" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">AI Builder Club</div><div class="tweet-handle">@aibuilderclub_ · T21</div></div><span>↗</span></div><span class="tweet-tag">Umbral 272K</span><p>Contextos enormes pueden activar multiplicadores de precio en API.</p><span class="tweet-link">Ver fuente</span></a>
     <a class="tweet-card reveal" href="https://x.com/jjpcodes/status/2075728838261084218" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Josh / JJP Codes</div><div class="tweet-handle">@jjpcodes · T22</div></div><span>↗</span></div><span class="tweet-tag">Goals y cuota</span><p>Una experiencia sobre /goal y límites de uso: hipótesis útil, no garantía.</p><span class="tweet-link">Ver fuente</span></a>
-  </div><span class="n">34</span>
+  </div><span class="n">29</span>
 </section>
 
 <!-- 35 · Fuentes oficiales -->
@@ -384,7 +419,7 @@
     <a class="tweet-card official-card reveal" href="https://developers.openai.com/api/docs/models/gpt-5.6-terra" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">GPT-5.6 Terra</div><div class="tweet-handle">OpenAI · O3</div></div><span>↗</span></div><span class="tweet-tag">Equilibrio</span><p>Capacidades, contexto y precio para el trabajo cotidiano.</p><span class="tweet-link">Abrir documentación</span></a>
     <a class="tweet-card official-card reveal" href="https://learn.chatgpt.com/use-cases/follow-goals" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Follow a goal</div><div class="tweet-handle">OpenAI · O4</div></div><span>↗</span></div><span class="tweet-tag">Trabajo largo</span><p>Cómo definir un resultado durable con una condición verificable.</p><span class="tweet-link">Abrir guía</span></a>
     <a class="tweet-card official-card reveal" href="https://learn.chatgpt.com/docs/developer-commands?surface=cli" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Developer commands</div><div class="tweet-handle">OpenAI · O5</div></div><span>↗</span></div><span class="tweet-tag">Referencia</span><p>Comandos disponibles en Codex y su uso en el flujo de desarrollo.</p><span class="tweet-link">Abrir guía</span></a>
-  </div><p class="appendix-note">Los tweets documentan prácticas y ejemplos; modelos, precios y límites pueden cambiar. Revisa siempre las fuentes oficiales.</p><span class="n">35</span>
+  </div><p class="appendix-note">Los tweets documentan prácticas y ejemplos; modelos, precios y límites pueden cambiar. Revisa siempre las fuentes oficiales.</p><span class="n">30</span>
 </section>
 
 </main></div>
