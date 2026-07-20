@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manos a la obra con Codex — Alonso Astroza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* === TEMA: contexto / acción / evidencia === */
+    :root{--stage-bg:#071829;--slide-bg:#f6f7f3;--paper:#f6f7f3;--white:#fff;--ink:#142139;--muted:#647083;--line:#cfd8dc;--blue:#1253a4;--cyan:#43b1d5;--cyan-pale:#e0f2f7;--orange:#e89224;--orange-pale:#faead3;--font:"Manrope",sans-serif;--mono:"IBM Plex Mono",monospace;--ease:cubic-bezier(.22,1,.36,1)}
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    /* === ESCENARIO FIJO 1920 × 1080 — viewport-base.css completo === */
+    html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--stage-bg,#000)}
+    .deck-viewport{position:fixed;inset:0;overflow:hidden;background:var(--stage-bg,#000)}
+    .deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:var(--slide-bg,#fff)}
+    .slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:block;visibility:hidden;opacity:0;pointer-events:none;background:var(--slide-bg,#fff)}
+    .slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}
+    img,video,canvas,svg{max-width:100%;max-height:100%}
+    .deck-controls{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1000}
+    @media print{html,body{width:1920px;height:auto;overflow:visible;background:#fff}.deck-viewport{position:static;overflow:visible;background:#fff}.deck-stage{position:static;width:auto;height:auto;transform:none!important;background:none}.slide{position:relative;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:1920px;height:1080px;break-after:page;page-break-after:always}.slide:last-child{break-after:auto;page-break-after:auto}.deck-controls{display:none!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
+
+    /* === COMPOSICIÓN GENERAL === */
+    body{font-family:var(--font);color:var(--ink)}
+    .slide{padding:76px 92px 72px;background:linear-gradient(115deg,transparent 0 78%,rgba(67,177,213,.065) 78%),linear-gradient(#fbfcf9,var(--paper))}
+    .slide::before{content:"";position:absolute;inset:0 0 auto;height:10px;background:linear-gradient(90deg,var(--blue) 0 58%,var(--cyan) 58% 82%,var(--orange) 82%)}
+    .head{position:relative;z-index:2;max-width:1660px}.kicker{margin-bottom:14px;color:var(--orange);font:600 20px/1.2 var(--mono);letter-spacing:.09em;text-transform:uppercase}
+    h1,h2{color:var(--ink);font-weight:800;letter-spacing:-.045em;text-wrap:balance}h1{font-size:88px;line-height:1}h2{font-size:64px;line-height:1.05}
+    .lead{max-width:1400px;margin-top:16px;color:var(--muted);font-size:29px;line-height:1.42;text-wrap:balance}
+    .body{position:relative;z-index:2;display:flex;flex:1;min-height:0;margin-top:42px}
+    .n{position:absolute;right:92px;bottom:48px;color:#7a8794;font:600 19px/1 var(--mono)}
+    .source{position:absolute;left:92px;bottom:46px;z-index:4;color:#7a8794;font-size:14px;line-height:1.3}.source strong{color:#34577d}
+    .accent{color:var(--orange)}.blue{color:var(--blue)}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .5s var(--ease),transform .5s var(--ease)}.visible .reveal{opacity:1;transform:none}.visible .reveal:nth-child(2){transition-delay:.08s}.visible .reveal:nth-child(3){transition-delay:.16s}.visible .reveal:nth-child(4){transition-delay:.24s}
+
+    /* === 01 · EVOLUCIÓN DE LAS INTERFACES === */
+    .timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:42px;width:100%;align-items:center;padding:18px 12px 90px}.timeline::before{content:"";position:absolute;left:2%;right:2%;bottom:92px;height:3px;background:var(--ink)}
+    .era{position:relative;height:430px;display:grid;place-items:center}.era::after{content:"";position:absolute;left:50%;bottom:75px;width:24px;height:24px;transform:translate(-50%,50%);border:3px solid var(--ink);border-radius:50%;background:var(--paper);z-index:2}
+    .machine{width:285px;padding:24px;border:3px solid var(--ink);background:var(--white);box-shadow:13px 13px 0 #e7ebeb}.screen{height:130px;padding:20px;border:3px solid var(--ink);background:#edf0ec}.line{height:8px;margin-bottom:13px;background:var(--ink)}.line.s{width:60%}.machine p{margin-top:22px;color:var(--blue);font:600 21px/1.2 var(--mono)}.era:nth-child(2) .machine,.era:nth-child(3) .machine{border-radius:16px}.era:nth-child(4) .machine{width:185px;border-radius:34px;box-shadow:12px 12px 0 var(--cyan-pale)}.era:nth-child(4) .screen{border-radius:17px}
+
+    /* === 02 · INSUMOS → RESULTADO === */
+    .wish{display:grid;grid-template-columns:420px 1fr 390px;gap:64px;width:100%;align-items:center}.inputs{display:grid;gap:16px}.chip{display:flex;align-items:center;gap:16px;padding:16px 19px;border:2px solid var(--line);border-radius:12px;background:var(--white);font:500 21px/1.2 var(--mono)}.chip b{display:grid;place-items:center;width:42px;height:42px;border-radius:8px;color:var(--blue);background:var(--cyan-pale)}
+    .agent{position:relative;display:grid;place-items:center;height:320px}.agent::before,.agent::after{content:"";position:absolute;top:50%;height:3px;background:var(--blue)}.agent::before{left:0;right:0}.agent::after{right:0;width:22px;height:22px;border-top:3px solid var(--blue);border-right:3px solid var(--blue);background:transparent;transform:translateY(-10px) rotate(45deg)}.agent span{position:relative;z-index:2;display:grid;place-items:center;width:245px;height:245px;border-radius:50%;color:#fff;background:var(--blue);box-shadow:0 0 0 18px var(--cyan-pale);font:600 24px/1.25 var(--mono);text-align:center}
+    .result{padding:34px;border:3px solid var(--orange);background:var(--orange-pale)}.result strong{display:block;margin-bottom:12px;font-size:30px}.result p{color:var(--muted);font-size:22px;line-height:1.45}
+
+    /* === 03–04 · MURO DEL COSTO === */
+    .wall-layout{display:grid;grid-template-columns:.92fr 1.08fr;width:calc(100% + 184px);margin:-118px -92px -72px}.wall-copy{display:flex;flex-direction:column;justify-content:center;padding:135px 88px 95px;background:var(--paper)}.wall-copy p{max-width:720px;margin-bottom:42px;font-size:45px;line-height:1.22;letter-spacing:-.025em;text-wrap:balance}.wall-copy .small{color:var(--muted);font-size:30px;line-height:1.42}
+    .wall{position:relative;overflow:hidden;background-color:#46566a;background-image:linear-gradient(335deg,rgba(255,255,255,.11) 23px,transparent 23px),linear-gradient(155deg,rgba(255,255,255,.08) 23px,transparent 23px);background-size:116px 116px;background-position:0 4px,58px 62px}.wall::after{content:"COSTO DE PROGRAMAR";position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.84);font:600 24px/1 var(--mono);letter-spacing:.17em;writing-mode:vertical-rl}.opening{position:absolute;right:-15px;top:185px;width:455px;height:700px;border-radius:230px 0 0 230px;background:linear-gradient(120deg,var(--orange-pale),var(--cyan-pale));box-shadow:inset 24px 0 rgba(255,255,255,.4)}.opening::after{content:"AGENTES";position:absolute;inset:0;display:grid;place-items:center;color:var(--blue);font:600 24px/1 var(--mono);letter-spacing:.14em;writing-mode:vertical-rl}
+
+    /* === 05 · CICLO DEL AGENTE === */
+    .track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:22px;width:100%;align-items:center;padding:24px 0 100px}.track::before{content:"";position:absolute;left:3%;right:3%;top:50%;height:6px;background:var(--line);transform:translateY(-47px)}.step{position:relative;z-index:2;display:grid;place-items:center;width:280px;height:280px;margin:auto;border:4px solid var(--blue);border-radius:50%;color:var(--blue);background:var(--white);font-size:31px;font-weight:700;text-align:center}.step:nth-child(4){border-color:var(--orange);color:#955509;background:var(--orange-pale)}.step:nth-child(5){border-color:var(--cyan);background:var(--cyan-pale)}.loop{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);color:var(--orange);font:600 20px/1.2 var(--mono)}
+
+    /* === 06 · COLEGA CONFIABLE === */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;width:100%}.card{padding:31px;border:2px solid var(--line);background:rgba(255,255,255,.84)}.badge{display:grid;place-items:center;width:52px;height:52px;margin-bottom:22px;border-radius:50%;color:#fff;background:var(--blue);font:600 20px/1 var(--mono)}.card:nth-child(2) .badge{background:var(--orange)}.card:nth-child(3) .badge{background:var(--cyan)}.card h3{margin-bottom:13px;font-size:32px;line-height:1.16}.card>p{min-height:82px;color:var(--muted);font-size:20px;line-height:1.42}.card ul{margin-top:20px;padding-top:17px;border-top:1px solid var(--line);list-style:none}.card li{position:relative;margin:12px 0;padding-left:27px;font-size:19px;line-height:1.35}.card li::before{content:"";position:absolute;left:0;top:7px;width:11px;height:11px;border-radius:50%;background:var(--cyan)}
+
+    /* === 07 · CONTEXTO, PERMISOS, ESFUERZO === */
+    .cpf{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;width:100%}.context{padding:32px;border-left:8px solid var(--blue);background:var(--cyan-pale)}.context h3,.setting h3{margin-bottom:18px;color:var(--blue);font-size:30px}.context ul{display:grid;gap:17px;list-style:none}.context li{display:grid;grid-template-columns:62px 1fr;gap:17px;align-items:center;font-size:23px;line-height:1.3}.context code{display:grid;place-items:center;height:52px;color:#fff;background:var(--blue);font:600 19px/1 var(--mono)}.settings{display:grid;grid-template-columns:1fr 1fr;gap:20px}.setting{padding:27px;border:2px solid var(--line);background:#fff}.setting p{color:var(--muted);font-size:21px;line-height:1.45}.setting code{display:inline-block;margin-top:22px;padding:10px 13px;background:var(--orange-pale);font:600 16px/1.2 var(--mono)}
+
+    /* === 08–11 · CAPACIDADES Y PLACEHOLDERS === */
+    .cap{display:grid;grid-template-columns:.8fr 1.2fr;gap:54px;width:100%}.cap-copy{display:flex;flex-direction:column;justify-content:center}.cap-copy ul{margin-top:24px;list-style:none}.cap-copy li{position:relative;margin:16px 0;padding-left:30px;font-size:23px;line-height:1.4}.cap-copy li::before{content:"";position:absolute;left:0;top:10px;width:12px;height:12px;background:var(--orange)}
+    .placeholder{position:relative;min-height:510px;display:grid;place-items:center;overflow:hidden;border:2px dashed #97a7b4;border-radius:18px;background:linear-gradient(rgba(18,83,164,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(18,83,164,.045) 1px,transparent 1px),#fff;background-size:34px 34px}.placeholder::before{content:"";position:absolute;inset:22px;border:1px solid var(--line);border-radius:10px}.placeholder div{position:relative;z-index:2;max-width:540px;padding:25px 31px;color:var(--blue);background:rgba(224,242,247,.95);font:600 20px/1.45 var(--mono);text-align:center}.placeholder span{display:block;margin-top:8px;color:var(--muted);font:500 16px/1.4 var(--font)}
+    .artifacts{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:24px}.artifact{min-height:104px;padding:17px;border:1px solid var(--line);background:#fff}.artifact code{display:block;margin-bottom:7px;color:var(--orange);font:600 15px/1 var(--mono)}.artifact strong{font-size:18px;line-height:1.25}.pair{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:24px}.mini{padding:22px;border:2px solid var(--line);background:#fff}.mini strong{display:block;margin-bottom:8px;color:var(--blue);font-size:23px}.mini p{color:var(--muted);font-size:18px;line-height:1.4}.repo{display:flex;justify-content:space-between;gap:18px;margin-top:18px;padding:17px 20px;color:#fff;background:var(--blue);text-decoration:none}.repo b{font-size:18px}.repo span{font:500 14px/1.3 var(--mono);opacity:.82}
+
+    /* === CONTROLES Y EDICIÓN LOCAL === */
+    .deck-controls{display:flex;align-items:center;gap:8px;padding:8px;border-radius:14px;background:rgba(7,24,41,.96);box-shadow:0 10px 28px rgba(0,0,0,.3)}.deck-controls button{width:46px;height:46px;border:0;border-radius:9px;color:#fff;background:#174f7d;cursor:pointer}.deck-controls button:hover{background:var(--blue)}#counter{min-width:78px;color:#fff;font:600 16px/1 var(--mono);text-align:center}#progress{position:fixed;left:0;top:0;z-index:1100;width:100%;height:5px;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--orange));transition:transform .25s var(--ease)}
+    .hotzone{position:fixed;top:0;left:0;z-index:10000;width:80px;height:80px}.edit{position:fixed;top:16px;left:16px;z-index:10001;width:44px;height:44px;border:0;border-radius:10px;opacity:0;pointer-events:none;color:#fff;background:var(--orange);cursor:pointer;transition:opacity .3s}.edit.show,.edit.active{opacity:1;pointer-events:auto}.editing [data-editable]{outline:2px dashed var(--orange);outline-offset:5px}
+    /* === AJUSTES DE DIRECCIÓN VISUAL === */
+    .timeline-image{display:flex;width:100%;align-items:center;justify-content:center;padding:4px 18px 78px}
+    .timeline-image img{display:block;width:100%;max-height:500px;object-fit:contain}
+    .center-statement{display:flex;width:100%;height:auto;align-items:center;justify-content:center;text-align:center}
+    .center-copy{display:grid;gap:52px;max-width:1320px;margin-bottom:44px}
+    .center-copy p{color:var(--ink);font-size:54px;line-height:1.18;letter-spacing:-.035em;text-wrap:balance}
+    .center-copy .small{max-width:1100px;margin-inline:auto;color:var(--muted);font-size:34px;line-height:1.4}  /* === IMÁGENES REALES DE CODEX === */
+.feature-shot{position:relative;min-height:510px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 18px 50px rgba(20,33,57,.12)}
+.feature-shot img{display:block;width:100%;height:100%;max-height:530px;object-fit:contain;padding:12px}
+
+/* === SLIDES DE CAPÍTULO === */
+.slide.chapter{display:flex;align-items:center;justify-content:center;padding:100px 120px;background:radial-gradient(circle at 78% 18%,rgba(67,177,213,.2),transparent 30%),linear-gradient(145deg,#08182a,#102b48);color:#fff}
+.slide.chapter::before{height:12px}
+.chapter-inner{position:relative;z-index:2;display:grid;grid-template-columns:240px 1fr;gap:74px;width:100%;align-items:center}
+.chapter-index{display:grid;place-items:center;width:210px;height:210px;border:2px solid rgba(255,255,255,.34);border-radius:50%;color:var(--cyan);font:600 60px/1 var(--mono)}
+.chapter h2{max-width:1250px;color:#fff;font-size:88px;line-height:1}
+.chapter p{max-width:1050px;margin-top:28px;color:rgba(255,255,255,.72);font-size:30px;line-height:1.45}
+.chapter .duration{display:inline-flex;margin-top:34px;padding:12px 18px;border:1px solid rgba(67,177,213,.5);color:var(--cyan);font:600 18px/1.2 var(--mono)}
+
+/* === DESAFÍO DEL REPOSITORIO === */
+.challenge-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:50px;width:100%;align-items:stretch}
+.problem-card{display:flex;flex-direction:column;justify-content:center;padding:42px 46px;background:var(--blue);color:#fff}
+.problem-card blockquote{font-size:39px;line-height:1.3;font-weight:700;letter-spacing:-.025em;text-wrap:balance}
+.problem-card p{margin-top:26px;color:rgba(255,255,255,.72);font-size:21px;line-height:1.45}
+.output-stack{display:grid;gap:17px}
+.output-card{display:grid;grid-template-columns:70px 1fr;gap:20px;align-items:center;padding:23px 25px;border:1px solid var(--line);background:#fff}
+.output-card b{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;color:var(--blue);background:var(--cyan-pale);font:600 19px/1 var(--mono)}
+.output-card strong{display:block;font-size:25px}.output-card span{display:block;margin-top:5px;color:var(--muted);font-size:18px;line-height:1.35}
+.repo-button{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:20px;padding:19px 23px;color:#fff;background:var(--blue);text-decoration:none}.repo-button b{font-size:20px}.repo-button code{font:500 15px/1.2 var(--mono);opacity:.8}
+
+/* === REGLAS CIENTÍFICAS === */
+.science-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%;align-items:stretch}
+.science-rule{position:relative;padding:32px 27px 28px;border-top:7px solid var(--blue);background:#fff;box-shadow:0 14px 34px rgba(20,33,57,.08)}
+.science-rule:nth-child(2){border-color:var(--cyan)}.science-rule:nth-child(3){border-color:var(--orange)}.science-rule:nth-child(4){border-color:#5e7089}
+.science-rule code{display:block;margin-bottom:22px;color:var(--muted);font:600 18px/1 var(--mono)}
+.science-rule h3{font-size:29px;line-height:1.18}.science-rule p{margin-top:14px;color:var(--muted);font-size:19px;line-height:1.45}
+
+/* === PROMPT INICIAL === */
+.prompt-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:48px;width:100%;align-items:center}
+.prompt-lead{font-size:42px;line-height:1.24;font-weight:750;letter-spacing:-.03em;text-wrap:balance}.prompt-lead strong{color:var(--orange)}
+.prompt-card{position:relative;padding:38px 42px 42px;border:2px solid var(--blue);background:#fff;box-shadow:16px 16px 0 var(--cyan-pale)}
+.prompt-card::before{content:"PROMPT";display:block;margin-bottom:22px;color:var(--blue);font:600 17px/1 var(--mono);letter-spacing:.1em}
+.prompt-card p{font-size:27px;line-height:1.5;text-wrap:pretty}.prompt-card strong{color:var(--blue)}
+
+/* === TRES DEMOSTRACIONES === */
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;width:100%}
+.demo-card{display:flex;min-height:430px;flex-direction:column;padding:35px;border:2px solid var(--line);background:#fff}
+.demo-card:nth-child(1){border-top:9px solid var(--blue)}.demo-card:nth-child(2){border-top:9px solid var(--orange)}.demo-card:nth-child(3){border-top:9px solid var(--cyan)}
+.demo-card .demo-number{color:var(--muted);font:600 17px/1 var(--mono)}.demo-card h3{margin-top:30px;font-size:35px;line-height:1.15}.demo-card p{margin-top:17px;color:var(--muted);font-size:21px;line-height:1.5}.demo-card strong{margin-top:auto;padding-top:24px;border-top:1px solid var(--line);color:var(--blue);font-size:20px;line-height:1.35}
+
+/* === PIPELINE REPRODUCIBLE === */
+.pipeline{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;width:100%;align-items:center;padding-bottom:78px}
+.pipeline::before{content:"";position:absolute;left:4%;right:4%;top:112px;height:4px;background:var(--line)}
+.pipe-node{position:relative;z-index:2;min-height:230px;padding:30px 22px;border:2px solid var(--line);background:#fff;text-align:center}
+.pipe-node b{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 23px;border-radius:50%;color:#fff;background:var(--blue);font:600 18px/1 var(--mono)}
+.pipe-node:nth-child(4) b{background:var(--orange)}.pipe-node:nth-child(5) b{background:var(--cyan)}
+.pipe-node h3{font-size:24px}.pipe-node p{margin-top:10px;color:var(--muted);font-size:17px;line-height:1.4}
+.pipeline-thesis{position:absolute;left:50%;bottom:5px;transform:translateX(-50%);width:100%;color:var(--blue);font-size:27px;font-weight:700;text-align:center}
+
+/* === REVISIÓN INDEPENDIENTE === */
+.review-grid{display:grid;grid-template-columns:1fr 90px 1fr;gap:26px;width:100%;align-items:stretch}
+.review-panel{padding:34px;border:2px solid var(--line);background:#fff}.review-panel.builder{border-top:8px solid var(--blue)}.review-panel.reviewer{border-top:8px solid var(--orange)}
+.review-panel h3{font-size:34px}.review-panel>p{margin-top:13px;color:var(--muted);font-size:20px;line-height:1.45}.review-panel ul{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);list-style:none}.review-panel li{position:relative;margin:14px 0;padding-left:28px;font-size:20px;line-height:1.35}.review-panel li::before{content:"";position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:50%;background:var(--cyan)}
+.review-arrow{display:grid;place-items:center;color:var(--orange);font-size:56px;font-weight:700}
+
+/* === GOAL Y CONDICIÓN DE PARADA === */
+.goal-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;width:100%}.goal-card{padding:38px 42px;color:#fff;background:linear-gradient(145deg,var(--blue),#0a3b74)}
+.goal-card code{color:var(--cyan);font:600 19px/1 var(--mono)}.goal-card p{margin-top:24px;font-size:30px;line-height:1.43;text-wrap:pretty}.goal-card strong{color:#fff}
+.stop-card{padding:34px;border:2px solid var(--orange);background:var(--orange-pale)}.stop-card h3{font-size:31px}.stop-card ul{margin-top:21px;list-style:none}.stop-card li{margin:16px 0;padding-bottom:16px;border-bottom:1px solid rgba(232,146,36,.35);font-size:20px;line-height:1.4}.stop-card li:last-child{border:0}
+
+/* === MODELOS, REASONING Y PRESUPUESTO === */
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:21px;width:100%}.model-card{display:flex;min-height:365px;flex-direction:column;padding:31px;border:2px solid var(--line);background:#fff}.model-card h3{font-size:36px}.model-card .role{margin-top:10px;color:var(--blue);font:600 17px/1.3 var(--mono)}.model-card p{margin-top:22px;color:var(--muted);font-size:20px;line-height:1.45}.model-card strong{margin-top:auto;padding-top:20px;border-top:1px solid var(--line);font-size:19px;line-height:1.35}.model-card:nth-child(1){border-top:8px solid var(--cyan)}.model-card:nth-child(2){border-top:8px solid var(--blue)}.model-card:nth-child(3){border-top:8px solid var(--orange)}
+.plan-note{grid-column:1/-1;display:flex;justify-content:space-between;gap:30px;padding:17px 22px;color:#fff;background:var(--ink);font-size:18px}.plan-note b{color:var(--cyan)}
+.reasoning-ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;align-items:end}.reasoning-step{padding:31px;background:#fff;border:2px solid var(--line)}.reasoning-step:nth-child(1){min-height:255px}.reasoning-step:nth-child(2){min-height:345px;border-color:var(--blue)}.reasoning-step:nth-child(3){min-height:435px;border-color:var(--orange)}.reasoning-step code{color:var(--blue);font:600 21px/1 var(--mono)}.reasoning-step h3{margin-top:21px;font-size:31px}.reasoning-step p{margin-top:14px;color:var(--muted);font-size:19px;line-height:1.45}.reasoning-rule{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:100%;color:var(--ink);font-size:25px;font-weight:700;text-align:center}
+.budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;width:100%}.budget-card{padding:33px;border:2px solid var(--line);background:#fff}.budget-card .budget-index{font:600 17px/1 var(--mono);color:var(--muted)}.budget-card h3{margin-top:22px;font-size:32px}.budget-card p{margin-top:13px;color:var(--muted);font-size:20px;line-height:1.45}.budget-card ul{margin-top:20px;list-style:none}.budget-card li{margin:11px 0;font-size:18px;line-height:1.35}.budget-card:nth-child(2){border-color:var(--blue)}.budget-card:nth-child(3){border-color:var(--orange)}
+
+/* === CHECKPOINTS PRÁCTICOS === */
+.checkpoint{display:grid;grid-template-columns:300px 1fr;gap:58px;width:100%;align-items:center}.checkpoint-number{display:grid;place-items:center;width:270px;height:270px;border:3px solid var(--blue);border-radius:50%;color:var(--blue);background:#fff;font:600 72px/1 var(--mono);box-shadow:0 0 0 20px var(--cyan-pale)}
+.checkpoint-copy h2{font-size:65px}.checkpoint-copy>p{margin-top:20px;color:var(--muted);font-size:27px;line-height:1.45}.checkpoint-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.checkpoint-item{padding:20px;border-left:5px solid var(--cyan);background:#fff;font-size:19px;line-height:1.4}.checkpoint-prompt{margin-top:25px;padding:20px 23px;color:#fff;background:var(--blue);font:500 17px/1.45 var(--mono)}
+.execution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;width:100%}.execution-card{padding:32px;border:2px solid var(--line);background:#fff}.execution-card code{color:var(--orange);font:600 17px/1 var(--mono)}.execution-card h3{margin-top:24px;font-size:31px}.execution-card p{margin-top:14px;color:var(--muted);font-size:20px;line-height:1.45}.execution-card .done{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);color:var(--blue);font-size:18px;font-weight:700}
+.evidence-board{display:grid;grid-template-columns:repeat(5,1fr);gap:15px;width:100%}.evidence-item{display:flex;min-height:270px;flex-direction:column;padding:27px 21px;border-top:7px solid var(--blue);background:#fff}.evidence-item:nth-child(2),.evidence-item:nth-child(5){border-color:var(--cyan)}.evidence-item:nth-child(3){border-color:var(--orange)}.evidence-item h3{font-size:24px}.evidence-item code{margin-top:auto;color:var(--muted);font:500 15px/1.3 var(--mono)}
+.closing-practical{display:grid;grid-template-columns:1fr .72fr;gap:70px;width:100%;align-items:center}.closing-practical h2{font-size:78px}.closing-practical p{margin-top:25px;color:var(--muted);font-size:28px;line-height:1.45}.closing-actions{display:grid;gap:18px}.closing-actions a{display:flex;justify-content:space-between;padding:25px 27px;color:#fff;background:var(--blue);font-size:21px;font-weight:700;text-decoration:none}.closing-actions a:last-child{color:var(--ink);background:var(--cyan-pale)}
+
+/* === APÉNDICE: GALERÍA EDITORIAL DE X === */
+.slide.gallery-slide{background:radial-gradient(circle at 88% 12%,rgba(67,177,213,.13),transparent 27%),#edf1ef}
+.gallery-grid{display:grid;grid-template-columns:1.08fr .92fr .92fr;grid-template-rows:1fr 1fr;gap:17px;width:100%}
+.tweet-card{position:relative;display:flex;min-width:0;flex-direction:column;padding:25px;border:1px solid #c6d1d6;background:rgba(255,255,255,.94);color:var(--ink);text-decoration:none;box-shadow:0 10px 28px rgba(20,33,57,.06);transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.tweet-card:hover{transform:translateY(-5px);box-shadow:0 17px 38px rgba(20,33,57,.13)}.tweet-card.featured{grid-row:1/3;padding:33px;background:var(--ink);color:#fff}.tweet-top{display:flex;align-items:center;justify-content:space-between;gap:15px}.tweet-author{font-size:18px;font-weight:800}.tweet-handle{color:var(--muted);font:500 13px/1.2 var(--mono)}.featured .tweet-handle{color:rgba(255,255,255,.57)}.tweet-tag{display:inline-flex;margin-top:20px;align-self:flex-start;padding:7px 10px;color:var(--blue);background:var(--cyan-pale);font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}.tweet-card p{margin-top:17px;font-size:19px;line-height:1.42;text-wrap:pretty}.featured p{margin-top:28px;font-size:29px;line-height:1.4}.tweet-link{margin-top:auto;padding-top:16px;color:var(--blue);font:600 14px/1.2 var(--mono)}.featured .tweet-link{color:var(--cyan)}
+.appendix-note{position:absolute;left:92px;bottom:46px;color:var(--muted);font-size:14px}.appendix-note a{color:var(--blue)}
+
+/* === GALLERY EXHAUSTIVA Y DEMOS DS === */
+.gallery-slide .head .lead{max-width:1180px;margin-top:12px;font-size:20px}
+.gallery-grid.compact{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}
+.gallery-grid.compact .tweet-card,.gallery-grid.dense .tweet-card{padding:20px}
+.gallery-grid.compact .tweet-card p{font-size:16px;line-height:1.38}
+.gallery-grid.quad{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:20px}
+.gallery-grid.quad .tweet-card{padding:25px}
+.gallery-grid.quad .tweet-card p{font-size:19px}
+.gallery-grid.dense{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:14px}
+.gallery-grid.dense .tweet-card p{font-size:15px;line-height:1.34;margin-top:12px}
+.gallery-grid.dense .tweet-author{font-size:16px}.gallery-grid.dense .tweet-tag{margin-top:13px;font-size:10px}.gallery-grid.dense .tweet-link{font-size:12px;padding-top:10px}
+.official-card{border-color:rgba(21,92,168,.26);background:linear-gradient(145deg,#fff,#eef7fb)}
+.official-card.featured{background:linear-gradient(145deg,#0a2341,#155ca8)}
+.goal-arrow{display:block;margin:18px 0;color:var(--orange);font-size:34px;font-weight:800}
+.goal-command>span:first-child{font:700 12px/1 var(--mono);letter-spacing:.12em;color:var(--orange)}
+
+.inline-link{color:var(--blue);font-weight:750;text-decoration-thickness:2px;text-underline-offset:4px}
+</style>
+</head>
+<body>
+  <div id="progress"></div>
+  <div class="deck-viewport"><main class="deck-stage" id="stage">
+    <section class="slide active"><header class="head reveal"><h1 data-editable>Nos volvimos muy buenos<br>operando computadores</h1><p class="lead" data-editable>Durante décadas aprendimos a traducir preguntas en instrucciones que una máquina pudiera ejecutar.</p></header><div class="body timeline-image reveal"><img src="/images/taller-ds/evolucion.PNG" alt="Evolución de los computadores: mainframe, computador personal, web y teléfono móvil"></div><span class="n">01</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Pero siempre quisimos que hicieran <span class="accent">más</span> por nosotros</h2><p class="lead" data-editable>No solo ejecutar una instrucción: reunir contexto, tomar decisiones y producir un resultado útil.</p></header><div class="body wish"><div class="inputs reveal"><div class="chip"><b>D</b>datos + esquema</div><div class="chip"><b>Q</b>pregunta de negocio</div><div class="chip"><b>C</b>código existente</div><div class="chip"><b>R</b>restricciones</div></div><div class="agent reveal"><span>trabajo<br>coordinado</span></div><div class="result reveal"><strong data-editable>Resultado verificable</strong><p data-editable>Un análisis reproducible, con código, evidencia y una salida lista para revisar.</p></div></div><span class="n">02</span></section>
+
+    <section class="slide"><div class="body center-statement"><div class="center-copy reveal"><p data-editable><strong>La automatización se llama software.</strong></p><p data-editable>El muro era el costo de programar.</p><p class="small" data-editable>Muchos análisis eran valiosos, pero demasiado pequeños o cambiantes para justificar un proyecto de software.</p></div></div><span class="n">03</span></section>
+
+    <section class="slide"><div class="body center-statement"><div class="center-copy reveal"><p data-editable><strong>La automatización siempre fue posible.</strong></p><p data-editable>Simplemente no era accesible para cada problema.</p><p class="small" data-editable><strong class="accent">Hasta ahora.</strong> Los agentes reducen el costo de crear código.</p></div></div><span class="n">04</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Un agente trabaja por pasos</h2><p class="lead" data-editable>No solo responde: recibe un objetivo, reúne contexto, usa herramientas, actúa y revisa lo ocurrido.</p></header><div class="body track"><div class="step reveal" data-editable>Objetivo</div><div class="step reveal" data-editable>Contexto</div><div class="step reveal" data-editable>Herramientas</div><div class="step reveal" data-editable>Acción</div><div class="step reveal" data-editable>Revisión</div><p class="loop">observar → corregir → volver a intentar</p></div><span class="n">05</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Un buen agente se parece a un colega confiable</h2><p class="lead" data-editable>Avanza con autonomía, pero sabe reconocer incertidumbre, riesgo y límites.</p></header><div class="body cards"><article class="card reveal"><span class="badge">01</span><h3 data-editable>Destraba el trabajo</h3><p data-editable>Cuando un camino falla, busca evidencia y prueba una alternativa.</p><ul><li data-editable>Explora enfoques distintos</li><li data-editable>Contrasta hipótesis</li><li data-editable>Refina el plan</li></ul></article><article class="card reveal"><span class="badge">02</span><h3 data-editable>Escala con criterio</h3><p data-editable>No oculta lo incierto ni toma decisiones sensibles por su cuenta.</p><ul><li data-editable>Expone riesgos y supuestos</li><li data-editable>Pide contexto cuando importa</li><li data-editable>Devuelve el juicio a la persona</li></ul></article><article class="card reveal"><span class="badge">03</span><h3 data-editable>Deja evidencia</h3><p data-editable>Entrega resultados que otra persona puede inspeccionar y repetir.</p><ul><li data-editable>Guarda código y artefactos</li><li data-editable>Resume qué cambió</li><li data-editable>Propone el siguiente paso</li></ul></article></div><p class="source">Secuencia inspirada en <strong>Codex for Everyone — Introductory Workshop</strong>, Gabriel Chua (mayo de 2026).</p><span class="n">06</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Tres decisiones determinan cómo trabajará Codex</h2></header><div class="body cpf"><article class="context reveal"><h3 data-editable>1. Contexto</h3><ul><li><code>Q</code><span data-editable>¿Qué pregunta estamos intentando responder?</span></li><li><code>F</code><span data-editable>¿Qué archivos, datos y documentación son relevantes?</span></li><li><code>A</code><span data-editable>¿A qué herramientas y servicios puede acceder?</span></li></ul></article><div class="settings"><article class="setting reveal"><h3 data-editable>2. Permisos</h3><p data-editable>Qué acciones puede ejecutar por su cuenta y cuáles requieren aprobación.</p><code>perfil de seguridad</code></article><article class="setting reveal"><h3 data-editable>3. Esfuerzo</h3><p data-editable>Cuánto razonamiento conviene invertir según dificultad y riesgo.</p><code>profundidad adecuada</code></article></div></div><p class="source">Adaptado para Data Science a partir de <strong>Codex for Everyone — Introductory Workshop</strong>, Gabriel Chua (mayo de 2026).</p><span class="n">07</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Conectores: acceso a datos, herramientas y contexto externo</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>El agente puede trabajar más allá del repositorio cuando necesita consultar otros sistemas.</p><ul><li data-editable>Leer documentación, tickets y archivos</li><li data-editable>Consultar fuentes autorizadas</li><li data-editable>Conectar el análisis con el flujo real</li></ul></div><div class="feature-shot reveal"><img src="/images/taller-ds/plugins.PNG" alt="Pantalla de conectores de Codex"></div></div><span class="n">08</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Codex puede usar el navegador para completar el flujo</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>No todo vive en una API o un archivo. Algunas tareas requieren observar e interactuar con una interfaz.</p><ul><li data-editable>Navegar aplicaciones y documentación</li><li data-editable>Capturar evidencia visual</li><li data-editable>Verificar el resultado en contexto</li></ul></div><div class="feature-shot reveal"><img src="/images/taller-ds/computer-use.PNG" alt="Codex controlando el navegador"></div></div><span class="n">09</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>Codex convierte el trabajo en artefactos concretos</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>El resultado no tiene que ser una respuesta en el chat. Puede ser código ejecutable y todo lo que nace de él.</p><div class="artifacts"><div class="artifact"><code>.py / .sql</code><strong data-editable>Código y consultas</strong></div><div class="artifact"><code>.ipynb</code><strong data-editable>Notebooks</strong></div><div class="artifact"><code>tests/</code><strong data-editable>Pruebas</strong></div><div class="artifact"><code>pipeline</code><strong data-editable>Procesos de datos</strong></div><div class="artifact"><code>app</code><strong data-editable>Interfaces y apps</strong></div><div class="artifact"><code>report</code><strong data-editable>Gráficos e informes</strong></div></div></div><div class="feature-shot reveal"><img src="/images/taller-ds/artifacts.PNG" alt="Creación de artefactos en Codex"></div></div><span class="n">10</span></section>
+
+    <section class="slide"><header class="head reveal"><h2 data-editable>El trabajo repetible se convierte en skills y automatizaciones</h2></header><div class="body cap"><div class="cap-copy reveal"><p class="lead" data-editable>Una buena instrucción no tiene por qué perderse en el historial de un chat.</p><div class="pair"><article class="mini"><strong data-editable>Skills</strong><p data-editable>Empaquetan contexto, criterios y pasos para reutilizarlos.</p></article><article class="mini"><strong data-editable>Automatizaciones</strong><p data-editable>Ejecutan ese trabajo en el momento o frecuencia adecuados.</p></article></div><a class="repo" href="https://github.com/idsudd/codex-para-data-science" target="_blank" rel="noreferrer"><b>Repositorio del taller ↗</b><span>idsudd/codex-para-data-science</span></a></div><div class="feature-shot reveal"><img src="/images/taller-ds/automations.PNG" alt="Skills y automatizaciones de Codex"></div></div><span class="n">11</span></section>
+  <!-- 12 · Puente desde la introducción hacia el caso -->
+<section class="slide chapter">
+  <div class="chapter-inner reveal"><div class="chapter-index">02</div><div><h2>Ahora llevemos estas capacidades a un problema real</h2><p>Un clasificador de tickets en español, con evidencia, incertidumbre y decisiones humanas.</p><span class="duration">Transición al desafío aplicado</span></div></div><span class="n">12</span>
+</section>
+
+<!-- 13 · Enunciado del desafío -->
+<section class="slide">
+  <header class="head reveal"><h2>El desafío: clasificar tickets de soporte en español</h2><p class="lead">Una fintech ficticia necesita un prototipo que no solo prediga, sino que sepa cuándo pedir ayuda.</p></header>
+  <div class="body challenge-grid">
+    <article class="problem-card reveal"><blockquote>“El cajero me descontó el monto, pero no entregó efectivo.”</blockquote><p>Partimos desde <a class="inline-link" href="https://huggingface.co/datasets/PolyAI/banking77" target="_blank" rel="noreferrer">BANKING77 ↗</a> y trabajamos con 6 a 10 intenciones que produzcan confusiones interesantes.</p></article>
+    <div class="output-stack reveal"><div class="output-card"><b>01</b><div><strong>Intención predicha</strong><span>Una categoría útil para enrutar el ticket.</span></div></div><div class="output-card"><b>02</b><div><strong>Nivel de confianza</strong><span>Una señal interpretable, no una certeza.</span></div></div><div class="output-card"><b>03</b><div><strong>Decisión</strong><span>Clasificar automáticamente o pedir revisión humana.</span></div></div><a class="repo-button" href="https://github.com/idsudd/codex-para-data-science" target="_blank" rel="noreferrer"><b>Abrir repositorio ↗</b><code>idsudd/codex-para-data-science</code></a></div>
+  </div><span class="n">13</span>
+</section>
+
+<!-- 14 · Reglas que convierten el ejercicio en ciencia -->
+<section class="slide">
+  <header class="head reveal"><h2>Lo difícil no es entrenar. Es construir evidencia confiable.</h2><p class="lead">Estas cuatro reglas impiden que el ejercicio se convierta en una demo engañosa.</p></header>
+  <div class="body science-grid"><article class="science-rule reveal"><code>TEST</code><h3>Congelado desde el inicio</h3><p>No se usa para elegir clases, prompts, modelos, hiperparámetros ni umbrales.</p></article><article class="science-rule reveal"><code>DATA</code><h3>Procedencia preservada</h3><p>Cada ejemplo derivado conserva fuente, split e identificador.</p></article><article class="science-rule reveal"><code>METRIC</code><h3>Calidad por clase</h3><p>Macro-F1 y errores por intención, no solamente accuracy.</p></article><article class="science-rule reveal"><code>ABSTAIN</code><h3>Incertidumbre explícita</h3><p>Estudiamos confianza, cobertura y errores para decidir cuándo escalar.</p></article></div><span class="n">14</span>
+</section>
+
+<!-- 15 · Primera tarea -->
+<section class="slide">
+  <header class="head reveal"><h2>La primera tarea no es implementar</h2></header>
+  <div class="body prompt-layout"><p class="prompt-lead reveal">Primero necesitamos un <strong>contrato experimental</strong> que podamos revisar.</p><article class="prompt-card reveal"><p>Inspecciona <strong>PROBLEMA.md</strong> y <strong>AGENTS.md</strong>. Reformula el problema, identifica las decisiones científicas abiertas y propón un plan por etapas. <strong>No implementes todavía.</strong></p></article></div><span class="n">15</span>
+</section>
+
+<!-- 16 · Mapa de demostraciones -->
+<section class="slide">
+  <header class="head reveal"><h2>Tres casos aplicados que conectan con el desafío</h2></header>
+  <div class="body demo-grid">
+    <article class="demo-card reveal"><span>DEMO 01</span><h3>EDA visual como micrositio</h3><p>Codex perfila los datos y convierte los hallazgos en una página navegable, reproducible y fácil de discutir.</p><small>Datos → preguntas → visualizaciones → artefacto web</small></article>
+    <article class="demo-card reveal"><span>DEMO 02</span><h3>Un agente propone; otro critica</h3><p>Separar formulación y auditoría ayuda a descubrir leakage, supuestos débiles y evidencia insuficiente.</p><small>Constructor → evidencia → revisor independiente</small></article>
+    <article class="demo-card reveal"><span>DEMO 03</span><h3>Una herramienta de anotación con set_goal</h3><p>Primero aclaramos el contrato; luego Codex persigue un goal durable hasta entregar una interfaz verificable.</p><small>Incertidumbre → revisión humana → nuevas etiquetas</small></article>
+  </div><span class="n">16</span>
+</section>
+
+<!-- 17 · Demo de EDA visual -->
+<section class="slide">
+  <header class="head reveal"><h2>Demo 01: del EDA a una página que se puede explorar</h2><p class="lead">No queremos una colección de gráficos sueltos: queremos una historia visual con procedencia y una ruta de reproducción.</p></header>
+  <div class="body artifact-flow">
+    <div class="artifact-step reveal"><span>01</span><strong>Perfilar</strong><p>Clases, idioma, longitud, duplicados y valores faltantes.</p></div><div class="flow-arrow">→</div>
+    <div class="artifact-step reveal"><span>02</span><strong>Preguntar</strong><p>¿Qué explica la dificultad? ¿Dónde está el desbalance?</p></div><div class="flow-arrow">→</div>
+    <div class="artifact-step reveal"><span>03</span><strong>Visualizar</strong><p>Distribuciones, ejemplos, filtros y comparaciones útiles.</p></div><div class="flow-arrow">→</div>
+    <div class="artifact-step reveal"><span>04</span><strong>Publicar</strong><p>HTML autocontenido con supuestos, fuentes y fecha de corte.</p></div><div class="flow-arrow">→</div>
+    <div class="artifact-step reveal"><span>05</span><strong>Reproducir</strong><p>Script, ambiente y comando para regenerar el sitio.</p></div>
+  </div><p class="artifact-footer reveal">El análisis encuentra patrones. El micrositio permite interrogarlos.</p><span class="n">17</span>
+</section>
+
+<!-- 18 · Demo de revisor -->
+<section class="slide">
+  <header class="head reveal"><h2>Demo 02: el segundo agente no mejora el modelo; intenta romperlo</h2></header>
+  <div class="body review-grid"><article class="review-panel builder reveal"><h3>Agente constructor</h3><p>Implementa una etapa acotada del plan.</p><ul><li>Documenta supuestos</li><li>Registra configuración y resultados</li><li>Ejecuta pruebas proporcionales</li></ul></article><div class="review-arrow reveal">→</div><article class="review-panel reviewer reveal"><h3>Agente revisor</h3><p>Recibe el contrato y busca evidencia que lo contradiga.</p><ul><li>Leakage y test contaminado</li><li>Procedencia o splits rotos</li><li>Métricas insuficientes por clase</li><li>Confianza mal interpretada</li></ul></article></div><span class="n">18</span>
+</section>
+
+<!-- 19 · Demo set_goal y anotación -->
+<section class="slide goal-slide">
+  <header class="head reveal"><h2>Demo 03: investigar primero; formular set_goal después</h2><p class="lead">El pedido inicial no es el goal. Codex debe inspeccionar el repositorio, descubrir ambigüedades y redactar un contrato verificable.</p></header>
+  <div class="body goal-layout">
+    <div class="goal-command reveal"><span>ANTES DE SET_GOAL</span><p>Explora datos y código. Identifica decisiones abiertas. Pregunta lo necesario. Propón alcance, entregables y criterios de aceptación.</p><span class="goal-arrow">↓</span><code>/goal Construir una herramienta de anotación para revisar tickets inciertos…</code></div>
+    <div class="goal-stops reveal"><h3>El goal queda “terminado” cuando…</h3><ul><li>La interfaz muestra texto, predicción y confianza.</li><li>La persona puede aceptar, corregir o escalar.</li><li>Cada decisión queda registrada con procedencia.</li><li>Hay pruebas, instrucciones y un flujo reproducible.</li></ul></div>
+  </div><p class="source">Patrón inspirado por Vaibhav Srivastav (T14–T15) y respaldado por la guía oficial <a href="https://learn.chatgpt.com/use-cases/follow-goals" target="_blank" rel="noreferrer">Follow a goal ↗</a></p><span class="n">19</span>
+</section>
+
+<!-- 20 · Modelos -->
+<section class="slide">
+  <header class="head reveal"><h2>Modelo: elegir por rol, no por ansiedad</h2><p class="lead">La ruta base funciona con el modelo disponible. Si tienes selector, asigna capacidad donde cambia el resultado.</p></header>
+  <div class="body model-grid"><article class="model-card reveal"><h3>Luna</h3><span class="role">HACE</span><p>Lotes claros, extracción, limpieza repetible y trabajo de alto volumen.</p><strong>Rápida y económica cuando la tarea está bien especificada.</strong></article><article class="model-card reveal"><h3>Terra</h3><span class="role">RESUELVE</span><p>EDA, SQL, notebooks, documentación y trabajo cotidiano con herramientas.</p><strong>El equilibrio recomendado para la mayor parte del taller.</strong></article><article class="model-card reveal"><h3>Sol</h3><span class="role">DECIDE Y REVISA</span><p>Diseño experimental, decisiones ambiguas, auditoría metodológica y revisión final.</p><strong>Úsala donde el juicio sea más caro que el cómputo.</strong></article><div class="plan-note"><span><b>Free:</b> suficiente para explorar tareas breves.</span><span><b>Plus:</b> incorpora la familia Sol, Terra y Luna y sesiones más sostenidas.</span></div></div>
+  <p class="source"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Modelos</a> · <a href="https://learn.chatgpt.com/docs/pricing" target="_blank" rel="noreferrer">planes y uso</a></p><span class="n">20</span>
+</section>
+
+<!-- 21 · Reasoning -->
+<section class="slide">
+  <header class="head reveal"><h2>Reasoning: usa el menor nivel que pase la evaluación</h2></header>
+  <div class="body reasoning-ladder"><article class="reasoning-step reveal"><code>LOW</code><h3>Tarea determinista</h3><p>Renombrar, extraer, transformar o ejecutar un procedimiento ya definido.</p></article><article class="reasoning-step reveal"><code>MEDIUM</code><h3>Valor predeterminado</h3><p>Trabajo no trivial con herramientas, análisis y decisiones locales.</p></article><article class="reasoning-step reveal"><code>HIGH</code><h3>Cuando una prueba falla</h3><p>Razonamiento metodológico, edge cases, debugging complejo o revisión crítica.</p></article><p class="reasoning-rule">Empieza en medium. Sube después de observar un fallo, no antes.</p></div>
+  <p class="source"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noreferrer">Guía oficial de modelos y reasoning ↗</a></p><span class="n">21</span>
+</section>
+
+<!-- 22 · Presupuesto de uso -->
+<section class="slide">
+  <header class="head reveal"><h2>Presupuesta el trabajo por etapas, no por conversación</h2></header>
+  <div class="body budget-grid"><article class="budget-card reveal"><span class="budget-index">01 · ACOTAR</span><h3>Contexto pequeño</h3><p>Entrega solo archivos, columnas, periodos y reglas relevantes.</p><ul><li>Un thread por línea de análisis</li><li>Resúmenes compactos entre etapas</li></ul></article><article class="budget-card reveal"><span class="budget-index">02 · EJECUTAR</span><h3>Muestra antes del lote</h3><p>Compara calidad y consumo en una muestra representativa.</p><ul><li>Reutiliza perfiles y diccionarios</li><li>Evita repetir búsquedas</li></ul></article><article class="budget-card reveal"><span class="budget-index">03 · DETENER</span><h3>Condición de parada</h3><p>No sigas “mejorando” sin una métrica que justifique otra iteración.</p><ul><li>Presupuesto por checkpoint</li><li>Escala reasoning solo con evidencia</li></ul></article></div><span class="n">22</span>
+</section>
+
+<!-- 23 · Inicio del bloque práctico -->
+<section class="slide chapter">
+  <div class="chapter-inner reveal"><div class="chapter-index">03</div><div><h2>Manos a la obra</h2><p>Cada persona avanza a su ritmo. Nos reencontramos en tres checkpoints para tomar decisiones científicas.</p><span class="duration">Cada persona avanza a su ritmo</span></div></div><span class="n">23</span>
+</section>
+
+<!-- 24 · Checkpoint 1 -->
+<section class="slide">
+  <div class="body checkpoint"><div class="checkpoint-number reveal">01</div><div class="checkpoint-copy reveal"><h2>Inspeccionar y reformular</h2><p>Antes del plan, asegúrate de que Codex entendió el problema y sus límites.</p><div class="checkpoint-list"><div class="checkpoint-item">Leer README, PROBLEMA y AGENTS</div><div class="checkpoint-item">Explicar objetivo y restricciones</div><div class="checkpoint-item">Enumerar decisiones abiertas</div></div><div class="checkpoint-prompt">No implementes. Dime qué entendiste, qué falta decidir y qué riesgos científicos observas.</div></div></div><span class="n">24</span>
+</section>
+
+<!-- 25 · Checkpoint 2 -->
+<section class="slide">
+  <div class="body checkpoint"><div class="checkpoint-number reveal">02</div><div class="checkpoint-copy reveal"><h2>Cerrar las decisiones que cambian el experimento</h2><p>No existe un buen plan mientras estas decisiones sigan implícitas.</p><div class="checkpoint-list"><div class="checkpoint-item">Clases y confusiones interesantes</div><div class="checkpoint-item">Estrategia para ejemplos en español</div><div class="checkpoint-item">Splits, métricas y abstención</div></div><div class="checkpoint-prompt">Preséntame 2–3 opciones por decisión, con riesgos y una recomendación. Espera mi elección.</div></div></div><span class="n">25</span>
+</section>
+
+<!-- 26 · Checkpoint 3 -->
+<section class="slide">
+  <div class="body checkpoint"><div class="checkpoint-number reveal">03</div><div class="checkpoint-copy reveal"><h2>Convertir las decisiones en un plan revisable</h2><p>El plan debe preservar evidencia y permitir detenerse después de cada etapa.</p><div class="checkpoint-list"><div class="checkpoint-item">Pasos pequeños con artefactos</div><div class="checkpoint-item">Pruebas y métricas por checkpoint</div><div class="checkpoint-item">Preguntas que vuelven al humano</div></div><div class="checkpoint-prompt">Propón un plan por etapas. Para cada etapa indica entrada, salida, validación y decisión humana.</div></div></div><span class="n">26</span>
+</section>
+
+<!-- 27 · Opciones de ejecución -->
+<section class="slide">
+  <header class="head reveal"><h2>Elige una idea del plan y ejecútala</h2><p class="lead">No intenten construir el proyecto completo. Busquen una pieza que deje evidencia.</p></header>
+  <div class="body execution-grid"><article class="execution-card reveal"><code>OPCIÓN A</code><h3>Datos y splits</h3><p>Crear el manifiesto de procedencia y congelar el test antes de explorar.</p><div class="done">Termina con IDs, checks y un contrato de no contaminación.</div></article><article class="execution-card reveal"><code>OPCIÓN B</code><h3>Baseline local</h3><p>Implementar una referencia CPU simple, determinista y reproducible.</p><div class="done">Termina con configuración, seed, comando y métricas por clase.</div></article><article class="execution-card reveal"><code>OPCIÓN C</code><h3>Política de abstención</h3><p>Analizar confianza, cobertura y errores sin tocar el test congelado.</p><div class="done">Termina con curvas, umbral provisional y reglas humanas.</div></article></div><span class="n">27</span>
+</section>
+
+<!-- 28 · Evidencia esperada -->
+<section class="slide">
+  <header class="head reveal"><h2>Una buena sesión termina con evidencia, no con sensación de avance</h2></header>
+  <div class="body evidence-board"><article class="evidence-item reveal"><h3>Decisiones</h3><code>decision_log.md</code></article><article class="evidence-item reveal"><h3>Procedencia</h3><code>data_manifest.csv</code></article><article class="evidence-item reveal"><h3>Configuración</h3><code>experiment.yaml</code></article><article class="evidence-item reveal"><h3>Resultados</h3><code>metrics.json</code></article><article class="evidence-item reveal"><h3>Reproducción</h3><code>README.md + comando</code></article></div><span class="n">28</span>
+</section>
+
+<!-- 29 · Cierre del bloque práctico -->
+<section class="slide">
+  <div class="body closing-practical"><div class="reveal"><h2>Explora. Decide. Ejecuta. Deja evidencia.</h2><p>No importa cuánto código alcances a escribir. Importa que el siguiente paso sea verificable y que otra persona pueda continuarlo.</p></div><div class="closing-actions reveal"><a href="https://github.com/idsudd/codex-para-data-science" target="_blank" rel="noreferrer"><span>Repositorio del taller</span><span>↗</span></a><a href="#30"><span>Explorar casos adicionales</span><span>→</span></a></div></div><span class="n">29</span>
+</section>
+
+<!-- 30 · Portada del apéndice -->
+<section class="slide chapter">
+  <div class="chapter-inner reveal"><div class="chapter-index">A</div><div><h2>Más ideas para seguir explorando</h2><p>Casos y patrones recopilados desde experiencias públicas. Cada tarjeta abre la fuente original.</p><span class="duration">Apéndice · material posterior</span></div></div><span class="n">30</span>
+</section>
+
+<!-- 31 · Galería: medición y artefactos -->
+<section class="slide gallery-slide">
+  <header class="head reveal"><h2>Galería: medición, dashboards y hojas de cálculo</h2><p class="lead">Cinco formas de convertir datos dispersos en sistemas de medición y artefactos reutilizables.</p></header>
+  <div class="body gallery-grid">
+    <a class="tweet-card featured reveal" href="https://x.com/zswang24/status/2065520154604425367" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Jason Wang</div><div class="tweet-handle">@zswang24 · T1</div></div><span>↗</span></div><span class="tweet-tag">Sistema de medición</span><p>Antes del dashboard: definir north star, métricas de entrada, guardrails, brechas de datos y un reporte semanal.</p><span class="tweet-link">Abrir publicación</span></a>
+    <a class="tweet-card reveal" href="https://x.com/jxnlco/status/2062337332309839985" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Jason / JXNL</div><div class="tweet-handle">@jxnlco · T2</div></div><span>↗</span></div><span class="tweet-tag">Rol del analista</span><p>Los agentes transforman el trabajo analítico cuando pueden operar sobre archivos, herramientas y resultados.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/aakashgupta/status/2062298252075254074" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Aakash Gupta</div><div class="tweet-handle">@aakashgupta · T3</div></div><span>↗</span></div><span class="tweet-tag">Growth dashboard</span><p>Un dashboard profesional exige definiciones, cohortes, reconciliación y una ruta reproducible.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/ChrisGPT/status/2052230827371606441" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">ChrisGPT</div><div class="tweet-handle">@ChrisGPT · T4</div></div><span>↗</span></div><span class="tweet-tag">Spreadsheets</span><p>Codex puede editar y mejorar estructuralmente una hoja, no solo explicar sus fórmulas.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/nickbaumann_/status/2047813820211765576" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Nick Baumann</div><div class="tweet-handle">@nickbaumann_ · T5</div></div><span>↗</span></div><span class="tweet-tag">Artefactos</span><p>Las hojas de cálculo combinan datos, lógica y una entrega que otras personas pueden inspeccionar.</p><span class="tweet-link">Ver fuente</span></a>
+  </div><span class="n">31</span>
+</section>
+
+<!-- 32 · Galería: revisión e investigación -->
+<section class="slide gallery-slide">
+  <header class="head reveal"><h2>Galería: revisión, finanzas e investigación</h2><p class="lead">El agente también puede verificar, reproducir y separar evidencia de inferencia.</p></header>
+  <div class="body gallery-grid compact">
+    <a class="tweet-card reveal" href="https://x.com/derrickcchoi/status/2054574639901274287" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Derrick Choi</div><div class="tweet-handle">@derrickcchoi · T6</div></div><span>↗</span></div><span class="tweet-tag">Revisión crítica</span><p>Auditar un operating plan antes de exponerlo a liderazgo.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/kobex___/status/2076774655109853369" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Kyle Kober</div><div class="tweet-handle">@kobex___ · T7</div></div><span>↗</span></div><span class="tweet-tag">Finanzas</span><p>Conectar pasos de un proceso financiero mensual complejo y conservar trazabilidad.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/daniel_mac8/status/2059244838789218409" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Dan McAteer</div><div class="tweet-handle">@daniel_mac8 · T8</div></div><span>↗</span></div><span class="tweet-tag">Paper → experimento</span><p>Traducir un paper a implementación local y perseguir una condición verificable con /goal.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/lpachter/status/2064350121777823997" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Lior Pachter</div><div class="tweet-handle">@lpachter · T9</div></div><span>↗</span></div><span class="tweet-tag">Verificación formal</span><p>Un puente entre LaTeX legible para personas y Lean verificable por máquina.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/JeremyNguyenPhD/status/2055247189694390558" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Jeremy Nguyen</div><div class="tweet-handle">@JeremyNguyenPhD · T10</div></div><span>↗</span></div><span class="tweet-tag">Integrity gates</span><p>Separar búsqueda, extracción, análisis y redacción para proteger la evidencia.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/MushtaqBilalPhD/status/2054565093430493609" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Mushtaq Bilal</div><div class="tweet-handle">@MushtaqBilalPhD · T11</div></div><span>↗</span></div><span class="tweet-tag">Investigadores</span><p>Un punto de entrada accesible a Codex para investigación académica.</p><span class="tweet-link">Ver fuente</span></a>
+  </div><span class="n">32</span>
+</section>
+
+<!-- 33 · Galería: integración y goals -->
+<section class="slide gallery-slide">
+  <header class="head reveal"><h2>Galería: datos dispersos y objetivos durables</h2><p class="lead">Integrar fuentes con límites claros y definir el contrato de “terminado” antes de ejecutar.</p></header>
+  <div class="body gallery-grid quad">
+    <a class="tweet-card reveal" href="https://x.com/NickADobos/status/2043468973367595341" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Nick Dobos</div><div class="tweet-handle">@NickADobos · T12</div></div><span>↗</span></div><span class="tweet-tag">Fuentes dispersas</span><p>Cruzar correo y presupuesto para apoyar un flujo fiscal; útil como patrón, con especial cuidado por la privacidad.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/gabrielchua/status/2045794950806458675" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Gabriel Chua</div><div class="tweet-handle">@gabrielchua · T13</div></div><span>↗</span></div><span class="tweet-tag">Decisión personal</span><p>Análisis de datos aplicado a una compra de vivienda: reunir contexto, comparar y explicitar supuestos.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/reach_vb/status/2076813989598662816" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Vaibhav Srivastav</div><div class="tweet-handle">@reach_vb · T14</div></div><span>↗</span></div><span class="tweet-tag">Antes de /goal</span><p>Investigar y reunir requisitos antes de convertir el pedido en un objetivo de larga duración.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/reach_vb/status/2077136521178517999" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Vaibhav Srivastav</div><div class="tweet-handle">@reach_vb · T15</div></div><span>↗</span></div><span class="tweet-tag">Contrato de término</span><p>Dejar que Codex formule el goal después de conversar sobre restricciones, checkpoints y definición de éxito.</p><span class="tweet-link">Ver fuente</span></a>
+  </div><span class="n">33</span>
+</section>
+
+<!-- 34 · Galería: modelos, contexto y cuota -->
+<section class="slide gallery-slide">
+  <header class="head reveal"><h2>Galería: modelos, contexto y manejo de cuota</h2><p class="lead">Estas publicaciones aportan patrones para probar; sus cifras no sustituyen la documentación ni la medición propia.</p></header>
+  <div class="body gallery-grid dense">
+    <a class="tweet-card reveal" href="https://x.com/cjzafir/status/2076483843322962341" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">CJ Zafir</div><div class="tweet-handle">@cjzafir · T16</div></div><span>↗</span></div><span class="tweet-tag">Enrutamiento</span><p>Sol planifica, Luna ejecuta y Sol revisa.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/cjzafir/status/2076050485354926355" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">CJ Zafir</div><div class="tweet-handle">@cjzafir · T17</div></div><span>↗</span></div><span class="tweet-tag">Executor</span><p>Luna como worker veloz para tareas claras y repetibles.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/pvncher/status/2077708372363624894" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Eric Provencher</div><div class="tweet-handle">@pvncher · T18</div></div><span>↗</span></div><span class="tweet-tag">Selección</span><p>Elegir entre Sol, Terra y Luna según ambigüedad, volumen y costo.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/MilksandMatcha/status/2077826851511095401" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Sarah Chieng</div><div class="tweet-handle">@MilksandMatcha · T19</div></div><span>↗</span></div><span class="tweet-tag">Contexto</span><p>Un thread por línea de trabajo mantiene el contexto enfocado.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/mweinbach/status/2075721970193252501" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Max Weinbach</div><div class="tweet-handle">@mweinbach · T20</div></div><span>↗</span></div><span class="tweet-tag">Coordinación</span><p>Un thread gestor puede sintetizar resultados de lanes independientes.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/aibuilderclub_/status/2076151989990477941" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">AI Builder Club</div><div class="tweet-handle">@aibuilderclub_ · T21</div></div><span>↗</span></div><span class="tweet-tag">Umbral 272K</span><p>Contextos enormes pueden activar multiplicadores de precio en API.</p><span class="tweet-link">Ver fuente</span></a>
+    <a class="tweet-card reveal" href="https://x.com/jjpcodes/status/2075728838261084218" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Josh / JJP Codes</div><div class="tweet-handle">@jjpcodes · T22</div></div><span>↗</span></div><span class="tweet-tag">Goals y cuota</span><p>Una experiencia sobre /goal y límites de uso: hipótesis útil, no garantía.</p><span class="tweet-link">Ver fuente</span></a>
+  </div><span class="n">34</span>
+</section>
+
+<!-- 35 · Fuentes oficiales -->
+<section class="slide gallery-slide official-slide">
+  <header class="head reveal"><h2>Documentación oficial para volver después del taller</h2><p class="lead">La fuente de verdad para modelos, precios, parámetros, goals y comandos.</p></header>
+  <div class="body gallery-grid official-grid">
+    <a class="tweet-card official-card featured reveal" href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Catálogo GPT-5.6</div><div class="tweet-handle">OpenAI · O1</div></div><span>↗</span></div><span class="tweet-tag">Modelos</span><p>Comparar Sol, Terra y Luna; capacidades, razonamiento y selección por tarea.</p><span class="tweet-link">Abrir documentación</span></a>
+    <a class="tweet-card official-card reveal" href="https://developers.openai.com/api/docs/models/gpt-5.6-sol" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">GPT-5.6 Sol</div><div class="tweet-handle">OpenAI · O2</div></div><span>↗</span></div><span class="tweet-tag">Flagship</span><p>Capacidades, contexto y precio del modelo para trabajo complejo.</p><span class="tweet-link">Abrir documentación</span></a>
+    <a class="tweet-card official-card reveal" href="https://developers.openai.com/api/docs/models/gpt-5.6-terra" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">GPT-5.6 Terra</div><div class="tweet-handle">OpenAI · O3</div></div><span>↗</span></div><span class="tweet-tag">Equilibrio</span><p>Capacidades, contexto y precio para el trabajo cotidiano.</p><span class="tweet-link">Abrir documentación</span></a>
+    <a class="tweet-card official-card reveal" href="https://learn.chatgpt.com/use-cases/follow-goals" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Follow a goal</div><div class="tweet-handle">OpenAI · O4</div></div><span>↗</span></div><span class="tweet-tag">Trabajo largo</span><p>Cómo definir un resultado durable con una condición verificable.</p><span class="tweet-link">Abrir guía</span></a>
+    <a class="tweet-card official-card reveal" href="https://learn.chatgpt.com/docs/developer-commands?surface=cli" target="_blank" rel="noreferrer"><div class="tweet-top"><div><div class="tweet-author">Developer commands</div><div class="tweet-handle">OpenAI · O5</div></div><span>↗</span></div><span class="tweet-tag">Referencia</span><p>Comandos disponibles en Codex y su uso en el flujo de desarrollo.</p><span class="tweet-link">Abrir guía</span></a>
+  </div><p class="appendix-note">Los tweets documentan prácticas y ejemplos; modelos, precios y límites pueden cambiar. Revisa siempre las fuentes oficiales.</p><span class="n">35</span>
+</section>
+
+</main></div>
+
+  <nav class="deck-controls" aria-label="Controles"><button id="prev" aria-label="Anterior">←</button><span id="counter">1 / 11</span><button id="next" aria-label="Siguiente">→</button><button id="full" aria-label="Pantalla completa">⛶</button></nav>
+  <div class="hotzone"></div><button class="edit" id="edit" title="Editar texto (E)">✎</button>
+  <script>
+    /* === CONTROLADOR DE NAVEGACIÓN Y ESCALA === */
+    class Deck{constructor(){this.s=[...document.querySelectorAll('.slide')];this.i=0;this.stage=document.querySelector('#stage');this.x=0;this.w=0;this.scale();addEventListener('resize',()=>this.scale());this.bind();const h=parseInt(location.hash.slice(1));if(h>0)this.i=Math.min(h-1,this.s.length-1);this.show(false)}scale(){const f=Math.min(innerWidth/1920,innerHeight/1080),x=(innerWidth-1920*f)/2,y=(innerHeight-1080*f)/2;this.stage.style.transform=`translate(${x}px,${y}px) scale(${f})`}bind(){prev.onclick=()=>this.go(-1);next.onclick=()=>this.go(1);full.onclick=()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();addEventListener('keydown',e=>{if(e.target.contentEditable==='true')return;if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();this.go(1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();this.go(-1)}if(e.key==='Home'){this.i=0;this.show()}if(e.key==='End'){this.i=this.s.length-1;this.show()}if(e.key.toLowerCase()==='f')full.click()});addEventListener('wheel',e=>{if(Date.now()-this.w<550||Math.abs(e.deltaY)<24)return;this.w=Date.now();this.go(e.deltaY>0?1:-1)},{passive:true});addEventListener('touchstart',e=>this.x=e.changedTouches[0].screenX,{passive:true});addEventListener('touchend',e=>{const d=e.changedTouches[0].screenX-this.x;if(Math.abs(d)>55)this.go(d<0?1:-1)},{passive:true})}go(d){this.i=Math.max(0,Math.min(this.i+d,this.s.length-1));this.show()}show(hash=true){this.s.forEach((s,j)=>{s.classList.toggle('active',j===this.i);s.classList.toggle('visible',j===this.i)});counter.textContent=`${this.i+1} / ${this.s.length}`;progress.style.transform=`scaleX(${(this.i+1)/this.s.length})`;prev.disabled=this.i===0;next.disabled=this.i===this.s.length-1;if(hash)history.replaceState(null,'',`#${this.i+1}`)}}const deck=new Deck(); addEventListener('hashchange',()=>{const h=parseInt(location.hash.slice(1));if(h>0){deck.i=Math.min(h-1,deck.s.length-1);deck.show(false)}});
+    /* === EDICIÓN LOCAL: E o esquina superior izquierda === */
+    const fields=[...document.querySelectorAll('[data-editable]')],key='ds-practical-deck-v1',saved=JSON.parse(localStorage.getItem(key)||'{}');fields.forEach((el,i)=>{if(saved[i]!=null)el.innerHTML=saved[i];el.addEventListener('input',()=>{saved[i]=el.innerHTML;localStorage.setItem(key,JSON.stringify(saved))})});let editing=false,timer;const toggle=()=>{editing=!editing;document.body.classList.toggle('editing',editing);edit.classList.toggle('active',editing);fields.forEach(el=>el.contentEditable=editing)};edit.onclick=toggle;document.querySelector('.hotzone').onclick=toggle;document.querySelector('.hotzone').onmouseenter=()=>{clearTimeout(timer);edit.classList.add('show')};document.querySelector('.hotzone').onmouseleave=()=>timer=setTimeout(()=>{if(!editing)edit.classList.remove('show')},400);edit.onmouseenter=()=>clearTimeout(timer);edit.onmouseleave=()=>timer=setTimeout(()=>{if(!editing)edit.classList.remove('show')},400);addEventListener('keydown',e=>{if(e.key.toLowerCase()==='e'&&e.target.contentEditable!=='true')toggle()});
+  </script>
+</body>
+</html>
+
+
