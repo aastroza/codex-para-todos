@@ -159,6 +159,14 @@
   .brand-slot{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;display:flex;align-items:center;justify-content:center;min-height:170px}
   .brand-slot img{display:block;width:100%;max-width:360px;height:auto;object-fit:contain}
   .brand-caption{margin-top:10px;font-size:1rem;line-height:1.25;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+  .slide--opening .hero-panel{justify-content:flex-start;gap:12px;padding:20px 24px}
+  .slide--opening .brand-slot{min-height:126px;padding:12px 16px}
+  .slide--opening .brand-slot img{max-width:300px}
+  .slide--opening .brand-caption{margin-top:6px;font-size:.875rem;line-height:1.2}
+  .slide--opening .hero-panel h3{margin-bottom:4px}
+  .slide--opening .hero-panel ul{margin-top:6px}
+  .slide--opening .hero-panel li{font-size:1.125rem;line-height:1.3;padding:9px 0}
+  .slide--opening .hero-panel .micro{font-size:.9375rem;line-height:1.3;margin-top:4px}
   .closing-brand{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:34px;padding-top:18px;border-top:1px solid var(--linea)}
   .closing-brand img{display:block;width:250px;max-width:40vw;height:auto;background:var(--surface);border:1px solid var(--line);padding:10px 14px;border-radius:8px}
   .closing-brand .contact{font-size:var(--text-meta);color:var(--muted);line-height:1.4;text-align:right}
@@ -191,6 +199,15 @@
   .slide--thesis>div:first-child{max-width:1080px;margin:auto 0}
   .slide--thesis .big{max-width:23ch}
   .slide--participation .panel{box-shadow:none}
+  .participation-shell{display:flex;align-items:stretch;gap:var(--space-xl);flex:1;min-height:0}
+  .participation-main{display:flex;flex:1;min-width:0;flex-direction:column;justify-content:center}
+  .menti-prompt{align-self:center;flex:0 0 220px;width:220px;padding:var(--space-md);text-align:center;background:var(--surface-cyan);border:1px solid var(--line-cyan);border-radius:12px}
+  .menti-qr-link{display:block;margin-bottom:var(--space-sm);padding:16px;background:var(--surface);border-radius:8px;outline-offset:4px}
+  .menti-qr{display:block;width:156px;height:156px;margin:0 auto;background:var(--surface)}
+  .menti-eyebrow{color:var(--naranja-ink);font-size:1rem;line-height:1.25;font-weight:800}
+  .menti-code{margin-top:var(--space-xs);color:var(--azul);font-size:1.625rem;line-height:1;font-weight:800;letter-spacing:.08em;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .menti-link{display:inline-block;margin-top:var(--space-sm);color:var(--azul);font-size:1rem;line-height:1.25;font-weight:700;text-underline-offset:3px}
+  .menti-qr-link:focus-visible,.menti-link:focus-visible{outline:3px solid var(--naranja);outline-offset:3px}
   .vote-grid{gap:var(--space-sm) !important}
   .vote-grid .panel{padding:var(--space-md) var(--space-sm);display:flex;align-items:center;justify-content:center;min-height:96px}
   .vote-grid .panel:nth-child(1),.vote-grid .panel:nth-child(2){background:var(--surface-cyan);border-color:var(--line-cyan)}
@@ -205,7 +222,7 @@
   .slide--closing .big{line-height:1.2;max-width:30ch}
   .slide--closing .closing-brand{margin-top:18px;padding-top:12px}
   .slide--closing .closing-brand img{width:210px}
-  .workflow-map{flex:1;display:flex;flex-direction:column;justify-content:center;gap:var(--space-xl);min-height:0}
+  .workflow-map{flex:1;display:flex;flex-direction:column;justify-content:center;gap:var(--space-lg);min-height:0}
   .workflow-track{position:relative;display:grid;grid-template-columns:1.05fr 1.1fr .9fr .95fr 1.1fr;gap:var(--space-lg);align-items:stretch}
   .workflow-track::before{content:"";position:absolute;left:4%;right:4%;top:31px;height:2px;background:var(--linea)}
   .workflow-step{position:relative;z-index:1;padding:64px var(--space-sm) var(--space-md);min-width:0}
@@ -221,6 +238,10 @@
   .workflow-step--verify .workflow-index{border-color:var(--naranja-ink);color:var(--naranja-ink)}
   .workflow-loop{display:flex;align-items:center;justify-content:center;gap:var(--space-md);color:var(--naranja-ink);font-size:var(--text-meta);font-weight:700}
   .workflow-loop::before,.workflow-loop::after{content:"";width:110px;height:1px;background:var(--naranja-ink)}
+  .workflow-bridge{display:flex;align-items:center;justify-content:center;gap:var(--space-md);flex-wrap:wrap;padding:10px var(--space-md);border-block:1px solid var(--line-cyan);color:var(--gris);font-size:1.0625rem;line-height:1.3;text-align:center}
+  .workflow-bridge-label{color:var(--udd-cyan-ink);font-weight:800}
+  .workflow-bridge span:not(.workflow-bridge-label){white-space:nowrap}
+  .workflow-bridge b{color:var(--azul)}
   .workflow-thesis{align-self:center;max-width:820px;text-align:center;color:var(--azul);font-size:var(--text-lead);font-weight:700;line-height:1.28;text-wrap:balance}
   @media (pointer:coarse){
     .control-button{width:48px;height:48px}
@@ -311,10 +332,10 @@
           <li><b>Verificar</b> antes de confiar en la salida.</li>
         </ul>
       </div>
-      <p class="micro">La charla abre el mapa; las siguientes sesiones lo ponen a prueba con Codex y flujo multiagente.</p>
+      <p class="micro">La charla abre el mapa; Alonso lo prueba con Codex y Cristian lo convierte en arquitectura trazable.</p>
     </aside>
   </div>
-  <div class="notes">Bienvenida breve. Marco: celebramos 10 años del IDS con un taller práctico. Esta charla instala el marco y la evidencia; Alonso mostrará Codex en tareas reales y Cristian cerrará con su flujo multiagente de investigación. Regla de la charla: cada afirmación relevante viene con un paper o un reporte serio detrás; y también voy a mostrar la evidencia que incomoda.</div>
+  <div class="notes">Bienvenida breve. Marco: celebramos 10 años del IDS con un taller práctico. Esta charla instala el marco y la evidencia; Alonso mostrará Codex en tareas reales y Cristian cerrará con la arquitectura que vuelve el trabajo reproducible, trazable y defendible. Regla de la charla: cada afirmación relevante viene con un paper o un reporte serio detrás; y también voy a mostrar la evidencia que incomoda.</div>
 </section>
 
 <!-- 2. LA JORNADA -->
@@ -325,7 +346,7 @@
     <div class="col">
       <div class="panel"><h3>1 · Esta charla</h3><p style="font-size:var(--text-meta)">Por qué el flujo de trabajo se está reorganizando: la evidencia 2024–2026, a favor y en contra.</p></div>
       <div class="panel"><h3>2 · Codex en tareas reales <span style="color:var(--muted);font-weight:400">(Alonso Astroza)</span></h3><p style="font-size:var(--text-meta)">El flujo en acción: delegar tareas concretas de data science y verificar resultados.</p></div>
-      <div class="panel"><h3>3 · Flujo multiagente <span style="color:var(--muted);font-weight:400">(Cristian Candia)</span></h3><p style="font-size:var(--text-meta)">Orquestar varios agentes para investigación: las decisiones prácticas detrás.</p></div>
+      <div class="panel"><h3>3 · Arquitectura agéntica y trabajo trazable <span style="color:var(--muted);font-weight:400">(Cristian Candia)</span></h3><p style="font-size:var(--text-meta)">Cómo pasar de una respuesta plausible a un resultado reproducible, verificable y defendible.</p></div>
     </div>
     <div class="col" style="flex:.75">
       <p class="big">La pregunta que cruza el día:<br><br>si los agentes ya ejecutan, <span class="accent">¿dónde queda nuestro aporte?</span></p>
@@ -403,7 +424,8 @@
 <section class="slide slide--participation" aria-labelledby="slide-5-title">
   <h2 id="slide-5-title" class="sr-only">Votación inicial sobre productividad personal con IA</h2>
   <div class="kicker">Antes de empezar, votemos</div>
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+  <div class="participation-shell">
+  <div class="participation-main">
     <p class="big" style="font-size:2.5rem">"Con las herramientas de IA actuales, hoy soy <span class="accent">más rápido/a</span> en mi trabajo con datos de lo que era hace un año."</p>
     <div class="cols vote-grid" style="flex:none;margin-top:56px">
       <div class="panel" style="text-align:center;flex:1"><p style="font-size:var(--text-meta);font-weight:700;color:var(--azul)">1<br>Totalmente de acuerdo</p></div>
@@ -414,7 +436,16 @@
     </div>
     <p class="sub" style="margin-top:36px;color:var(--muted)">Recuerden su número del 1 al 5. Repetiremos exactamente esta escala al final.</p>
   </div>
-  <div class="notes">PREGUNTA DE POSICIONAMIENTO. Leer la afirmación, dar 20–30 segundos de silencio sin reformular y pedir un voto simultáneo del 1 al 5, usando las categorías visibles. Mirar la distribución en voz alta ("veo mayoría en 1 y 2…"), pero no interpretarla todavía. Registrar mentalmente o en una foto la distribución inicial. Decir solo: "recuerden su número; repetimos la misma escala al final". El propósito es contrastar percepción y medición después del experimento aleatorizado de METR.</div>
+  <aside class="menti-prompt" aria-label="Participar en Mentimeter">
+    <a class="menti-qr-link" href="https://www.menti.com/alfuxoxdmzxg" target="_blank" rel="noopener noreferrer" aria-label="Abrir esta pregunta en Mentimeter">
+      <img class="menti-qr" src="/ds/mentimeter_qr_code.png" width="1000" height="1000" decoding="async" alt="Código QR para responder esta pregunta en Mentimeter">
+    </a>
+    <p class="menti-eyebrow">Entra en menti.com</p>
+    <p class="menti-code">2705 4176</p>
+    <a class="menti-link" href="https://www.menti.com/alfuxoxdmzxg" target="_blank" rel="noopener noreferrer">menti.com</a>
+  </aside>
+  </div>
+  <div class="notes">PREGUNTA DE POSICIONAMIENTO. Pedir que escaneen el QR o entren en menti.com con el código 2705 4176. Leer la afirmación, dar 20–30 segundos de silencio sin reformular y abrir la primera votación del 1 al 5. Mostrar la distribución de Mentimeter y describirla en voz alta ("veo mayoría en 1 y 2…"), pero no interpretarla todavía. Decir solo: "recuerden su número; repetimos la misma escala al final". Si falla la conexión, usar dedos del 1 al 5 como respaldo. El propósito es contrastar percepción y medición después del experimento aleatorizado de METR.</div>
 </section>
 
 <!-- 4. TESIS -->
@@ -576,6 +607,8 @@
 <section class="slide slide--participation">
   <div class="kicker">Punto de control · votemos de nuevo</div>
   <h2 style="font-size:var(--text-subhead)">En METR 2025, expertos 19% más lentos con IA, creyendo ser 20% más rápidos.<br>¿Cuál es la lectura más defendible?</h2>
+  <div class="participation-shell">
+  <div class="participation-main">
   <div class="cols" style="gap:24px">
     <div class="col">
       <div class="panel"><p style="font-size:var(--text-meta)"><b style="color:var(--azul)">A.</b> Las herramientas de 2025 todavía generaban código de mala calidad.</p></div>
@@ -587,7 +620,17 @@
     </div>
   </div>
   <p style="font-size:var(--text-meta);color:var(--muted);margin-top:18px">30 segundos para pensar · comenten con su vecino/a · votamos todos a la vez</p>
-  <div class="notes">PREGUNTA BISAGRA. Dar 30 segundos de silencio, 30 segundos con la persona de al lado y pedir voto simultáneo con dedos (1=A … 4=D). Mapa de errores: A confunde capacidad con causa; el código era plausible, pero el costo estaba en revisarlo e integrarlo. B reduce el fenómeno a destreza individual; eran usuarios experimentados con libre elección de herramienta. C es la respuesta más defendible: el cuello de botella se desplazó aguas abajo. D confunde tamaño muestral con validez: una muestra pequeña ensancha el intervalo (+2% a +39%), pero no invalida el diseño aleatorizado. Si domina C, avanzar. Si hay dispersión, explicar en 60 segundos dónde se fue el tiempo.</div>
+  </div>
+  <aside class="menti-prompt" aria-label="Participar en Mentimeter">
+    <a class="menti-qr-link" href="https://www.menti.com/alfuxoxdmzxg" target="_blank" rel="noopener noreferrer" aria-label="Abrir esta pregunta en Mentimeter">
+      <img class="menti-qr" src="/ds/mentimeter_qr_code.png" width="1000" height="1000" decoding="async" alt="Código QR para responder esta pregunta en Mentimeter">
+    </a>
+    <p class="menti-eyebrow">Entra en menti.com</p>
+    <p class="menti-code">2705 4176</p>
+    <a class="menti-link" href="https://www.menti.com/alfuxoxdmzxg" target="_blank" rel="noopener noreferrer">menti.com</a>
+  </aside>
+  </div>
+  <div class="notes">PREGUNTA BISAGRA. Avanzar en Mentimeter a la segunda pregunta. Dar 30 segundos de silencio, 30 segundos con la persona de al lado y pedir voto simultáneo A–D. Mostrar la distribución antes de explicar. Si falla la conexión, usar dedos (1=A … 4=D). Mapa de errores: A confunde capacidad con causa; el código era plausible, pero el costo estaba en revisarlo e integrarlo. B reduce el fenómeno a destreza individual; eran usuarios experimentados con libre elección de herramienta. C es la respuesta más defendible: el cuello de botella se desplazó aguas abajo. D confunde tamaño muestral con validez: una muestra pequeña ensancha el intervalo (+2% a +39%), pero no invalida el diseño aleatorizado. Si domina C, avanzar. Si hay dispersión, explicar en 60 segundos dónde se fue el tiempo.</div>
 </section>
 
 <!-- 10. ESCRIBIR VS DESPACHAR -->
@@ -676,9 +719,16 @@
       </div>
     </div>
     <div class="workflow-loop">Si falla la verificación: volver al contexto y a la especificación</div>
+    <p class="workflow-bridge" aria-label="Equivalencia con las cuatro fases que presentará Cristian Candia">
+      <span class="workflow-bridge-label">Puente con Cristian</span>
+      <span>Especificar + contextualizar → <b>explorar</b></span>
+      <span>Delegar → <b>ejecutar</b></span>
+      <span>Verificar → <b>revisar</b></span>
+      <span>Consolidar → <b>finalizar</b></span>
+    </p>
     <p class="workflow-thesis">Preparar el contexto se vuelve tan importante como preparar los datos.</p>
   </div>
-  <div class="notes">Síntesis propia de lo que documentan OpenAI, Anthropic y Google. ANUNCIAR LA CADENA aquí: "para llegar a la pregunta que importa — qué delego, qué hago en conjunto, qué retengo — vamos a responder tres preguntas más simples primero: qué se delega y quién verifica; qué necesita el agente y qué pasa si nadie lo mantiene; y dónde va la verificación". Cada slide siguiente responde una (encadenamiento explícito: reduce la distancia hasta la pregunta compleja). Los movimientos 1, 2 y 4 son donde vive el criterio — y son humanos. El resto del día recorre exactamente esto: Alonso con Codex (movimientos 3 y 4 en vivo), Cristian con orquestación multiagente. Dato de contexto de OpenAI interno: 99,8% de los tokens internos vienen de Codex; ~25% de los usuarios ya delega tareas de más de 8 horas; crecimiento 137x en usuarios NO desarrolladores (arXiv 2606.26959). Nuevos objetos de trabajo: AGENTS.md, skills, harnesses, evals.</div>
+  <div class="notes">Síntesis propia de lo que documentan OpenAI, Anthropic y Google. ANUNCIAR LA CADENA aquí: "para llegar a la pregunta que importa — qué delego, qué hago en conjunto, qué retengo — vamos a responder tres preguntas más simples primero: qué se delega y quién verifica; qué necesita el agente y qué pasa si nadie lo mantiene; y dónde va la verificación". Cada slide siguiente responde una (encadenamiento explícito: reduce la distancia hasta la pregunta compleja). Los movimientos 1, 2 y 4 son donde vive el criterio — y son humanos. Explicar el puente visible: Cristian retomará este recorrido como cuatro fases operativas — explorar, ejecutar, revisar y finalizar — y mostrará las piezas que dejan evidencia en cada una. El resto del día recorre exactamente esto: Alonso con Codex, especialmente delegar y verificar; Cristian con skills, agentes, handoffs, harnesses y gates para volver el flujo reproducible y trazable. Dato de contexto de OpenAI interno: 99,8% de los tokens internos vienen de Codex; ~25% de los usuarios ya delega tareas de más de 8 horas; crecimiento 137x en usuarios NO desarrolladores (arXiv 2606.26959). Nuevos objetos de trabajo: AGENTS.md, skills, harnesses, evals.</div>
 </section>
 
 <!-- 13. CASO NETFLIX -->
@@ -855,13 +905,14 @@
 <!-- 20. CIERRE -->
 <section class="slide slide--closing slide--participation" aria-labelledby="slide-23-title">
   <h2 id="slide-23-title" class="sr-only">Votación final y paso a la práctica</h2>
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+  <div class="participation-shell">
+  <div class="participation-main">
     <div class="kicker">Antes de pasar a la práctica · votemos de nuevo</div>
     <p class="sub" style="margin-top:0;margin-bottom:14px">"Hoy soy más rápido/a en mi trabajo con datos de lo que era hace un año."<br><b style="color:var(--azul)">¿Mantienen su voto?</b></p>
     <p style="font-size:var(--text-source);color:var(--muted);margin-bottom:24px">1 Totalmente de acuerdo · 2 De acuerdo · 3 Indeciso/a · 4 En desacuerdo · 5 Totalmente en desacuerdo</p>
     <p class="big" style="font-size:2.25rem">En el estudio METR de 2025, los desarrolladores<br><span class="accent">creían</span> ser 20% más rápidos.<br>La medición mostró 19% más de tiempo.</p>
     <p class="sub" style="margin-top:20px">La única forma de saber qué aportan estas herramientas a <b style="color:var(--azul)">tu</b> flujo es usarlas con método y <b style="color:var(--naranja-ink)">medir</b>.</p>
-    <p class="sub">Ahora pondremos esa regla a prueba. Y si hoy construyen algo útil, <b style="color:var(--naranja-ink)">podrán postularlo mañana al Build Week Challenge</b>.</p>
+    <p class="sub">Ahora Alonso la pondrá a prueba con Codex. Cristian cerrará mostrando cómo <b style="color:var(--naranja-ink)">aceptar el resultado con evidencia</b>.</p>
     <div class="closing-brand">
       <div>
         <img src="/logos/data-science-udd-10-cropped.png" width="2517" height="649" loading="lazy" decoding="async" alt="dataScience UDD 10 años">
@@ -870,7 +921,16 @@
       <div class="contact">Gracias — Germán Gómez · gagomez@udd.cl<br>Instituto de Data Science UDD</div>
     </div>
   </div>
-  <div class="notes">RE-VOTO con la misma escala del 1 al 5. Dar 15 segundos y pedir voto simultáneo. Comparar con la distribución inicial y preguntar a una o dos personas: "¿Cambiaste de número? ¿Qué evidencia influyó?". No importa la dirección del cambio; el aprendizaje visible es distinguir percepción de medición. Remate: no les pido que me crean, les pido que midan. Mencionar Build Week como oportunidad secundaria y dar paso a Alonso.</div>
+  <aside class="menti-prompt" aria-label="Participar en Mentimeter">
+    <a class="menti-qr-link" href="https://www.menti.com/alfuxoxdmzxg" target="_blank" rel="noopener noreferrer" aria-label="Abrir esta pregunta en Mentimeter">
+      <img class="menti-qr" src="/ds/mentimeter_qr_code.png" width="1000" height="1000" loading="lazy" decoding="async" alt="Código QR para responder esta pregunta en Mentimeter">
+    </a>
+    <p class="menti-eyebrow">Vota de nuevo en menti.com</p>
+    <p class="menti-code">2705 4176</p>
+    <a class="menti-link" href="https://www.menti.com/alfuxoxdmzxg" target="_blank" rel="noopener noreferrer">menti.com</a>
+  </aside>
+  </div>
+  <div class="notes">RE-VOTO. Avanzar en Mentimeter a la votación final con la misma escala del 1 al 5. Dar 15 segundos, mostrar el resultado y compararlo con la distribución inicial. Preguntar a una o dos personas: "¿Cambiaste de número? ¿Qué evidencia influyó?". Si falla la conexión, repetir la escala con dedos. No importa la dirección del cambio; el aprendizaje visible es distinguir percepción de medición. Remate: no les pido que me crean, les pido que midan. Mencionar Build Week como oportunidad secundaria. TRANSICIÓN: "Mi tesis es que el criterio se volvió el recurso escaso. Alonso mostrará cómo delegar y verificar tareas reales con Codex; Cristian cerrará mostrando la arquitectura necesaria para que esos resultados no solo parezcan listos, sino que sean reproducibles, trazables y defendibles". PUENTE SUGERIDO PARA CRISTIAN: "Germán mostró dónde queda nuestro aporte y Alonso mostró la ejecución. Ahora veremos qué debe existir para poder decir ‘listo’ con evidencia".</div>
 </section>
 
 </div>
@@ -1051,7 +1111,7 @@
     if(slide.classList.contains('slide--opening')){
       targets=slide.querySelectorAll('.kicker,h1,.sub,.hero-panel');mode='hero';
     }else if(slide.classList.contains('slide--workflow')){
-      targets=slide.querySelectorAll('.workflow-step,.workflow-loop,.workflow-thesis');mode='sequence';
+      targets=slide.querySelectorAll('.workflow-step,.workflow-loop,.workflow-bridge,.workflow-thesis');mode='sequence';
     }else if(slide.classList.contains('slide--closing')){
       targets=slide.querySelectorAll('.kicker,.big,.sub,.closing-brand');mode='closing';
     }else if(slide.querySelector('.vote-grid')){
