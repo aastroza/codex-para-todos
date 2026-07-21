@@ -8,6 +8,8 @@ const buildWeekEventUrl = "https://luma.com/siyf8e74";
 const dataScienceEventUrl =
   "https://ingenieria.udd.cl/eventos/codex-para-data-science/";
 const dataScienceMaterialsUrl = "/ds/";
+const dataSciencePhotosUrl = "https://photos.app.goo.gl/rG6mhhz4L1aqEedw8";
+const dataScienceVideoUrl = "https://www.youtube.com/watch?v=vE2CuCcdZjA";
 const concepcionEventUrl =
   "https://postgrados.udd.cl/programas/jornada-codex-para-todos-sede-concepcion-245032/";
 const concepcionPostUrl = "/blog/codex-para-todos-concepcion/";
@@ -16,6 +18,7 @@ const upcomingEventSlidesUrl =
   "https://docs.google.com/presentation/d/1esEyAWCHxbHnDHsX7yKopm6QFtEA-3ParRcFK-Sh6kw/edit?usp=sharing";
 const showcasePostUrl = "/blog/x-tech-21-showcase-exploratec/";
 const upcomingEventImage = "/images/codex-event-concepcion-abstract.webp";
+const dataScienceEventImage = "/images/codex-data-science-2026.jpg";
 const concepcionEventImage = "/images/evento-concepcion-2026.webp";
 const firstWorkshopEventImage = "/images/primer-taller-2026.webp";
 const showcaseEventImage = "/images/showcase-exploratec-2026.webp";
@@ -85,19 +88,38 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
             </div>
           </article>
 
-          <article class="event-card event-card-featured" aria-labelledby="data-science-event-title">
-            <a class="event-card-media" href={dataScienceEventUrl} target="_blank" rel="noreferrer" aria-label="Ver Codex para Data Science">
+        </div>
+      </div>
+    </section>
+
+    <section class="attendance-section" aria-labelledby="attendance-title">
+      <div class="container attendance-grid">
+        <p class="attendance-number">152</p>
+        <div class="attendance-copy">
+          <h2 id="attendance-title">
+            Profesionales y estudiantes han participado en nuestros talleres para aprender a trabajar con Codex.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="events-section past-events-section" aria-labelledby="past-events-title">
+      <div class="container">
+        <h2 id="past-events-title">Eventos pasados</h2>
+        <div class="events-list" aria-label="Encuentros pasados de Codex para todos">
+          <article class="event-card" aria-labelledby="data-science-event-title">
+            <a class="event-card-media" href={dataScienceMaterialsUrl} aria-label="Ver el material de Codex para Data Science">
               <img
-                src={upcomingEventImage}
-                alt="Imagen abstracta en tonos rosados y celestes para Codex para Data Science"
-                width="1200"
-                height="675"
+                src={dataScienceEventImage}
+                alt="Alonso Astroza presenta Codex para Data Science ante asistentes trabajando con sus notebooks"
+                width="1920"
+                height="1440"
                 loading="lazy"
               />
             </a>
             <div class="event-card-body">
               <h3 id="data-science-event-title">
-                <a href={dataScienceEventUrl} target="_blank" rel="noreferrer">Codex para Data Science</a>
+                <a href={dataScienceMaterialsUrl}>Codex para Data Science</a>
               </h3>
               <dl class="event-card-meta">
                 <div>
@@ -114,24 +136,17 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 </div>
               </dl>
               <p>
-                Un taller práctico para explorar cómo Codex y los agentes de IA pueden apoyar flujos reales de Data Science.
+                Un taller práctico sobre cómo Codex y los agentes de IA pueden apoyar flujos reales de Data Science.
               </p>
               <div class="event-card-actions" aria-label="Enlaces de Codex para Data Science">
-                <a href={dataScienceEventUrl} target="_blank" rel="noreferrer">Inscribirme</a>
-                <a href={dataScienceMaterialsUrl}>Material</a>
+                <a href={dataScienceMaterialsUrl}>Ver material</a>
+                <a href={dataSciencePhotosUrl} target="_blank" rel="noreferrer">Ver fotos</a>
+                <a href={dataScienceVideoUrl} target="_blank" rel="noreferrer">Ver video</a>
                 <a href={dataScienceEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
               </div>
             </div>
           </article>
 
-        </div>
-      </div>
-    </section>
-
-    <section class="events-section past-events-section" aria-labelledby="past-events-title">
-      <div class="container">
-        <h2 id="past-events-title">Eventos pasados</h2>
-        <div class="events-list" aria-label="Encuentros pasados de Codex para todos">
           <article class="event-card" aria-labelledby="concepcion-event-title">
             <a class="event-card-media" href={concepcionPostUrl} aria-label="Leer la nota de Codex para todos en Concepción">
               <img

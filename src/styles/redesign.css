@@ -203,6 +203,37 @@ p {
   background: var(--surface);
 }
 
+.attendance-section {
+  background: var(--ink);
+  color: var(--surface);
+  padding: clamp(54px, 6vw, 78px) 0;
+}
+
+.attendance-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 0.68fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 84px);
+}
+
+.attendance-number {
+  color: var(--surface);
+  font-size: clamp(4.75rem, 9vw, 6rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+}
+
+.attendance-copy h2 {
+  max-width: 26ch;
+  color: var(--surface);
+  font-size: clamp(1.75rem, 3.2vw, 2.8rem);
+  font-weight: 520;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
 /* Events */
 .events-section {
   background: var(--surface);
@@ -880,6 +911,15 @@ p {
   .hero-copy > p {
     max-width: 470px;
     font-size: 1.18rem;
+  }
+
+  .attendance-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .attendance-copy h2 {
+    max-width: 24ch;
   }
 
   .events-list,
