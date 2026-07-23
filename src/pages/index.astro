@@ -5,6 +5,7 @@ const lumaUrl = "https://luma.com/g1d4uxoi";
 const photosUrl = "https://photos.app.goo.gl/ziNiMck8oEBo4uxK7";
 const videoUrl = "https://youtube.com/shorts/PmifZOeo3jA";
 const buildWeekEventUrl = "https://luma.com/siyf8e74";
+const buildWeekPhotosUrl = "https://photos.app.goo.gl/wvEm1zCD2HoEpeR69";
 const buildWeekSlidesUrl =
   "https://docs.google.com/presentation/d/15colBQK72eBod04AjgvzW5dkdygmaEf4sD3tZTVCnjI/edit?usp=sharing";
 const dataScienceEventUrl =
@@ -19,7 +20,8 @@ const concepcionPhotosUrl = "https://photos.app.goo.gl/fsLPWaY8yNhw23n57";
 const upcomingEventSlidesUrl =
   "https://docs.google.com/presentation/d/1esEyAWCHxbHnDHsX7yKopm6QFtEA-3ParRcFK-Sh6kw/edit?usp=sharing";
 const showcasePostUrl = "/blog/x-tech-21-showcase-exploratec/";
-const upcomingEventImage = "/images/codex-event-concepcion-abstract.webp";
+const nextWorkshopEventImage = "/images/codex-event-concepcion-abstract.webp";
+const buildWeekEventImage = "/images/build-week-santiago-2026.jpg";
 const dataScienceEventImage = "/images/codex-data-science-2026.jpg";
 const concepcionEventImage = "/images/evento-concepcion-2026.webp";
 const firstWorkshopEventImage = "/images/primer-taller-2026.webp";
@@ -52,14 +54,69 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
       <div class="container">
         <h2 id="upcoming-events-title">Próximos eventos</h2>
         <div class="events-list" aria-label="Próximos encuentros de Codex para todos">
-          <article class="event-card event-card-featured" aria-labelledby="build-week-event-title">
-            <a class="event-card-media" href={buildWeekEventUrl} target="_blank" rel="noreferrer" aria-label="Ver OpenAI Build Week Community Event - Santiago">
+          <article class="event-card event-card-featured" aria-labelledby="next-workshop-event-title">
+            <div class="event-card-media">
               <img
-                src={upcomingEventImage}
-                alt="Imagen abstracta en tonos rosados y celestes para OpenAI Build Week Community Event - Santiago"
+                src={nextWorkshopEventImage}
+                alt="Imagen abstracta para el próximo taller presencial Codex para Todos"
                 width="1200"
                 height="675"
                 loading="eager"
+              />
+            </div>
+            <div class="event-card-body">
+              <h3 id="next-workshop-event-title">Taller presencial Codex para Todos</h3>
+              <dl class="event-card-meta">
+                <div>
+                  <dt>Fecha</dt>
+                  <dd>Por confirmar</dd>
+                </div>
+                <div>
+                  <dt>Horario</dt>
+                  <dd>Por confirmar</dd>
+                </div>
+                <div>
+                  <dt>Lugar</dt>
+                  <dd>Universidad del Desarrollo, Las Condes, Santiago</dd>
+                </div>
+              </dl>
+              <p>
+                Un nuevo encuentro práctico para aprender a trabajar con Codex junto a personas de distintas disciplinas.
+              </p>
+              <div class="event-card-actions" aria-label="Inscripciones del próximo taller">
+                <button class="event-card-action-disabled" type="button" disabled>
+                  Inscripciones próximamente
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="attendance-section" aria-labelledby="attendance-title">
+      <div class="container attendance-grid">
+        <p class="attendance-number">184</p>
+        <div class="attendance-copy">
+          <h2 id="attendance-title">
+            Profesionales y estudiantes han participado en nuestras actividades para aprender a trabajar con Codex.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="events-section past-events-section" aria-labelledby="past-events-title">
+      <div class="container">
+        <h2 id="past-events-title">Eventos pasados</h2>
+        <div class="events-list" aria-label="Encuentros pasados de Codex para todos">
+          <article class="event-card" aria-labelledby="build-week-event-title">
+            <a class="event-card-media" href={buildWeekPhotosUrl} target="_blank" rel="noreferrer" aria-label="Ver las fotos de OpenAI Build Week Community Event - Santiago">
+              <img
+                src={buildWeekEventImage}
+                alt="Alonso Astroza presenta durante OpenAI Build Week Community Event en Santiago"
+                width="1200"
+                height="675"
+                loading="lazy"
               />
             </a>
             <div class="event-card-body">
@@ -73,43 +130,24 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 </div>
                 <div>
                   <dt>Horario</dt>
-                  <dd>16:00 a 20:00 hrs.</dd>
+                  <dd>17:00 a 19:30 hrs.</dd>
                 </div>
                 <div>
                   <dt>Lugar</dt>
-                  <dd>Universidad del Desarrollo, Las Condes</dd>
+                  <dd>Oficinas de Buk en Santiago</dd>
                 </div>
               </dl>
               <p>
-                Una tarde práctica para explorar cómo ChatGPT, Codex y los agentes de IA pueden ayudarte a trabajar, crear y construir mejor.
+                Un encuentro en comunidad para compartir lo construido y lo aprendido en la Build Week.
               </p>
               <div class="event-card-actions" aria-label="Enlaces de OpenAI Build Week Community Event - Santiago">
-                <a href={buildWeekEventUrl} target="_blank" rel="noreferrer">Inscribirme</a>
-                <a href={buildWeekEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
+                <a href={buildWeekPhotosUrl} target="_blank" rel="noreferrer">Ver fotos</a>
                 <a href={buildWeekSlidesUrl} target="_blank" rel="noreferrer">Slides</a>
+                <a href={buildWeekEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
               </div>
             </div>
           </article>
 
-        </div>
-      </div>
-    </section>
-
-    <section class="attendance-section" aria-labelledby="attendance-title">
-      <div class="container attendance-grid">
-        <p class="attendance-number">152</p>
-        <div class="attendance-copy">
-          <h2 id="attendance-title">
-            Profesionales y estudiantes han participado en nuestros talleres para aprender a trabajar con Codex.
-          </h2>
-        </div>
-      </div>
-    </section>
-
-    <section class="events-section past-events-section" aria-labelledby="past-events-title">
-      <div class="container">
-        <h2 id="past-events-title">Eventos pasados</h2>
-        <div class="events-list" aria-label="Encuentros pasados de Codex para todos">
           <article class="event-card" aria-labelledby="data-science-event-title">
             <a class="event-card-media" href={dataScienceMaterialsUrl} aria-label="Ver el material de Codex para Data Science">
               <img
@@ -135,7 +173,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 </div>
                 <div>
                   <dt>Lugar</dt>
-                  <dd>Auditorio AFP Cuprum, Edificio de Postgrado UDD, Las Condes</dd>
+                  <dd>Universidad del Desarrollo, Las Condes, Santiago</dd>
                 </div>
               </dl>
               <p>
@@ -175,7 +213,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 </div>
                 <div>
                   <dt>Lugar</dt>
-                  <dd>Auditorio AU001, Campus Barros Arana, UDD Concepción</dd>
+                  <dd>Campus Barros Arana, Universidad del Desarrollo, Concepción</dd>
                 </div>
               </dl>
               <p>
@@ -245,7 +283,7 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
                 </div>
                 <div>
                   <dt>Lugar</dt>
-                  <dd>Universidad del Desarrollo, Santiago</dd>
+                  <dd>Universidad del Desarrollo, Las Condes, Santiago</dd>
                 </div>
               </dl>
               <p>
