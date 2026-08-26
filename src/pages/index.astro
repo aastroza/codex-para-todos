@@ -4,6 +4,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 const lumaUrl = "https://luma.com/g1d4uxoi";
 const photosUrl = "https://photos.app.goo.gl/ziNiMck8oEBo4uxK7";
 const videoUrl = "https://youtube.com/shorts/PmifZOeo3jA";
+const nextWorkshopEventUrl = "https://luma.com/yrw1mdd3";
 const buildWeekEventUrl = "https://luma.com/siyf8e74";
 const buildWeekPhotosUrl = "https://photos.app.goo.gl/wvEm1zCD2HoEpeR69";
 const buildWeekSlidesUrl =
@@ -55,38 +56,39 @@ const ogImage = "https://codexparatodos.com/images/og-card-codex-landscape.png";
         <h2 id="upcoming-events-title">Próximos eventos</h2>
         <div class="events-list" aria-label="Próximos encuentros de Codex para todos">
           <article class="event-card event-card-featured" aria-labelledby="next-workshop-event-title">
-            <div class="event-card-media">
+            <a class="event-card-media" href={nextWorkshopEventUrl} target="_blank" rel="noreferrer" aria-label="Ver el taller presencial Codex para Todos">
               <img
                 src={nextWorkshopEventImage}
-                alt="Imagen abstracta para el próximo taller presencial Codex para Todos"
+                alt="Imagen abstracta para el taller presencial Codex para Todos"
                 width="1200"
                 height="675"
                 loading="eager"
               />
-            </div>
+            </a>
             <div class="event-card-body">
-              <h3 id="next-workshop-event-title">Taller presencial Codex para Todos</h3>
+              <h3 id="next-workshop-event-title">
+                <a href={nextWorkshopEventUrl} target="_blank" rel="noreferrer">Taller presencial Codex para Todos</a>
+              </h3>
               <dl class="event-card-meta">
                 <div>
                   <dt>Fecha</dt>
-                  <dd>Por confirmar</dd>
+                  <dd>5 de septiembre de 2026</dd>
                 </div>
                 <div>
                   <dt>Horario</dt>
-                  <dd>Por confirmar</dd>
+                  <dd>10:00 a 14:00 hrs.</dd>
                 </div>
                 <div>
                   <dt>Lugar</dt>
-                  <dd>Universidad del Desarrollo, Las Condes, Santiago</dd>
+                  <dd>Auditorio JPOST02, Edificio de Posgrado UDD, Las Condes</dd>
                 </div>
               </dl>
               <p>
-                Un nuevo encuentro práctico para aprender a trabajar con Codex junto a personas de distintas disciplinas.
+                Un taller introductorio para aprender a trabajar con ChatGPT desde el teléfono. No necesitas saber programar.
               </p>
               <div class="event-card-actions" aria-label="Inscripciones del próximo taller">
-                <button class="event-card-action-disabled" type="button" disabled>
-                  Inscripciones próximamente
-                </button>
+                <a href={nextWorkshopEventUrl} target="_blank" rel="noreferrer">Inscribirme</a>
+                <a href={nextWorkshopEventUrl} target="_blank" rel="noreferrer">Ver detalles</a>
               </div>
             </div>
           </article>
