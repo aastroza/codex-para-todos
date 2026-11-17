@@ -12,7 +12,10 @@ Pidió mover los equipos de una persona a «Busco equipo»: Francisco Battiston 
 Abigail Bohorquez. Resultado: 20 equipos, 66 integrantes, 12 personas buscando
 equipo, 78 inscripciones aprobadas según la lista facilitada. No se modificó Luma.
 
-## Convivencia: borrador pendiente de aprobación, no publicado
+## Convivencia: texto aprobado
+
+Alonso aprobó publicar este texto y los canales de ayuda el 17 de noviembre de 2026.
+Se incorpora a la guía en la sección «Código de conducta».
 
 Queremos que todas las personas se sientan bienvenidas. Trata a participantes,
 mentores y staff con respeto. No se permite acoso, discriminación, amenazas ni
@@ -24,8 +27,9 @@ o contacta a la organización en alonsoastroza@udd.cl.
 
 Referencia oficial encontrada: https://openai.com/policies/events-code-of-conduct/
 El alcance de ese código es para eventos de OpenAI. Confirmar su aplicación a
-este evento comunitario antes de presentarlo como norma obligatoria. Confirmar
-el texto local, canal de reporte y procedimiento ante incumplimientos.
+este evento comunitario antes de presentarlo como norma obligatoria. El texto
+local y los canales de ayuda están aprobados; el procedimiento ante
+incumplimientos queda por definir con la organización.
 
 ## Datos por confirmar
 
