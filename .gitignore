@@ -12,3 +12,6 @@ canvas_examen_proyecto_final_raw/
 
 # Source media is copied into public/ in optimized/deployable form.
 fotos/
+
+# Compound Engineering scratch files.
+.context/compound-engineering/
