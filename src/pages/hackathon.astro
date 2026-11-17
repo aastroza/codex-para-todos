@@ -1,0 +1,100 @@
+---
+import { hackathon as event } from '../data/hackathon';
+import '../styles/hackathon.css';
+const sections = [['antes', 'Antes de venir'], ['jornada', 'Durante la jornada'], ['entrega', 'Tu entrega'], ['evaluacion', 'Evaluación'], ['premios', 'Premios'], ['preguntas', 'Preguntas frecuentes']];
+const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+Desarrollo+Av.+Plaza+680+Las+Condes&query_place_id=ChIJ0wvhEW3MYpYRit5pIurpOEA';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guía de participantes · Build Games with Codex Santiago</title>
+    <meta name="description" content="Prepara tu equipo y consulta la jornada, los requisitos de entrega, la evaluación y los premios de la hackathon Build Games with Codex en Santiago." />
+    <link rel="canonical" href="https://hackathon.codexparatodos.com/" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#176348" />
+    <meta property="og:title" content="Build Games with Codex · Guía de participantes" />
+    <meta property="og:description" content="23 de noviembre · Aula Magna UDD, Santiago. Lo que necesitas antes y durante la hackathon." />
+    <meta property="og:image" content={event.cover} />
+    <meta property="og:url" content="https://hackathon.codexparatodos.com/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="topbar">
+      <a class="brand" href="https://codexparatodos.com"><img src="/logos/codex.png" width="28" height="28" alt="" />Codex para todos</a>
+      <span class="portal-label">Guía de participantes</span>
+      <a class="event-link" href={event.eventUrl} target="_blank" rel="noreferrer">Ver evento en Luma ↗</a>
+    </header>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <a class="guide-home" href="#contenido">Hackathon Santiago</a>
+        <nav aria-label="Contenido de la guía">{sections.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}</nav>
+        <p class="sidebar-note">Ten esta guía a mano.<br />La iremos actualizando con los detalles de la jornada.</p>
+      </aside>
+      <main id="contenido">
+        <section class="intro" aria-labelledby="event-title">
+          <div class="intro-copy">
+            <p class="eyebrow">Santiago · 23 noviembre 2026</p>
+            <h1 id="event-title">Build Games<br />with Codex</h1>
+            <p class="lead">Un día para construir un juego, probarlo y hacerlo mejor.</p>
+            <p>Esta es tu guía para preparar el equipo y consultar lo que necesitas durante la hackathon.</p>
+            <a class="primary-link" href="#antes">Prepara tu llegada <span aria-hidden="true">↓</span></a>
+          </div>
+          <img class="event-cover" src={event.cover} alt="Gráfica oficial de Build Games with Codex Santiago" width="640" height="640" fetchpriority="high" />
+        </section>
+        <div class="event-facts">
+          <div><span>Cuándo</span><strong>{event.date}</strong><p>{event.hours} hrs. · Hora de Santiago</p></div>
+          <div><span>Dónde</span><strong>{event.venue}</strong><p>{event.address}</p><a href={mapUrl} target="_blank" rel="noreferrer">Cómo llegar ↗</a></div>
+        </div>
+        <section id="antes" class="content-section">
+          <h2>Antes de venir</h2>
+          <p>La actividad es presencial y gratuita, con inscripción aprobada. No necesitas experiencia previa con Codex.</p>
+          <div class="checklist" role="group" aria-label="Lista de preparación">
+            {event.preparation.map((item) => <label><input type="checkbox" /><span>{item}</span></label>)}
+          </div>
+          <div class="split-note"><h3>Un equipo, distintas habilidades</h3><p>Programación, diseño de juegos, arte, música, sonido y testing: todos esos aportes tienen un lugar. Cada integrante debe tener su propia inscripción.</p></div>
+          <p class="small-note">Habrá comida y bebida durante toda la jornada.</p>
+        </section>
+        <section id="jornada" class="content-section">
+          <h2>Durante la jornada</h2>
+          <p>El objetivo es llegar a un <strong>prototipo jugable</strong>. Prueben ideas, elijan qué conservar, corrijan lo que falla y cuiden los detalles de su juego.</p>
+          <ol class="schedule">{event.schedule.map((item) => <li><time>{item.time}</time><div><h3>{item.title}</h3><p>{item.detail}</p></div></li>)}</ol>
+          <p class="pending-note">La agenda detallada y los horarios de evaluación y entrega están por confirmar. Todos los horarios corresponden a Santiago.</p>
+          <div class="split-note"><h3>Aprovechen las mentorías</h3><p>Muestren algo que se pueda probar y lleven una pregunta concreta: qué mejorar, qué recortar o qué resolver primero. Las decisiones y el desarrollo del juego siguen en manos del equipo.</p></div>
+        </section>
+        <section id="entrega" class="content-section">
+          <div class="section-heading"><h2>Tu entrega</h2><span class="tag">Prototipo jugable</span></div>
+          <p>El jurado probará el juego funcionando. Las diapositivas, los videos y un pitch no sustituyen al prototipo.</p>
+          <div class="checklist" role="group" aria-label="Requisitos de entrega">{event.delivery.map((item) => <label><input type="checkbox" /><span>{item}</span></label>)}</div>
+          {event.submissionUrl ? <a class="primary-link" href={event.submissionUrl} target="_blank" rel="noreferrer">Entregar proyecto ↗</a> : <p class="pending-note"><strong>Enlace de entrega pendiente.</strong> Publicaremos aquí el formulario y la hora límite cuando estén confirmados.</p>}
+          {event.submissionDeadline && <p>Hora límite: {event.submissionDeadline}</p>}
+        </section>
+        <section id="evaluacion" class="content-section">
+          <h2>Qué evaluará el jurado</h2>
+          <p>Profesionales del mundo de los videojuegos revisarán el prototipo desde el desarrollo, el arte y la experiencia de quienes juegan. Estos son los criterios cualitativos:</p>
+          <dl class="criteria">{event.criteria.map((item) => <div><dt>{item.title}</dt><dd>{item.detail}</dd></div>)}</dl>
+        </section>
+        <section id="premios" class="content-section">
+          <h2>Premios y créditos</h2>
+          <div class="prize-list"><p><span>Primer lugar</span><strong>US$1.000</strong></p><p><span>Segundo lugar</span><strong>US$500</strong></p><p><span>Tercer lugar</span><strong>US$250</strong></p></div>
+          <p class="small-note">Créditos de API por equipo. Además, cada integrante de los tres equipos premiados recibirá un año gratis de ChatGPT Pro.</p>
+          <div class="credits-note"><h3>Créditos para construir</h3><p>Cada persona seleccionada que asista presencialmente recibirá <strong>US$100 en créditos de Codex y US$50 en créditos de API</strong> para trabajar durante la hackathon.</p></div>
+        </section>
+        <section id="preguntas" class="content-section faq">
+          <h2>Preguntas frecuentes</h2>
+          <details><summary>¿Necesito saber programar?</summary><p>Puedes aportar desde distintas disciplinas y no necesitas experiencia previa con Codex. El trabajo colaborativo reúne programación, diseño, arte, música, sonido y pruebas.</p></details>
+          <details><summary>¿Cuántas personas puede tener un equipo?</summary><p>Hasta cuatro integrantes. La inscripción es individual y cada participante debe tener su cupo aprobado.</p></details>
+          <details><summary>¿El código tiene que ser público?</summary><p>Sí. Cada equipo debe publicar el código con una licencia open source, instrucciones de ejecución e identificación de los recursos de terceros y sus licencias.</p></details>
+          <details><summary>¿Dónde reviso mi inscripción?</summary><p>En <a href={event.eventUrl} target="_blank" rel="noreferrer">la página del evento en Luma</a>. Haber enviado el formulario no confirma el cupo: la inscripción requiere aprobación.</p></details>
+        </section>
+        <footer><p>Organiza Alonso Astroza, embajador de Codex, con la colaboración de la Facultad de Ingeniería y la carrera de Ingeniería Informática de la Universidad del Desarrollo.</p><a href="https://codexparatodos.com">Codex para todos ↗</a><span>Información actualizada el 16 de noviembre de 2026</span></footer>
+      </main>
+    </div>
+  </body>
+</html>
