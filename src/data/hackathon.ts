@@ -27,11 +27,9 @@ export const hackathon = {
     { title: 'Trabajo e iteración con Codex', detail: 'Cómo usaron Codex para construir, probar y mejorar el prototipo, y qué decisiones tomaron para desarrollar los resultados generados.' },
   ],
   preparation: [
-    'Revisa que tu inscripción en Luma esté aprobada.',
     'Trae tu computador con batería cargada y su cargador. Habrá enchufes.',
     'Trae un adaptador Ethernet si tu computador lo necesita: habrá puntos de red.',
     'Trae audífonos con cancelación de ruido, protectores auditivos o lo que uses para concentrarte.',
-    'Coordina con tu equipo: pueden ser hasta cuatro integrantes.',
   ],
   delivery: [
     'Un prototipo funcional y jugable.',

@@ -1,8 +1,8 @@
 ---
 import { hackathon as event } from '../data/hackathon';
-import { teams, lookingForTeam, participantCount } from '../data/hackathon-teams';
+import { teams, lookingForTeam } from '../data/hackathon-teams';
 import '../styles/hackathon.css';
-const sections = [['antes', 'Antes de venir'], ['codex', 'Prepara Codex'], ['jornada', 'Durante la jornada'], ['equipos', 'Equipos'], ['busco-equipo', 'Busco equipo'], ['entrega', 'Tu entrega'], ['evaluacion', 'Evaluación'], ['premios', 'Premios'], ['ayuda', 'Ayuda'], ['convivencia', 'Código de conducta'], ['preguntas', 'Preguntas frecuentes']];
+const sections = [['antes', 'Antes de venir'], ['codex', 'Prepara Codex'], ['jornada', 'Durante la jornada'], ['equipos', 'Equipos'], ['busco-equipo', 'Busco equipo'], ['entrega', 'Tu entrega'], ['evaluacion', 'Evaluación'], ['premios', 'Premios'], ['ayuda', 'Ayuda'], ['convivencia', 'Código de conducta']];
 const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+Desarrollo+Av.+Plaza+680+Las+Condes&query_place_id=ChIJ0wvhEW3MYpYRit5pIurpOEA';
 ---
 <!doctype html>
@@ -43,8 +43,8 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <div class="intro-copy">
             <p class="eyebrow">Santiago · 23 noviembre 2026</p>
             <h1 id="event-title">Build Games<br />with Codex</h1>
-            <p class="lead">Un día para construir un juego, probarlo y hacerlo mejor.</p>
-            <p>Esta es tu guía para preparar el equipo y consultar lo que necesitas durante la hackathon.</p>
+            <p class="lead">Nos vemos a las 09:00 en el Aula Magna UDD.</p>
+            <p>Prepara tu computador y ten a mano la agenda, la entrega y los contactos de ayuda.</p>
             <a class="primary-link" href="#antes">Prepara tu llegada <span aria-hidden="true">↓</span></a>
           </div>
           <img class="event-cover" src={event.cover} alt="Gráfica oficial de Build Games with Codex Santiago" width="640" height="640" fetchpriority="high" />
@@ -56,12 +56,10 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
         <nav class="quick-links" aria-label="Accesos durante el evento"><a href="#jornada">Consultar agenda</a><a href="#entrega">Preparar entrega</a><a href="#ayuda">Pedir ayuda</a></nav>
         <section id="antes" class="content-section">
           <h2>Antes de venir</h2>
-          <p>La actividad es presencial y gratuita, con inscripción aprobada. No necesitas experiencia previa con Codex.</p>
           <div class="checklist" role="group" aria-label="Lista de preparación">
             {event.preparation.map((item) => <label><input type="checkbox" /><span>{item}</span></label>)}
           </div>
           <p class="small-note">La disponibilidad de cables Ethernet está por confirmar.</p>
-          <div class="split-note"><h3>Un equipo, distintas habilidades</h3><p>Programación, diseño de juegos, arte, música, sonido y testing: todos esos aportes tienen un lugar. Cada integrante debe tener su propia inscripción.</p></div>
           <p class="small-note">Habrá comida y bebida durante toda la jornada.</p>
           <div class="split-note"><h3>Somos parte del Game Fest</h3><p>Tendremos un sector específico dentro del <a href="https://ingenieria.udd.cl/uddevs-game-fest-2026/" target="_blank" rel="noreferrer">UDDevs Game Fest 2026</a>. También puedes visitar las demás actividades: la final de League of Legends, charlas y exhibiciones de proyectos. Será un ambiente activo y más ruidoso de lo habitual; trae lo que necesites para concentrarte.</p></div>
         </section>
@@ -89,15 +87,15 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <div class="split-note"><h3>Aprovechen las mentorías</h3><p>Muestren algo que se pueda probar y lleven una pregunta concreta: qué mejorar, qué recortar o qué resolver primero. Las decisiones y el desarrollo del juego siguen en manos del equipo.</p></div>
         </section>
         <section id="equipos" class="content-section">
-          <h2>Equipos e integrantes aceptados</h2>
-          <p>{participantCount} personas con inscripción aprobada: {teams.length} equipos y {lookingForTeam.length} personas en <a href="#busco-equipo">Busco equipo</a>. La aprobación es individual; cada equipo puede tener hasta cuatro integrantes.</p>
-          <p class="small-note">Actualizado el 17 de noviembre de 2026. Se muestran los integrantes aceptados que figuran en el registro, no necesariamente todos los integrantes previstos de cada equipo.</p>
+          <h2>Equipos</h2>
+          <p>Revisa quiénes están en tu equipo. Si aún buscas uno, consulta <a href="#busco-equipo">Busco equipo</a>.</p>
+          <p class="small-note">Lista actualizada el 17 de noviembre de 2026.</p>
           <dl class="team-list">{teams.map((team) => <div><dt>{team.name}<span>{team.members.length} integrantes</span></dt><dd><ul>{team.members.map((name) => <li>{name}</li>)}</ul></dd></div>)}</dl>
           <p class="small-note">¿Hay un error en tu nombre o equipo? <a href="mailto:alonsoastroza@udd.cl?subject=Corrección%20de%20equipo%20hackathon">Escribe a la organización</a>.</p>
         </section>
         <section id="busco-equipo" class="content-section">
           <h2>Busco equipo</h2>
-          <p>Estas personas tienen su inscripción aprobada y están disponibles para formar equipo. También incluimos a quienes estaban inscritos en equipos de una sola persona.</p>
+          <p>¿Te falta equipo? Estas personas también están buscando uno.</p>
           <ul class="people-list">{lookingForTeam.map((name) => <li>{name}</li>)}</ul>
           <p class="small-note">Si ya formaste un equipo, <a href="mailto:alonsoastroza@udd.cl?subject=Equipo%20para%20la%20hackathon">avisa a la organización</a> para actualizar la lista.</p>
         </section>
@@ -129,7 +127,7 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <div class="prize-list"><p><span>Primer lugar</span><strong>US$1.000</strong></p><p><span>Segundo lugar</span><strong>US$500</strong></p><p><span>Tercer lugar</span><strong>US$250</strong></p></div>
           <p class="small-note">Los montos corresponden a créditos de API por equipo.</p>
           <div class="pro-prize"><span>Para cada integrante de los tres equipos ganadores</span><h3>Un año de ChatGPT Pro</h3><p>Además de los créditos de API que recibe su equipo.</p></div>
-          <div class="credits-note"><h3>Créditos para construir</h3><p>Cada persona seleccionada que asista presencialmente recibirá <strong>US$100 en créditos de Codex y US$50 en créditos de API</strong> para trabajar durante la hackathon.</p></div>
+          <div class="credits-note"><h3>Créditos para construir</h3><p>Al asistir recibirás <strong>US$100 en créditos de Codex y US$50 en créditos de API</strong> para trabajar durante la hackathon.</p></div>
         </section>
         <section id="ayuda" class="content-section">
           <h2>¿Necesitas ayuda?</h2>
@@ -142,13 +140,6 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <p>Queremos que todas las personas se sientan bienvenidas. Trata a participantes, mentores y staff con respeto. No se permite acoso, discriminación, amenazas ni conductas que generen un ambiente hostil.</p>
           <p>Los juegos y las demostraciones deben ser apropiados para la actividad: no se permite contenido pornográfico ni contenido que promueva odio o violencia contra personas o grupos.</p>
           <p>Si necesitas ayuda o quieres reportar una situación, acércate al staff con credencial naranja o contacta a la organización en <a href="mailto:alonsoastroza@udd.cl">alonsoastroza@udd.cl</a>.</p>
-        </section>
-        <section id="preguntas" class="content-section faq">
-          <h2>Preguntas frecuentes</h2>
-          <details><summary>¿Necesito saber programar?</summary><p>Puedes aportar desde distintas disciplinas y no necesitas experiencia previa con Codex. El trabajo colaborativo reúne programación, diseño, arte, música, sonido y pruebas.</p></details>
-          <details><summary>¿Cuántas personas puede tener un equipo?</summary><p>Hasta cuatro integrantes. La inscripción es individual y cada participante debe tener su cupo aprobado.</p></details>
-          <details><summary>¿El código tiene que ser público?</summary><p>Sí. Cada equipo debe publicar el código con una licencia open source, instrucciones de ejecución e identificación de los recursos de terceros y sus licencias.</p></details>
-          <details><summary>¿Dónde reviso mi inscripción?</summary><p>En <a href={event.eventUrl} target="_blank" rel="noreferrer">la página del evento en Luma</a>. Haber enviado el formulario no confirma el cupo: la inscripción requiere aprobación.</p></details>
         </section>
         <footer><p>Organiza Alonso Astroza, embajador de Codex, con la colaboración de la Facultad de Ingeniería y la carrera de Ingeniería Informática de la Universidad del Desarrollo.</p><a href="https://codexparatodos.com">Codex para todos ↗</a><span>Información actualizada el 17 de noviembre de 2026</span></footer>
       </main>
