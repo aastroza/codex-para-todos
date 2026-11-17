@@ -1,6 +1,7 @@
 // Fuentes: Luma https://luma.com/zv06n9np y la invitación a mentores
 // https://docs.google.com/document/d/1i7mi18QqLJVj_1tfKe2wZrIm3Cx-7AAh1N7Gggx2EXg
-// Consultadas el 16 de noviembre de 2026. Actualizar aquí los datos del portal.
+// Mejoras y lista de equipos facilitadas por Alonso el 17 de noviembre de 2026.
+// Gatos Armados Espaciales unificado; equipos de una persona pasan a Busco equipo.
 export const hackathon = {
   name: 'Build Games with Codex',
   date: 'Lunes 23 de noviembre de 2026',
@@ -14,7 +15,7 @@ export const hackathon = {
   submissionUrl: null as string | null,
   submissionDeadline: null as string | null,
   schedule: [
-    { time: '09:00', title: 'Comienza la jornada', detail: 'Nos encontramos en el Aula Magna UDD.' },
+    { time: '09:00', title: 'Acreditación', detail: 'Llega puntual al Aula Magna UDD para acreditarte y preparar tu equipo.' },
     { time: '11:00–16:00', title: 'Franja prevista de mentorías', detail: 'Acompañamiento para probar avances, ajustar el alcance y mejorar la jugabilidad, el arte y la implementación. Horarios de cada mentor por confirmar.' },
     { time: '19:00', title: 'Fin de la jornada', detail: 'El horario de evaluación y premiación se confirmará por separado.' },
   ],
@@ -27,7 +28,9 @@ export const hackathon = {
   ],
   preparation: [
     'Revisa que tu inscripción en Luma esté aprobada.',
-    'Trae tu laptop y cargador.',
+    'Trae tu computador con batería cargada y su cargador. Habrá enchufes.',
+    'Trae un adaptador Ethernet si tu computador lo necesita: habrá puntos de red.',
+    'Trae audífonos con cancelación de ruido, protectores auditivos o lo que uses para concentrarte.',
     'Coordina con tu equipo: pueden ser hasta cuatro integrantes.',
   ],
   delivery: [

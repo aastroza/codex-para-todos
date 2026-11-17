@@ -1,7 +1,8 @@
 ---
 import { hackathon as event } from '../data/hackathon';
+import { teams, lookingForTeam, participantCount } from '../data/hackathon-teams';
 import '../styles/hackathon.css';
-const sections = [['antes', 'Antes de venir'], ['jornada', 'Durante la jornada'], ['entrega', 'Tu entrega'], ['evaluacion', 'Evaluación'], ['premios', 'Premios'], ['preguntas', 'Preguntas frecuentes']];
+const sections = [['antes', 'Antes de venir'], ['codex', 'Prepara Codex'], ['jornada', 'Durante la jornada'], ['equipos', 'Equipos'], ['busco-equipo', 'Busco equipo'], ['entrega', 'Tu entrega'], ['evaluacion', 'Evaluación'], ['premios', 'Premios'], ['ayuda', 'Ayuda'], ['preguntas', 'Preguntas frecuentes']];
 const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+Desarrollo+Av.+Plaza+680+Las+Condes&query_place_id=ChIJ0wvhEW3MYpYRit5pIurpOEA';
 ---
 <!doctype html>
@@ -52,14 +53,33 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <div><span>Cuándo</span><strong>{event.date}</strong><p>{event.hours} hrs. · Hora de Santiago</p></div>
           <div><span>Dónde</span><strong>{event.venue}</strong><p>{event.address}</p><a href={mapUrl} target="_blank" rel="noreferrer">Cómo llegar ↗</a></div>
         </div>
+        <nav class="quick-links" aria-label="Accesos durante el evento"><a href="#jornada">Consultar agenda</a><a href="#entrega">Preparar entrega</a><a href="#ayuda">Pedir ayuda</a></nav>
         <section id="antes" class="content-section">
           <h2>Antes de venir</h2>
           <p>La actividad es presencial y gratuita, con inscripción aprobada. No necesitas experiencia previa con Codex.</p>
           <div class="checklist" role="group" aria-label="Lista de preparación">
             {event.preparation.map((item) => <label><input type="checkbox" /><span>{item}</span></label>)}
           </div>
+          <p class="small-note">La disponibilidad de cables Ethernet está por confirmar.</p>
           <div class="split-note"><h3>Un equipo, distintas habilidades</h3><p>Programación, diseño de juegos, arte, música, sonido y testing: todos esos aportes tienen un lugar. Cada integrante debe tener su propia inscripción.</p></div>
           <p class="small-note">Habrá comida y bebida durante toda la jornada.</p>
+          <div class="split-note"><h3>Somos parte del Game Fest</h3><p>Tendremos un sector específico dentro del <a href="https://ingenieria.udd.cl/uddevs-game-fest-2026/" target="_blank" rel="noreferrer">UDDevs Game Fest 2026</a>. También puedes visitar las demás actividades: la final de League of Legends, charlas y exhibiciones de proyectos. Será un ambiente activo y más ruidoso de lo habitual; trae lo que necesites para concentrarte.</p></div>
+        </section>
+        <section id="codex" class="content-section">
+          <h2>Deja Codex listo antes de venir</h2>
+          <p>Codex es el agente de programación de OpenAI: durante la hackathon lo usarán para escribir, probar y mejorar el código de su juego a partir de instrucciones en lenguaje cotidiano.</p>
+          <p>Codex y ChatGPT no son el mismo producto, aunque comparten cuenta y la aplicación de escritorio actual permite elegir entre ambos.</p>
+          <dl class="criteria access-options">
+            <div><dt>En tu computador</dt><dd><a href="https://chatgpt.com/download/" target="_blank" rel="noreferrer">Descarga la aplicación oficial</a> para macOS o Windows. Para Linux, consulta la <a href="https://learn.chatgpt.com/docs/linux/linux-app" target="_blank" rel="noreferrer">guía oficial de instalación</a>. Inicia sesión y elige Codex. <a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noreferrer">Ver primeros pasos</a>.</dd></div>
+            <div><dt>En la web</dt><dd><a href="https://chatgpt.com/codex" target="_blank" rel="noreferrer">Abre Codex en el navegador</a>. El trabajo se ejecuta en la nube; sigue la configuración de tu proyecto y repositorio. <a href="https://learn.chatgpt.com/docs/cloud" target="_blank" rel="noreferrer">Consultar la guía de Codex Cloud</a>.</dd></div>
+            <div><dt>Desde el teléfono</dt><dd>La <a href="https://chatgpt.com/download/" target="_blank" rel="noreferrer">app oficial de ChatGPT para iOS y Android</a> permite acceder a un computador conectado. Necesitas la misma cuenta y workspace, y mantener el Mac o PC encendido y conectado. <a href="https://learn.chatgpt.com/docs/remote-connections" target="_blank" rel="noreferrer">Configurar el acceso remoto</a>. La disponibilidad puede variar según la cuenta.</dd></div>
+          </dl>
+          <div class="checklist" role="group" aria-label="Preparación de Codex">
+            <label><input type="checkbox" /><span>Inicia sesión y comprueba que tienes acceso a Codex con tu cuenta de ChatGPT.</span></label>
+            <label><input type="checkbox" /><span>Instala la aplicación o configura el acceso web antes del evento.</span></label>
+            <label><input type="checkbox" /><span>En un proyecto de prueba, pide a Codex que cree una página con un botón que sume puntos. Ábrela, pruébala y pídele un cambio.</span></label>
+          </div>
+          <p class="pending-note">Las instrucciones para recibir y activar los créditos del evento, incluida la cuenta que se usará para el canje, se publicarán cuando la organización confirme el procedimiento.</p>
         </section>
         <section id="jornada" class="content-section">
           <h2>Durante la jornada</h2>
@@ -68,10 +88,34 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <p class="pending-note">La agenda detallada y los horarios de evaluación y entrega están por confirmar. Todos los horarios corresponden a Santiago.</p>
           <div class="split-note"><h3>Aprovechen las mentorías</h3><p>Muestren algo que se pueda probar y lleven una pregunta concreta: qué mejorar, qué recortar o qué resolver primero. Las decisiones y el desarrollo del juego siguen en manos del equipo.</p></div>
         </section>
+        <section id="equipos" class="content-section">
+          <h2>Equipos e integrantes aceptados</h2>
+          <p>{participantCount} personas con inscripción aprobada: {teams.length} equipos y {lookingForTeam.length} personas en <a href="#busco-equipo">Busco equipo</a>. La aprobación es individual; cada equipo puede tener hasta cuatro integrantes.</p>
+          <p class="small-note">Actualizado el 17 de noviembre de 2026. Se muestran los integrantes aceptados que figuran en el registro, no necesariamente todos los integrantes previstos de cada equipo.</p>
+          <dl class="team-list">{teams.map((team) => <div><dt>{team.name}<span>{team.members.length} integrantes</span></dt><dd><ul>{team.members.map((name) => <li>{name}</li>)}</ul></dd></div>)}</dl>
+          <p class="small-note">¿Hay un error en tu nombre o equipo? <a href="mailto:alonsoastroza@udd.cl?subject=Corrección%20de%20equipo%20hackathon">Escribe a la organización</a>.</p>
+        </section>
+        <section id="busco-equipo" class="content-section">
+          <h2>Busco equipo</h2>
+          <p>Estas personas tienen su inscripción aprobada y están disponibles para formar equipo. También incluimos a quienes estaban inscritos en equipos de una sola persona.</p>
+          <ul class="people-list">{lookingForTeam.map((name) => <li>{name}</li>)}</ul>
+          <p class="small-note">Si ya formaste un equipo, <a href="mailto:alonsoastroza@udd.cl?subject=Equipo%20para%20la%20hackathon">avisa a la organización</a> para actualizar la lista.</p>
+        </section>
         <section id="entrega" class="content-section">
           <div class="section-heading"><h2>Tu entrega</h2><span class="tag">Prototipo jugable</span></div>
           <p>El jurado probará el juego funcionando. Las diapositivas, los videos y un pitch no sustituyen al prototipo.</p>
           <div class="checklist" role="group" aria-label="Requisitos de entrega">{event.delivery.map((item) => <label><input type="checkbox" /><span>{item}</span></label>)}</div>
+          <div class="delivery-guide">
+            <h3>¿Es tu primer repositorio?</h3>
+            <p>Un repositorio es la carpeta del proyecto con su código y su historial de cambios. Pueden publicarlo en GitHub y entregar el enlace a su página, por ejemplo <code>github.com/tu-equipo/tu-juego</code>.</p>
+            <ol><li>Crea un repositorio <strong>público</strong> siguiendo la <a href="https://docs.github.com/es/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">guía oficial de GitHub</a>.</li><li>Sube el código del juego, su README y su licencia. No subas contraseñas ni claves de API.</li><li>Abre el enlace sin iniciar sesión y comprueba que otra persona puede seguir las instrucciones para jugar.</li></ol>
+            <h3>Elijan una licencia</h3>
+            <p><a href="https://choosealicense.com/licenses/mit/" target="_blank" rel="noreferrer">MIT</a> permite reutilizar y modificar el código conservando los avisos de autoría y licencia. <a href="https://choosealicense.com/licenses/apache-2.0/" target="_blank" rel="noreferrer">Apache 2.0</a> también es permisiva e incluye una concesión expresa de patentes y obligaciones adicionales, como indicar los cambios. Revisen cuál es compatible con las dependencias de su juego.</p>
+            <p>La licencia del código no cambia las licencias de imágenes, música, sonidos ni otros recursos. Identifiquen sus autores, fuentes y condiciones de uso.</p>
+            <h3>Un README para que otros puedan jugar</h3>
+            <p>Incluyan descripción, instrucciones de ejecución, controles, integrantes y créditos de los recursos utilizados.</p>
+            <a class="download-link" href="/hackathon/README-plantilla.md" download="README.md">Descargar plantilla de README ↓</a>
+          </div>
           {event.submissionUrl ? <a class="primary-link" href={event.submissionUrl} target="_blank" rel="noreferrer">Entregar proyecto ↗</a> : <p class="pending-note"><strong>Enlace de entrega pendiente.</strong> Publicaremos aquí el formulario y la hora límite cuando estén confirmados.</p>}
           {event.submissionDeadline && <p>Hora límite: {event.submissionDeadline}</p>}
         </section>
@@ -83,8 +127,15 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
         <section id="premios" class="content-section">
           <h2>Premios y créditos</h2>
           <div class="prize-list"><p><span>Primer lugar</span><strong>US$1.000</strong></p><p><span>Segundo lugar</span><strong>US$500</strong></p><p><span>Tercer lugar</span><strong>US$250</strong></p></div>
-          <p class="small-note">Créditos de API por equipo. Además, cada integrante de los tres equipos premiados recibirá un año gratis de ChatGPT Pro.</p>
+          <p class="small-note">Los montos corresponden a créditos de API por equipo.</p>
+          <div class="pro-prize"><span>Para cada integrante de los tres equipos ganadores</span><h3>Un año de ChatGPT Pro</h3><p>Además de los créditos de API que recibe su equipo.</p></div>
           <div class="credits-note"><h3>Créditos para construir</h3><p>Cada persona seleccionada que asista presencialmente recibirá <strong>US$100 en créditos de Codex y US$50 en créditos de API</strong> para trabajar durante la hackathon.</p></div>
+        </section>
+        <section id="ayuda" class="content-section">
+          <h2>¿Necesitas ayuda?</h2>
+          <div class="help-roles"><div><h3><span class="credential mentor">Azul</span> Mentores</h3><p>Para revisar avances, resolver dudas técnicas y conversar sobre jugabilidad, arte o sonido.</p></div><div><h3><span class="credential staff">Naranja</span> Staff</h3><p>Para acreditación, ubicación, organización y cualquier situación que necesite atención.</p></div></div>
+          <p>Puedes acercarte a cualquiera de los dos para que te orienten. Para dudas antes del evento, correcciones de equipos o necesidades de accesibilidad y alimentación, escribe a <a href="mailto:alonsoastroza@udd.cl">alonsoastroza@udd.cl</a>.</p>
+          <p class="small-note">Esta página será el punto de consulta para las actualizaciones durante la jornada.</p>
         </section>
         <section id="preguntas" class="content-section faq">
           <h2>Preguntas frecuentes</h2>
@@ -93,7 +144,7 @@ const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universidad+del+
           <details><summary>¿El código tiene que ser público?</summary><p>Sí. Cada equipo debe publicar el código con una licencia open source, instrucciones de ejecución e identificación de los recursos de terceros y sus licencias.</p></details>
           <details><summary>¿Dónde reviso mi inscripción?</summary><p>En <a href={event.eventUrl} target="_blank" rel="noreferrer">la página del evento en Luma</a>. Haber enviado el formulario no confirma el cupo: la inscripción requiere aprobación.</p></details>
         </section>
-        <footer><p>Organiza Alonso Astroza, embajador de Codex, con la colaboración de la Facultad de Ingeniería y la carrera de Ingeniería Informática de la Universidad del Desarrollo.</p><a href="https://codexparatodos.com">Codex para todos ↗</a><span>Información actualizada el 16 de noviembre de 2026</span></footer>
+        <footer><p>Organiza Alonso Astroza, embajador de Codex, con la colaboración de la Facultad de Ingeniería y la carrera de Ingeniería Informática de la Universidad del Desarrollo.</p><a href="https://codexparatodos.com">Codex para todos ↗</a><span>Información actualizada el 17 de noviembre de 2026</span></footer>
       </main>
     </div>
   </body>
